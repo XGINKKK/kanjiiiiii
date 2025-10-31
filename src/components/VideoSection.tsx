@@ -1,5 +1,6 @@
 import { PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 export const VideoSection = () => {
   const scrollToPricing = () => {
@@ -32,14 +33,16 @@ export const VideoSection = () => {
           <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-black">
             {/* Video Player com aspect ratio responsivo */}
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-              <iframe
-                className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/Wfkpe_EfI4I"
-                title="Veja como funciona na prática"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <div className="absolute top-0 left-0 w-full h-full">
+                <YouTubeEmbed
+                  videoId="Wfkpe_EfI4I"
+                  title="Veja como funciona na prática"
+                  autoplay={true}
+                  privacy={true}
+                  width="100%"
+                  height="100%"
+                />
+              </div>
             </div>
 
             {/* Decorative elements */}

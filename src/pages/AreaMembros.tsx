@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 const AreaMembros = () => {
   const navigate = useNavigate();
@@ -151,14 +152,16 @@ const AreaMembros = () => {
               </CardHeader>
               <CardContent className="p-0">
                 <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
-                  <iframe
-                    className="absolute top-0 left-0 w-full h-full"
-                    src="https://www.youtube.com/embed/uB71ly9qCXQ"
-                    title="Vídeo Tutorial"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
+                  <div className="absolute top-0 left-0 w-full h-full">
+                    <YouTubeEmbed
+                      videoId="uB71ly9qCXQ"
+                      title="Vídeo Tutorial"
+                      autoplay={true}
+                      privacy={true}
+                      width="100%"
+                      height="100%"
+                    />
+                  </div>
                 </div>
               </CardContent>
             </Card>
