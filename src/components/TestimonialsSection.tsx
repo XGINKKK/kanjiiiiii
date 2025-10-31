@@ -30,13 +30,7 @@ const testimonials = [
     time: "1023 likes em 2 horas",
     avatar: "/avatars/avatar-gene3d99a090940ff2f92c3cd980b5e61d3.jpg"
   },
-  {
-    name: "Bruna Souza",
-    text: "O método é simples de seguir, mesmo para nós que somos pais sem experiência em ensino. É muito gratificante ver nosso filho lendo suas primeiras palavras!",
-    reactions: "❤️😍",
-    time: "94 likes em 25 min",
-    avatar: "/avatars/avatar-gen17031bc98f4f6fcf99b157c7ef4d4407.jpg"
-  }
+  
 ];
 
 export const TestimonialsSection = () => {
