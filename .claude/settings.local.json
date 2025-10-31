@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(pip install:*)",
+      "Bash(python -m pip install:*)",
+      "Bash(python api_server.py:*)",
+      "Bash(python:*)",
+      "Bash(for dir in atividades_grafismo/*/)",
+      "Bash(done)",
+      "Bash(curl:*)",
+      "Bash(unzip:*)",
+      "Bash(awk:*)",
+      "WebSearch",
+      "Bash(dir:*)",
+      "Bash(if not exist \"public\\pdfs\" mkdir \"public\\pdfs\")",
+      "Bash(xcopy:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(npm run build:*)",
+      "Bash(node test-mobile.js:*)",
+      "Bash(npm install:*)",
+      "Bash(npx playwright:*)",
+      "Bash(del nul)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git lfs:*)",
+      "Bash(chmod:*)",
+      "Bash(bash:*)",
+      "Bash(git push:*)",
+      "Bash(cat:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,436 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  BookOpen,
+  Download,
+  LogOut,
+  CheckCircle,
+  Sparkles,
+  Star,
+  Trophy,
+  Gift,
+  FileText
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
+
+const AreaMembros = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    toast({
+      title: "Logout realizado",
+      description: "Até logo!",
+      duration: 2000,
+    });
+  };
+
+  const handleDownloadPDF = (pdfPath: string, fileName: string) => {
+    // Criar um link temporário para forçar o download
+    const link = document.createElement('a');
+    link.href = pdfPath;
+    link.setAttribute('download', fileName + '.pdf');
+    link.setAttribute('target', '_blank');
+    link.style.display = 'none';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    toast({
+      title: "Baixando PDF! 📥",
+      description: `${fileName}`,
+      duration: 3000,
+    });
+  };
+
+  const handleAcessarMetodo = () => {
+    navigate("/japones");
+  };
+
+  const handleAcessarGuiaPais = () => {
+    navigate("/pais");
+  };
+
+  // Mapa de cores para os botões
+  const getCoresBotao = (cor: string) => {
+    const cores = {
+      mint: "bg-mint hover:bg-mint/90",
+      "soft-blue": "bg-soft-blue hover:bg-soft-blue/90",
+      coral: "bg-coral hover:bg-coral/90",
+    };
+    return cores[cor as keyof typeof cores] || "bg-mint hover:bg-mint/90";
+  };
+
+  const getCoresIcone = (cor: string) => {
+    const cores = {
+      mint: "text-mint",
+      "soft-blue": "text-soft-blue",
+      coral: "text-coral",
+    };
+    return cores[cor as keyof typeof cores] || "text-mint";
+  };
+
+  // Níveis de Atividades
+  const niveisAtividades = [
+    {
+      nivel: 1,
+      titulo: "Nível 1 - Iniciante",
+      descricao: "Atividades básicas para começar a jornada de alfabetização",
+      cor: "mint",
+      icon: <Star className="w-8 h-8 text-mint" />,
+      arquivos: [
+        {
+          nome: "Caderno de Atividades - Bastão",
+          caminho: "/pdfs/Atividades/Nivel 1/nivel-1-bastao.pdf",
+          descricao: "Atividades com letra bastão (caixa alta)"
+        },
+        {
+          nome: "Caderno de Atividades - Letra Cursiva",
+          caminho: "/pdfs/Atividades/Nivel 1/nivel-1-cursiva.pdf",
+          descricao: "Atividades com letra cursiva"
+        }
+      ]
+    },
+    {
+      nivel: 2,
+      titulo: "Nível 2 - Intermediário",
+      descricao: "Avançando no desenvolvimento da escrita e leitura",
+      cor: "soft-blue",
+      icon: <Trophy className="w-8 h-8 text-soft-blue" />,
+      arquivos: [
+        {
+          nome: "Caderno de Atividades - Bastão",
+          caminho: "/pdfs/Atividades/Nivel 2/nivel-2-bastao.pdf",
+          descricao: "Atividades intermediárias com letra bastão"
+        },
+        {
+          nome: "Caderno de Atividades - Letra Cursiva",
+          caminho: "/pdfs/Atividades/Nivel 2/nivel-2-cursiva.pdf",
+          descricao: "Atividades intermediárias com letra cursiva"
+        }
+      ]
+    },
+    {
+      nivel: 3,
+      titulo: "Nível 3 - Avançado",
+      descricao: "Consolidação completa da alfabetização",
+      cor: "coral",
+      icon: <Sparkles className="w-8 h-8 text-coral" />,
+      arquivos: [
+        {
+          nome: "Caderno de Atividades - Bastão",
+          caminho: "/pdfs/Atividades/Nivel 3/nivel-3-bastao.pdf",
+          descricao: "Atividades avançadas com letra bastão"
+        },
+        {
+          nome: "Caderno de Atividades - Letra Cursiva",
+          caminho: "/pdfs/Atividades/Nivel 3/nivel-3-cursiva.pdf",
+          descricao: "Atividades avançadas com letra cursiva"
+        }
+      ]
+    }
+  ];
+
+  // Bônus
+  const materiaisBonus = [
+    {
+      nome: "Alfabeto com Carinhas",
+      caminho: "/pdfs/Bonus/alfabeto-com-carinhas.pdf"
+    },
+    {
+      nome: "Alfabeto com Imagem",
+      caminho: "/pdfs/Bonus/alfabeto_com_imagem.pdf"
+    },
+    {
+      nome: "Alfabeto com Pintura",
+      caminho: "/pdfs/Bonus/alfabeto_com_pintura.pdf"
+    },
+    {
+      nome: "Alfabeto com Relógio",
+      caminho: "/pdfs/Bonus/alfabeto_com_relogio.pdf"
+    },
+    {
+      nome: "Alfabeto Ilustrado",
+      caminho: "/pdfs/Bonus/alfabeto_ilustrado.pdf"
+    },
+    {
+      nome: "Caderno Alfabeto Traçado",
+      caminho: "/pdfs/Bonus/caderno_alfabeto_tracado.pdf"
+    },
+    {
+      nome: "Caderno Sílabas Simples",
+      caminho: "/pdfs/Bonus/caderno_silabas_simples.pdf"
+    },
+    {
+      nome: "Descobrindo o Alfabeto",
+      caminho: "/pdfs/Bonus/descobrindo_o_alfabeto.pdf"
+    },
+    {
+      nome: "Formando Palavras",
+      caminho: "/pdfs/Bonus/formando_palavras.pdf"
+    },
+    {
+      nome: "Atividades para Colorir",
+      caminho: "/pdfs/Bonus/atividades-para-colorir.pdf"
+    }
+  ];
+
+  const recursos = [
+    {
+      icon: <BookOpen className="w-8 h-8 text-coral" />,
+      titulo: "Guia Completo para Pais",
+      descricao: "Passo a passo detalhado de como aplicar o método com seu filho",
+      badge: "Interativo",
+      action: handleAcessarGuiaPais
+    },
+    {
+      icon: <Sparkles className="w-8 h-8 text-mint" />,
+      titulo: "Método Visual Japonês Adaptado",
+      descricao: "Técnica milenar comprovada, traduzida para o português brasileiro",
+      badge: "Exclusivo",
+      action: handleAcessarMetodo
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-soft-blue to-beige">
+      {/* Header */}
+      <header className="bg-navy text-white shadow-lg">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-coral rounded-full flex items-center justify-center">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold font-fredoka">Área de Membros</h1>
+                <p className="text-sm text-soft-blue">Bem-vindo, {user?.name || user?.email}!</p>
+              </div>
+            </div>
+            <Button
+              onClick={handleLogout}
+              variant="outline"
+              className="text-white border-white hover:bg-white/10"
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Sair
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="py-12 bg-gradient-to-r from-coral to-coral/90 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-fredoka">
+            Kit Completo Kanji Kids™
+          </h2>
+          <p className="text-xl md:text-2xl mb-6 max-w-3xl mx-auto">
+            Tudo que você precisa para alfabetizar seu filho em casa usando o método japonês
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5" />
+              <span>6 Cadernos de Atividades</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5" />
+              <span>10 Materiais Bônus</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5" />
+              <span>Suporte Vitalício</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5" />
+              <span>Atualizações Grátis</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Recursos Principais */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12 font-fredoka text-navy">
+            Seus Recursos Exclusivos
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
+            {recursos.map((recurso, index) => (
+              <Card
+                key={index}
+                className="hover:shadow-xl transition-all cursor-pointer group"
+                onClick={() => recurso.action && recurso.action()}
+              >
+                <CardHeader>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="p-3 bg-soft-blue/20 rounded-lg group-hover:scale-110 transition-transform">
+                      {recurso.icon}
+                    </div>
+                    <span className="text-xs font-bold px-3 py-1 bg-mint/20 text-mint rounded-full">
+                      {recurso.badge}
+                    </span>
+                  </div>
+                  <CardTitle className="text-xl font-fredoka">{recurso.titulo}</CardTitle>
+                  <CardDescription>{recurso.descricao}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button className="w-full bg-coral hover:bg-coral/90">
+                    <BookOpen className="w-4 h-4 mr-2" />
+                    Acessar Conteúdo
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Vídeo Tutorial */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <Card className="overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-navy to-navy/90 text-white">
+                <div className="flex items-center gap-3">
+                  <PlayCircle className="w-8 h-8" />
+                  <div>
+                    <CardTitle className="text-2xl font-fredoka">Vídeo Tutorial</CardTitle>
+                    <CardDescription className="text-white/90">
+                      Aprenda a usar o método Kanji Kids com este guia em vídeo
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                  <video
+                    controls
+                    className="absolute top-0 left-0 w-full h-full"
+                    poster="/videos/tutorial-membros-poster.jpg"
+                  >
+                    <source src="/videos/tutorial-membros.mp4" type="video/mp4" />
+                    Seu navegador não suporta vídeos HTML5.
+                  </video>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Níveis de Atividades */}
+          <div className="space-y-12">
+            {niveisAtividades.map((nivel) => (
+              <div key={nivel.nivel}>
+                <Card className="overflow-hidden border-2 border-navy/10">
+                  <CardHeader className="bg-gradient-to-r from-navy to-navy/90 text-white">
+                    <div className="flex items-center gap-4">
+                      <div className={`p-3 bg-white/20 rounded-lg`}>
+                        {nivel.icon}
+                      </div>
+                      <div className="flex-1">
+                        <CardTitle className="text-2xl font-fredoka">{nivel.titulo}</CardTitle>
+                        <CardDescription className="text-white/90 text-base">
+                          {nivel.descricao}
+                        </CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="p-6">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {nivel.arquivos.map((arquivo, idx) => (
+                        <Card key={idx} className="hover:shadow-lg transition-all">
+                          <CardHeader>
+                            <div className="flex items-start gap-3">
+                              <FileText className={`w-6 h-6 ${getCoresIcone(nivel.cor)} flex-shrink-0 mt-1`} />
+                              <div className="flex-1">
+                                <CardTitle className="text-lg font-fredoka mb-1">
+                                  {arquivo.nome}
+                                </CardTitle>
+                                <CardDescription className="text-sm">
+                                  {arquivo.descricao}
+                                </CardDescription>
+                              </div>
+                            </div>
+                          </CardHeader>
+                          <CardContent>
+                            <Button
+                              onClick={() => handleDownloadPDF(arquivo.caminho, arquivo.nome)}
+                              className={`w-full ${getCoresBotao(nivel.cor)}`}
+                            >
+                              <Download className="w-4 h-4 mr-2" />
+                              Baixar PDF
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Seção Bônus */}
+      <section className="py-16 bg-gradient-to-r from-mint/10 to-soft-blue/10">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <Gift className="w-12 h-12 text-coral" />
+              <h2 className="text-4xl font-bold font-fredoka text-navy">
+                Materiais Bônus
+              </h2>
+            </div>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              10 atividades extras para complementar o aprendizado do seu filho
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {materiaisBonus.map((bonus, index) => (
+              <Card key={index} className="hover:shadow-xl transition-all group">
+                <CardHeader>
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-coral/10 rounded-lg group-hover:bg-coral/20 transition-colors">
+                      <Gift className="w-5 h-5 text-coral" />
+                    </div>
+                    <CardTitle className="text-base font-fredoka flex-1">
+                      {bonus.nome}
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <Button
+                    onClick={() => handleDownloadPDF(bonus.caminho, bonus.nome)}
+                    variant="outline"
+                    className="w-full border-coral text-coral hover:bg-coral hover:text-white"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Baixar
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-navy text-white py-8 mt-16">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-soft-blue">
+            © 2024 Kanji Kids - Área de Membros Exclusiva
+          </p>
+          <p className="text-sm text-soft-blue mt-2">
+            Dúvidas? Entre em contato: suporte@kanjikids.com.br
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default AreaMembros;
