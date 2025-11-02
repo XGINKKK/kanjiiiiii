@@ -10,8 +10,9 @@ import { GuaranteeSection } from "@/components/GuaranteeSection";
 import { FAQSection } from "@/components/FAQSection";
 import { FinalCTASection } from "@/components/FinalCTASection";
 import { Footer } from "@/components/Footer";
+import { memo } from "react";
 
-const Index = () => {
+const Index = memo(() => {
   return (
     <div className="min-h-screen font-inter">
       <HeroSection />
@@ -25,7 +26,7 @@ const Index = () => {
       <GuaranteeSection />
       <FAQSection />
       <FinalCTASection />
-      
+
       {/* Checkout section */}
       <section id="checkout" className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -40,6 +41,8 @@ const Index = () => {
       <Footer />
     </div>
   );
-};
+});
+
+Index.displayName = "Index";
 
 export default Index;

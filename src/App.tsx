@@ -9,7 +9,16 @@ import MetodoJapones from "./pages/MetodoJapones";
 import GuiaPais from "./pages/GuiaPais";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+// CRÍTICO: QueryClient DEVE ser criado fora do componente
+// Se criado dentro, será recriado a cada render causando re-renders em cascata
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 60 * 5, // 5 minutos
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
