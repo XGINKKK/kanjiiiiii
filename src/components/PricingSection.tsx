@@ -3,7 +3,7 @@ import { Check, Lock } from "lucide-react";
 
 export const PricingSection = () => {
   const handleCheckout = () => {
-    window.location.href = "https://pay.cakto.com.br/3a6yi3z_630084";
+    window.location.href = "https://www.ggcheckout.com/checkout/v2/50wDz3HYenjVvuvmY2Zv";
   };
 
   return (
