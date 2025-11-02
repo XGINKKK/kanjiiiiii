@@ -9,6 +9,89 @@
 
 ---
 
+## 🤖 PROMPTS PARA NANO BANANA (IA)
+
+### Prompt 1: Logo Tipográfico com Lápis
+```
+Create a playful children's educational logo for "KANJI KIDS". The letter K should be stylized as a pencil or brush. The dot of the letter "i" in "Kids" should be a smiling child's face. Add dotted and dashed lines coming from the letters representing handwriting exercises. Color palette: navy blue (#152D4A) for main text, coral (#F07167) for highlights, soft blue (#BDE3F0) accents. Font style: rounded, bold, friendly but legible like Fredoka. White background. Vector style, clean, modern. Below add tagline "Método Japonês de Alfabetização" in smaller text.
+```
+
+### Prompt 2: Origami Bird Symbol + Wordmark
+```
+Design a modern logo combining an origami bird icon with "KANJI KIDS" wordmark. The origami bird should be made with dotted, dashed and wavy lines representing handwriting exercises. Use gradient from coral (#F07167) to mint green (#80D8B7). The bird symbolizes transformation and learning. Logo text in navy blue (#152D4A) with coral accent on the letter K. Clean, minimalist Japanese-inspired design. White background. Vector illustration style. Icon on left, text stacked or horizontal on right.
+```
+
+### Prompt 3: Origami Butterfly Symbol
+```
+Create an elegant logo with an origami butterfly made entirely of graphism lines (dotted, wavy, dashed strokes) in coral to mint gradient colors (#F07167 to #80D8B7). Pair with "KANJI KIDS" text in bold rounded navy blue (#152D4A) font. The butterfly represents child transformation through learning. Minimalist, Japanese-inspired aesthetic. White background. Vector style, suitable for educational brand. Include subtle soft blue (#BDE3F0) accents.
+```
+
+### Prompt 4: Child Mascot with Pencil
+```
+Design a cute manga-style minimalist mascot of an Asian child holding a giant pencil, creating colorful wavy lines in the air (coral, yellow, mint colors). Simple, friendly character with happy concentrated expression. Integrate with "KANJI KIDS" logo text in rounded bold font. Child wearing soft blue (#BDE3F0) clothes, coral (#F07167) pencil. Navy blue (#152D4A) text. White background. Clean vector illustration, educational, playful but not overly childish.
+```
+
+### Prompt 5: Japanese Kanji Symbol Integration
+```
+Modern logo featuring a simplified Japanese kanji character (子 meaning "child" or 本 meaning "book") formed by colorful handwriting practice lines (dotted, wavy, dashed). Gradient from coral (#F07167) to mint (#80D8B7). Combine with "KANJI KIDS" wordmark in bold rounded navy font (#152D4A). Minimalist Japanese aesthetic, clean lines. White background. Vector style. The kanji should be abstract and decorative, integrated smoothly with the brand name.
+```
+
+### Prompt 6: Brush Stroke Letter K
+```
+Create a logo where a single fluid brush stroke forms both the letter K and represents Japanese calligraphy. The stroke should have a coral (#F07167) gradient and include elements of handwriting practice lines. Complete "KANJI KIDS" text in rounded bold navy blue (#152D4A) font. Add soft blue (#BDE3F0) and mint (#80D8B7) accent elements. Clean, modern, educational feel. White background. Vector illustration. The brush stroke should be elegant but playful.
+```
+
+### Prompt 7: House + Book Symbol
+```
+Design a logo combining a house roof (representing home learning) with an open book. From the book pages, colorful handwriting practice lines flow out (dotted, wavy, dashed) in coral, yellow, and mint colors. Integrate with "KANJI KIDS" text in bold rounded navy blue (#152D4A) font. Minimalist icon style. White background. The symbol should be simple, memorable, suitable for favicon. Vector illustration, educational brand aesthetic.
+```
+
+### Prompt 8: Complete Horizontal Logo
+```
+Professional horizontal logo for "KANJI KIDS" educational product. Left side: origami crane icon made of colorful handwriting exercise lines (coral #F07167 to mint #80D8B7 gradient). Right side: brand name in two-tone rounded bold font - "KANJI" in navy #152D4A, "KIDS" with coral accent. Below in small text: "Método Japonês de Alfabetização" in light navy. White background. Clean vector style. Modern, trustworthy, playful but professional for parent audience.
+```
+
+### Prompt 9: Circular Badge Version
+```
+Create a circular badge logo for "KANJI KIDS". Center: stylized child figure with pencil surrounded by circular handwriting practice lines (dotted, wavy). Outer ring: brand name curved along the circle. Color scheme: navy blue (#152D4A), coral (#F07167), soft blue (#BDE3F0), mint (#80D8B7). Clean, modern, suitable for app icon or seal. Vector illustration. White or transparent background. Japanese-inspired minimalist aesthetic.
+```
+
+### Prompt 10: Minimalist K Monogram
+```
+Ultra-minimalist logo: abstract letter K formed by overlapping handwriting exercise lines (one dotted, one wavy, one dashed) in coral (#F07167), mint (#80D8B7), and soft blue (#BDE3F0). Clean, geometric, modern. Can work as standalone icon or paired with "KANJI KIDS" text in navy (#152D4A) rounded font. White background. Vector style. Suitable for favicon, app icon, or small sizes. Scalable, memorable, unique.
+```
+
+---
+
+## 📋 INSTRUÇÕES DE USO DOS PROMPTS
+
+### Para o Nano Banana:
+1. Copie cada prompt individualmente
+2. Cole no campo de texto do Nano Banana
+3. Ajuste o estilo se necessário (vector, flat design, minimalist)
+4. Gere 3-4 variações de cada
+5. Selecione as melhores para refinamento
+
+### Configurações Recomendadas:
+- **Estilo**: Vector illustration, flat design, minimalist
+- **Aspecto**: Square (1:1) ou Horizontal (16:9) conforme uso
+- **Resolução**: Alta (para vetorização posterior)
+- **Background**: White ou Transparent
+- **Qualidade**: Maximum
+
+### Palavras-Chave Importantes:
+- Vector style
+- Clean lines
+- Educational brand
+- Japanese-inspired
+- Playful but professional
+- Rounded font
+- Handwriting practice lines
+- Child-friendly
+- Modern minimalist
+
+---
+
 ## 🎨 Proposta de Logo
 
 ### Opção 1: "Kanji Kids - Lúdico e Moderno"
