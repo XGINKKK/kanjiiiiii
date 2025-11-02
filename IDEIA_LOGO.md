@@ -92,6 +92,35 @@ Ultra-clean checkout banner 960x288px for KANJI KIDS. Centered layout on white b
 
 ---
 
+## 🖼️ PROMPT PARA IMAGEM DE CHECKOUT - PROPORÇÃO 3:2 (1536x1024px)
+
+### Checkout Image - Proporção Sora (3:2)
+```
+Create a professional checkout hero image for "KANJI KIDS" educational product, exact size 1536x1024 pixels (3:2 aspect ratio). Upper section (40% height): "KANJI KIDS" logo in large bold rounded navy blue (#152D4A) font with coral (#F07167) accent on letter K. Below logo: tagline "Método Japonês de Alfabetização" in medium navy text. Center section (35% height): Happy Asian child (5-6 years old) sitting at desk with colorful worksheets, practicing handwriting with big smile. Colorful wavy handwriting practice lines (dotted, dashed) floating around child in coral (#F07167), mint (#80D8B7), soft blue (#BDE3F0) colors. Small origami bird made of dotted lines flying near child. Bottom section (25% height): Three trust badges in a row - "✓ Acesso Imediato | ✓ 300+ Atividades | ✓ Garantia 7 Dias" in navy (#152D4A) text. Price highlight: "R$ 27,90" in large coral (#F07167) bold text. Background: soft gradient from beige (#F8F4ED) at top to white at bottom. Clean, modern, trustworthy design. Professional vector illustration style, high quality, parent-friendly aesthetic. Include subtle payment icons (credit card, PIX) at bottom corners.
+```
+
+### Checkout Image - Split Design (3:2)
+```
+Professional checkout image 1536x1024 pixels (3:2 ratio) for KANJI KIDS. Left half (768px width): Dark navy (#152D4A) background with white text. Top: "Seu Filho Lendo em 2-3 Semanas" in large white bold text. Center: Cute manga-style child mascot holding giant pencil, creating colorful wavy lines. Small origami crane icon. Bottom: "15.000+ Famílias Satisfeitas" with 5 stars. Right half (768px width): White background. Top third: "KANJI KIDS" logo in navy (#152D4A) with coral accent. Middle: "Kit Completo" heading. "300+ Atividades de Grafismo Fonético" subheading. Product mockup showing colorful PDF worksheets stacked. Bottom third: Large "R$ 27,90" in coral (#F07167) bold text. Below: "Pagamento Único - Acesso Vitalício" in small navy text. Three trust badges in soft blue (#BDE3F0) pills: "PDF Digital", "Acesso Imediato", "Garantia 7 Dias". Bottom strip across both halves: Payment method icons (Visa, Mastercard, PIX) and "Compra 100% Segura 🔒". Clean, professional, high-conversion design. Modern vector style, suitable for payment gateway.
+```
+
+### Checkout Image - Product Focus (3:2)
+```
+Create checkout product showcase image 1536x1024px (3:2 aspect ratio) for KANJI KIDS. Top section (25%): "KANJI KIDS" logo centered in navy blue (#152D4A) rounded bold font with coral (#F07167) accent. Tagline "Kit Completo de Alfabetização Japonesa" below. Center section (50%): 3D realistic mockup of spiral-bound workbook stack slightly angled, colorful covers showing children practicing handwriting. Coral (#F07167) and mint (#80D8B7) accent colors. Pages visible showing handwriting practice lines (dotted, wavy, dashed). Small origami elements (birds, butterflies) made of graphism lines floating around the books. Soft shadow beneath books for depth. Bottom section (25%): Three columns layout - Left: "300+ Atividades" with book icon. Center: "R$ 27,90" in LARGE coral text, "97% de desconto!" below in small text. Right: "Acesso Vitalício" with infinity icon. Below columns: Trust bar with "✓ Pagamento Seguro | ✓ Garantia 7 Dias | ✓ 15.000+ Alunos". Background: soft gradient from beige (#F8F4ED) top to white bottom. Professional product photography style mixed with vector illustrations. High quality, conversion-optimized, trustworthy aesthetic.
+```
+
+### Checkout Image - Storytelling (3:2)
+```
+Emotional storytelling checkout image 1536x1024 pixels (3:2 ratio) for KANJI KIDS. Design split vertically into three sections. Top third (340px): Soft beige (#F8F4ED) background. "KANJI KIDS" logo left-aligned in navy (#152D4A). Tagline "Transforme a Alfabetização do Seu Filho" in coral (#F07167) on right. Middle third (344px): Main hero scene - warm illustration of parent and child (5-6 years) sitting together at table doing handwriting activities, both smiling. Child holding pencil, parent encouraging. Colorful worksheets visible on table. Wavy handwriting practice lines floating in air around them in coral, mint, soft blue. Small origami bird perched on table edge. Warm, loving, educational atmosphere. Window in background with sunlight. Bottom third (340px): White background. Left side: Three benefit icons with text - "Método Japonês Comprovado", "Resultados em 2-3 Semanas", "Suporte Incluído". Right side: Pricing card with shadow - "Oferta Especial" badge, "R$ 27,90" in large coral (#F07167) bold, "De R$ 545,00" strikethrough above, "Pagamento Único" below. Green button text "Garantia de 7 Dias". Bottom strip: Payment icons and "Compra 100% Segura". Warm, professional, emotionally engaging design. Blend of realistic illustration and vector elements. High quality, parent-focused aesthetic.
+```
+
+### Checkout Image - Minimalista Vertical (3:2)
+```
+Ultra-clean vertical checkout image 1536x1024px (3:2 proportion) for KANJI KIDS. White background throughout. Top section (256px): Centered small origami crane icon in coral to mint gradient (#F07167 to #80D8B7), made of dotted handwriting lines. Upper-middle section (256px): "KANJI KIDS" in extra-large navy blue (#152D4A) rounded bold font, centered. Below: "Kit Completo de Alfabetização" in medium navy, centered. Middle section (256px): Clean product representation - simple flat lay photo of colorful worksheets arranged in fan formation, showing handwriting exercises with dotted and wavy lines visible. Coral, mint, soft blue accent colors in the worksheets. Lower-middle section (128px): Large "R$ 27,90" centered in coral (#F07167) bold. Small "Pagamento único" text below in gray. Bottom section (128px): Five trust badges in a horizontal row with icons - "Acesso Imediato ⚡", "300+ Atividades 📚", "Garantia 7 Dias 🛡️", "15.000+ Alunos 👥", "Suporte Incluído 💬" - in soft blue (#BDE3F0) rounded pills. Minimalist, premium, Apple-inspired aesthetic. Maximum whitespace. Professional photography mixed with vector icons. High-end, trustworthy design perfect for payment page.
+```
+
+---
+
 ## 📋 INSTRUÇÕES DE USO DOS PROMPTS
 
 ### Para o Nano Banana:
