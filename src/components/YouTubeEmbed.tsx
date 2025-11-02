@@ -31,6 +31,9 @@ export default function YouTubeEmbed({
     modestbranding: "1",
     controls: "1",
     showinfo: "0",
+    loop: "0",
+    playsinline: "1",
+    fs: "1",
     ...(autoplay ? { autoplay: "1", mute: "1" } : {}),
   }).toString();
   const src = `${domain}/embed/${videoId}?${params}`;
