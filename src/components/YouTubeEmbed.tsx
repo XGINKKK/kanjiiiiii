@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useMemo, memo } from "react";
 
 type Props = {
   videoId: string;
@@ -10,7 +10,7 @@ type Props = {
   subtle?: boolean;
 };
 
-export default function YouTubeEmbed({
+const YouTubeEmbed = memo(({
   videoId,
   title = "Video",
   width = "100%",
@@ -18,45 +18,50 @@ export default function YouTubeEmbed({
   autoplay = false,
   privacy = true,
   subtle = true,
-}: Props) {
-  const [playing, setPlaying] = useState(Boolean(autoplay));
-  useEffect(() => {
-    if (autoplay) setPlaying(true);
-  }, [autoplay]);
+}: Props) => {
+  const [hasClicked, setHasClicked] = useState(false);
+  const shouldShowVideo = autoplay || hasClicked;
 
   const thumb = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
   const domain = privacy ? "https://www.youtube-nocookie.com" : "https://www.youtube.com";
-  const params = new URLSearchParams({
-    rel: "0",
-    modestbranding: "1",
-    controls: "1",
-    showinfo: "0",
-    loop: "0",
-    playsinline: "1",
-    fs: "1",
-    ...(autoplay ? { autoplay: "1", mute: "1" } : {}),
-  }).toString();
-  const src = `${domain}/embed/${videoId}?${params}`;
+
+  const src = useMemo(() => {
+    const params = new URLSearchParams({
+      rel: "0",
+      modestbranding: "1",
+      controls: "1",
+      showinfo: "0",
+      loop: "0",
+      playsinline: "1",
+      fs: "1",
+      enablejsapi: "1",
+      ...(autoplay ? { autoplay: "1", mute: "1" } : {}),
+    }).toString();
+    return `${domain}/embed/${videoId}?${params}`;
+  }, [domain, videoId, autoplay]);
 
   return (
     <div style={{ width, height, position: "relative", overflow: "hidden", borderRadius: 8 }} aria-label={title}>
-      {playing ? (
+      {shouldShowVideo ? (
         <iframe
           title={title}
           width="100%"
           height="100%"
           src={src}
-          frameBorder="0"
           loading="eager"
           allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           style={{ display: "block", width: "100%", height: "100%", border: 0 }}
         />
       ) : (
-        <button onClick={() => setPlaying(true)} aria-label={`Play ${title}`} style={{ width: "100%", height: "100%", padding: 0, border: 0, background: "transparent" }}>
+        <button onClick={() => setHasClicked(true)} aria-label={`Play ${title}`} style={{ width: "100%", height: "100%", padding: 0, border: 0, background: "transparent", cursor: "pointer" }}>
           <img src={thumb} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover", filter: subtle ? "grayscale(20%) contrast(90%)" : undefined }} />
         </button>
       )}
     </div>
   );
-}
+});
+
+YouTubeEmbed.displayName = "YouTubeEmbed";
+
+export default YouTubeEmbed;

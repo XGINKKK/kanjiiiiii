@@ -1,11 +1,12 @@
 import { PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
+import { memo, useCallback } from "react";
 
-export const VideoSection = () => {
-  const scrollToPricing = () => {
+export const VideoSection = memo(() => {
+  const scrollToPricing = useCallback(() => {
     document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" });
-  };
+  }, []);
 
   return (
     <section className="py-20 bg-gradient-to-br from-navy/5 via-soft-blue/10 to-background">
@@ -97,4 +98,6 @@ export const VideoSection = () => {
       </div>
     </section>
   );
-};
+});
+
+VideoSection.displayName = "VideoSection";
