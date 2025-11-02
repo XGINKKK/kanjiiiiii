@@ -63,6 +63,35 @@ Ultra-minimalist logo: abstract letter K formed by overlapping handwriting exerc
 
 ---
 
+## 🛒 PROMPT PARA BANNER DE CHECKOUT (960x288px)
+
+### Banner Checkout - Horizontal
+```
+Create a professional checkout banner for "KANJI KIDS" educational product, exact size 960x288 pixels. Left side (40%): Show happy child (5-6 years old) reading a book with colorful wavy handwriting practice lines floating around them, coral (#F07167), mint (#80D8B7), soft blue (#BDE3F0) colors. Center-right (60%): "KANJI KIDS" logo in bold rounded navy blue (#152D4A) font with coral accent. Below logo: tagline "Método Japonês de Alfabetização" in smaller text. Bottom: "✓ Acesso Imediato" "✓ 300+ Atividades" "✓ Garantia 7 dias" in small navy text. Background: soft gradient from beige (#F8F4ED) to white. Clean, trustworthy, professional design suitable for payment page. Include subtle origami bird icon. Modern vector style, high quality, parent-friendly aesthetic.
+```
+
+### Banner Checkout - Compacto e Limpo
+```
+Professional payment page banner, 960x288 pixels exactly. Left third: KANJI KIDS logo with small origami crane icon made of dotted lines in coral to mint gradient (#F07167 to #80D8B7). Center: Product showcase - stack of colorful PDF worksheets with visible handwriting exercises (dotted, wavy lines). Right third: Trust elements in navy (#152D4A) text: "✓ Pagamento Seguro", "✓ 15.000+ Famílias", "✓ Garantia Incondicional". Background: clean white with subtle beige (#F8F4ED) accent. Professional, minimalist, trustworthy design for checkout page. Vector illustration style, high quality.
+```
+
+### Banner Checkout - Com Mockup de Produto
+```
+Create checkout banner 960x288px for KANJI KIDS educational kit. Left side: 3D mockup of spiral-bound workbook with colorful cover showing child practicing handwriting, coral (#F07167) and mint (#80D8B7) accents. Center: "Kit Completo Kanji Kids" in bold navy (#152D4A) rounded font. Subtitle: "300+ Atividades de Grafismo Fonético". Right side: Three badges in soft blue (#BDE3F0) circles: "PDF Digital", "Acesso Vitalício", "Suporte Incluído". Background: gradient from beige (#F8F4ED) left to white right. Professional, clean, conversion-optimized design. Modern vector style, suitable for payment gateway page.
+```
+
+### Banner Checkout - Foco em Resultado
+```
+Payment page banner, exactly 960x288 pixels. Design split in two halves. Left half (dark navy #152D4A background): White text "Seu filho lendo em 2-3 semanas" with smiling child icon and small origami bird. Right half (white background): "KANJI KIDS" logo in navy with coral (#F07167) accent, below show "R$ 27,90" in large coral text, underneath "Pagamento Único - Acesso Vitalício" in small navy text. Bottom strip across both halves: payment method icons (credit card, PIX) and "Compra 100% Segura" with lock icon. Clean, professional, high-conversion design for checkout page. Vector style.
+```
+
+### Banner Checkout - Minimalista Premium
+```
+Ultra-clean checkout banner 960x288px for KANJI KIDS. Centered layout on white background. Top: Small origami crane icon in coral to mint gradient (#F07167 to #80D8B7). Center: "KANJI KIDS" in large navy blue (#152D4A) rounded bold font. Below: "Kit Completo de Alfabetização" in medium navy text. Bottom section: Three inline trust badges with icons - "Acesso Imediato ⚡" "Garantia 7 Dias 🛡️" "15.000+ Alunos 👥" in soft blue (#BDE3F0) pills. Minimalist, premium, trustworthy aesthetic perfect for payment page. Vector illustration, professional quality.
+```
+
+---
+
 ## 📋 INSTRUÇÕES DE USO DOS PROMPTS
 
 ### Para o Nano Banana:
