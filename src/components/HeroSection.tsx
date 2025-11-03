@@ -17,10 +17,10 @@ export const HeroSection = () => {
         <div className="w-24 h-24 rounded-full bg-yellow-soft animate-float" style={{ animationDelay: "1s" }} />
       </div>
 
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto text-center space-y-12 animate-fade-in-up">
+      <div className="container mx-auto">
+        <div className="max-w-6xl mx-auto text-center space-y-12 animate-fade-in-up px-4">
           {/* Hero Image Mockup */}
-          <div className="relative w-full max-w-4xl mx-auto px-4 md:px-0">
+          <div className="relative w-full max-w-4xl mx-auto">
             <div className="bg-gradient-to-b from-background via-background to-soft-blue/10 rounded-2xl p-4 md:p-8">
               <img
                 src={heroMockup}
@@ -78,15 +78,17 @@ export const HeroSection = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="flex flex-col items-center space-y-4 pt-6 w-full">
-            <Button
-              onClick={scrollToCheckout}
-              variant="hero"
-              size="xl"
-              className="font-nunito font-bold text-base md:text-lg px-8 md:px-12 w-full max-w-md md:w-auto hover:scale-[1.02] transition-all duration-300 animate-pulse-subtle"
-            >
-              Quero meu pequeno lendo rápido!
-            </Button>
+          <div className="flex flex-col items-center justify-center space-y-4 pt-6 w-full">
+            <div className="w-full flex justify-center">
+              <Button
+                onClick={scrollToCheckout}
+                variant="hero"
+                size="xl"
+                className="font-nunito font-bold text-base md:text-lg px-8 md:px-12 w-full max-w-md md:w-auto hover:scale-[1.02] transition-all duration-300 animate-pulse-subtle mx-auto"
+              >
+                Quero meu pequeno lendo rápido!
+              </Button>
+            </div>
 
             <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
               <Lock className="w-4 h-4" />
