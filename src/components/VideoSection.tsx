@@ -1,6 +1,6 @@
 import { PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import YouTubeEmbed from "@/components/YouTubeEmbed";
+import { VSLPlayer } from "@/components/VSLPlayer";
 import { memo, useCallback } from "react";
 
 export const VideoSection = memo(() => {
@@ -31,26 +31,7 @@ export const VideoSection = memo(() => {
 
         {/* Video Container */}
         <div className="max-w-5xl mx-auto">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-black">
-            {/* Video Player com aspect ratio responsivo */}
-            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-              <div className="absolute top-0 left-0 w-full h-full">
-                <YouTubeEmbed
-                  videoId="Wfkpe_EfI4I"
-                  title="Veja como funciona na prática"
-                  autoplay={true}
-                  privacy={true}
-                  width="100%"
-                  height="100%"
-                />
-              </div>
-            </div>
-
-            {/* Decorative elements */}
-            <div className="absolute top-4 right-4 bg-coral text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse-soft z-10">
-              🔥 ASSISTA AGORA
-            </div>
-          </div>
+          <VSLPlayer />
 
           {/* Video Info */}
           <div className="mt-8 grid md:grid-cols-3 gap-6">
