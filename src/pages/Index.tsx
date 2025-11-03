@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/HeroSection";
+import { MethodExplanationSection } from "@/components/MethodExplanationSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { VideoSection } from "@/components/VideoSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
@@ -16,6 +17,7 @@ const Index = memo(() => {
   return (
     <div className="min-h-screen font-inter">
       <HeroSection />
+      <MethodExplanationSection />
       <HowItWorksSection />
       <VideoSection />
       <BenefitsSection />
