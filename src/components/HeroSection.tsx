@@ -20,8 +20,8 @@ export const HeroSection = () => {
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto text-center space-y-12 animate-fade-in-up px-4">
           {/* Hero Image Mockup */}
-          <div className="relative w-full max-w-4xl mx-auto">
-            <div className="bg-gradient-to-b from-background via-background to-soft-blue/10 rounded-2xl p-4 md:p-8">
+          <div className="relative w-full max-w-5xl mx-auto">
+            <div className="bg-gradient-to-b from-background via-background to-soft-blue/10 rounded-2xl p-6 md:p-10">
               <img
                 src={heroMockup}
                 alt="Kit de Grafismo Fonético - Mockup"
@@ -31,12 +31,10 @@ export const HeroSection = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-fredoka text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight max-w-5xl mx-auto">
+          <h1 className="font-fredoka text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.2] max-w-5xl mx-auto px-2">
             Descubra a{" "}
-            <span className="text-soft-blue">técnica japonesa</span> que
-            ensina as crianças a ler{" "}
-            <span className="text-navy">até</span>{" "}
-            <span className="text-coral">5 vezes mais rápido</span>
+            <span className="text-soft-blue">técnica japonesa que ensina as crianças a ler</span>{" "}
+            até <span className="text-coral">5 vezes mais rápido</span>
             <span className="text-navy">, sem pressão!</span>
           </h1>
 
@@ -78,17 +76,15 @@ export const HeroSection = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="flex flex-col items-center justify-center space-y-4 pt-6 w-full">
-            <div className="w-full flex justify-center">
-              <Button
-                onClick={scrollToCheckout}
-                variant="hero"
-                size="xl"
-                className="font-nunito font-bold text-base md:text-lg px-8 md:px-12 w-full max-w-md md:w-auto hover:scale-[1.02] transition-all duration-300 animate-pulse-subtle mx-auto"
-              >
-                Quero meu pequeno lendo rápido!
-              </Button>
-            </div>
+          <div className="flex flex-col items-center space-y-4 pt-6">
+            <Button
+              onClick={scrollToCheckout}
+              variant="hero"
+              size="xl"
+              className="font-nunito font-bold text-base md:text-lg px-8 md:px-12 w-full max-w-md md:w-auto hover:scale-[1.02] transition-all duration-300 animate-pulse-subtle"
+            >
+              Quero meu pequeno lendo rápido!
+            </Button>
 
             <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
               <Lock className="w-4 h-4" />

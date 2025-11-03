@@ -365,8 +365,8 @@ export const MethodExplanationSection = memo(() => {
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="bg-gradient-to-br from-navy/5 to-coral/5 border-2 border-navy/20 rounded-3xl p-8 md:p-12">
             <p className="font-fredoka text-2xl md:text-3xl font-bold text-navy mb-6 leading-tight">
-              Com o <span className="text-coral">Kit de Grafismo Fonético</span>, seu filho
-              desenvolve o cérebro para aprender a ler com leveza, no tempo dele — e com
+              Com o <span className="text-coral">Kit de Grafismo Fonético</span> seu filho
+              desenvolve o cérebro para aprender a ler com leveza no tempo dele e com
               resultados visíveis em poucos dias.
             </p>
 
@@ -377,14 +377,16 @@ export const MethodExplanationSection = memo(() => {
               </span>
             </div>
 
-            <Button
-              onClick={scrollToPricing}
-              variant="hero"
-              size="lg"
-              className="font-nunito font-bold text-lg md:text-xl px-12 py-8 shadow-2xl hover:shadow-3xl"
-            >
-              Quero meu filho(a) Lendo!
-            </Button>
+            <div className="flex justify-center px-4">
+              <Button
+                onClick={scrollToPricing}
+                variant="hero"
+                size="lg"
+                className="font-nunito font-bold text-base md:text-xl px-8 md:px-12 py-6 md:py-8 shadow-2xl hover:shadow-3xl w-full max-w-md md:w-auto hover:scale-[1.02] transition-all duration-300"
+              >
+                Quero meu filho(a) Lendo!
+              </Button>
+            </div>
           </div>
         </div>
       </div>
