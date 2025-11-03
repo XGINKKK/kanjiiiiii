@@ -20,8 +20,8 @@ export const HeroSection = () => {
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto text-center space-y-12 animate-fade-in-up px-4">
           {/* Hero Image Mockup */}
-          <div className="relative w-full max-w-5xl mx-auto">
-            <div className="bg-gradient-to-b from-background via-background to-soft-blue/10 rounded-2xl p-6 md:p-10">
+          <div className="relative w-full max-w-5xl mx-auto -mx-4 md:mx-auto">
+            <div className="bg-gradient-to-b from-background via-background to-soft-blue/10 rounded-2xl p-2 md:p-10">
               <img
                 src={heroMockup}
                 alt="Kit de Grafismo Fonético - Mockup"
