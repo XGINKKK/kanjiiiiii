@@ -132,7 +132,7 @@ VERIFIQUE: Todas as palavras contêm "${syllable}"?`;
         'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'gpt-4o', // GPT-4o is more advanced and accurate
         messages: [
           {
             role: 'system',
@@ -143,7 +143,7 @@ VERIFIQUE: Todas as palavras contêm "${syllable}"?`;
             content: contentPrompt
           }
         ],
-        temperature: 0.8,
+        temperature: 0.3, // Lower temperature for more consistent/accurate results
         max_tokens: 500
       })
       });
