@@ -95,8 +95,13 @@ export default async function handler(
 
     const examples = exampleWords[syllableLower] || ['palavra1', 'palavra2', 'palavra3', 'palavra4', 'palavra5'];
 
-    // STEP 1: Generate activity content with GPT-4
-    const contentPrompt = `Você é especialista em alfabetização. Crie uma atividade focada na sílaba "${syllable}".
+    // STEP 1: Generate activity content with GPT-4 (with retry logic)
+    let activityContent;
+    let retryCount = 0;
+    const maxRetries = 3;
+
+    while (retryCount < maxRetries) {
+      const contentPrompt = `Você é especialista em alfabetização. Crie uma atividade focada na sílaba "${syllable}".
 
 Tema: ${themeLabel}
 Nível: ${difficultyLabel}
@@ -120,7 +125,7 @@ JSON:
 
 VERIFIQUE: Todas as palavras contêm "${syllable}"?`;
 
-    const contentResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+      const contentResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -141,45 +146,49 @@ VERIFIQUE: Todas as palavras contêm "${syllable}"?`;
         temperature: 0.8,
         max_tokens: 500
       })
-    });
-
-    if (!contentResponse.ok) {
-      const error = await contentResponse.text();
-      console.error('OpenAI Content API Error:', error);
-      return res.status(contentResponse.status).json({
-        error: 'Erro ao gerar conteúdo da atividade',
-        details: error
       });
-    }
 
-    const contentData = await contentResponse.json();
-    let activityContent;
-
-    try {
-      const rawContent = contentData.choices[0].message.content;
-      // Remove markdown code blocks if present
-      const cleanedContent = rawContent.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-      activityContent = JSON.parse(cleanedContent);
-
-      // VALIDATE: Check if all words contain the syllable
-      const syllableLower = syllable.toLowerCase();
-      const invalidWords = activityContent.words.filter((word: string) =>
-        !word.toLowerCase().includes(syllableLower)
-      );
-
-      if (invalidWords.length > 0) {
-        console.error(`Invalid words without syllable "${syllable}":`, invalidWords);
-        return res.status(400).json({
-          error: `Erro: Algumas palavras não contêm a sílaba "${syllable}"`,
-          invalidWords: invalidWords
-        });
+      if (!contentResponse.ok) {
+        const error = await contentResponse.text();
+        console.error('OpenAI Content API Error:', error);
+        retryCount++;
+        continue;
       }
 
-    } catch (parseError) {
-      console.error('JSON Parse Error:', parseError);
+      const contentData = await contentResponse.json();
+
+      try {
+        const rawContent = contentData.choices[0].message.content;
+        // Remove markdown code blocks if present
+        const cleanedContent = rawContent.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+        const parsedContent = JSON.parse(cleanedContent);
+
+        // VALIDATE: Check if all words contain the syllable
+        const invalidWords = parsedContent.words.filter((word: string) =>
+          !word.toLowerCase().includes(syllableLower)
+        );
+
+        if (invalidWords.length > 0) {
+          console.log(`Retry ${retryCount + 1}: Invalid words found:`, invalidWords);
+          retryCount++;
+          continue; // Try again
+        }
+
+        // Success! Words are valid
+        activityContent = parsedContent;
+        break; // Exit loop
+
+      } catch (parseError) {
+        console.error('JSON Parse Error:', parseError);
+        retryCount++;
+        continue;
+      }
+    }
+
+    // If all retries failed
+    if (!activityContent) {
       return res.status(500).json({
-        error: 'Erro ao processar conteúdo da atividade',
-        details: contentData.choices[0].message.content
+        error: `Não foi possível gerar atividade válida após ${maxRetries} tentativas. Tente novamente.`
       });
     }
 
