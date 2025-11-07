@@ -145,8 +145,12 @@ const Gerador = () => {
   const handleDownload = async () => {
     if (generatedActivity) {
       try {
-        // Baixar a imagem da URL do DALL-E
-        const response = await fetch(generatedActivity.imageUrl);
+        // Usar proxy API para evitar CORS
+        const downloadUrl = `/api/download-image?url=${encodeURIComponent(generatedActivity.imageUrl)}`;
+
+        const response = await fetch(downloadUrl);
+        if (!response.ok) throw new Error('Download failed');
+
         const blob = await response.blob();
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -162,6 +166,7 @@ const Gerador = () => {
           description: "Sua atividade foi baixada com sucesso.",
         });
       } catch (error) {
+        console.error("Download error:", error);
         toast({
           title: "Erro no Download",
           description: "Não foi possível baixar a atividade. Tente novamente.",

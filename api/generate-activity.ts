@@ -135,31 +135,25 @@ IMPORTANTE:
       });
     }
 
-    // STEP 2: Generate visual activity image with DALL-E
-    const imagePrompt = `Create a colorful, child-friendly educational worksheet in Brazilian Portuguese for literacy learning.
+    // STEP 2: Generate ONLY illustrations with DALL-E (no text!)
+    const imagePrompt = `Create cute, colorful illustrations for a children's educational worksheet about the syllable "${syllable}".
 
-Activity Type: ${activityLabel}
 Theme: ${themeLabel}
-Target Syllable: ${syllable.toUpperCase()}
-Difficulty: ${difficultyLabel}
+Words to illustrate: ${activityContent.words.join(', ')}
 
-Title at top: "${activityContent.title}"
+Create a grid layout with 4-6 simple, kawaii-style cartoon illustrations representing these words.
+Each illustration should be:
+- Super cute and child-friendly
+- Simple outlines (${activityType === 'coloring' ? 'ready for coloring' : 'colorful and vibrant'})
+- Related to ${themeLabel}
+- Arranged in a organized grid
+- Large enough for children to see clearly
+- Professional quality like Pixar/Disney style but simplified
 
-Include these words prominently: ${activityContent.words.join(', ')}
+Style: Bright pastel colors, thick outlines, big eyes, happy expressions, educational clipart quality.
 
-Visual style:
-- Bright, cheerful colors suitable for children
-- Large, clear fonts (suitable for ${difficultyLabel})
-- ${activityType === 'tracing' ? 'Dotted/dashed lines for tracing practice' : ''}
-- ${activityType === 'coloring' ? 'Simple outlines for coloring' : ''}
-- ${activityType === 'matching' ? 'Items to connect with lines' : ''}
-- ${activityType === 'wordsearch' ? 'Letter grid with hidden words' : ''}
-- Cute, simple illustrations related to ${themeLabel}
-- Professional educational worksheet layout
-- Leave space for child to write/draw
-- Instructions in Portuguese: "${activityContent.instructions}"
-
-Make it look like a professional, printed educational worksheet that a teacher would use in class.`;
+IMPORTANT: DO NOT include any text, letters, words, or numbers. ONLY illustrations/drawings.
+Focus on making the cutest possible ${themeLabel} illustrations that represent: ${activityContent.words.join(', ')}`;
 
     const imageResponse = await fetch('https://api.openai.com/v1/images/generations', {
       method: 'POST',
