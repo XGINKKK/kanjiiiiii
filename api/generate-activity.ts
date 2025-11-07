@@ -192,55 +192,9 @@ VERIFIQUE: Todas as palavras contêm "${syllable}"?`;
       });
     }
 
-    // STEP 2: Generate ONLY illustrations with DALL-E (no text at all!)
-    const imagePrompt = `Create a collection of 4-6 super cute kawaii-style cartoon characters or objects related to the theme: ${themeLabel}.
-
-Style requirements:
-- Adorable, child-friendly illustrations
-- Big expressive eyes and happy faces
-- ${activityType === 'coloring' ? 'Simple black outlines on white background, perfect for coloring' : 'Bright vibrant pastel colors (pink, yellow, blue, green)'}
-- Thick bold outlines
-- Pixar/Disney quality but simplified for children
-- Each illustration should be distinct and recognizable
-- Arranged in a clean grid layout (2x2 or 2x3)
-- Professional educational clipart quality
-
-Create variations of ${themeLabel.toLowerCase()} that children would love - make them as cute and appealing as possible!
-
-CRITICAL: Create ONLY illustrations/drawings with NO text, NO letters, NO words, NO labels, NO numbers anywhere in the image. Pure visual content only.`;
-
-    const imageResponse = await fetch('https://api.openai.com/v1/images/generations', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: 'dall-e-3',
-        prompt: imagePrompt,
-        n: 1,
-        size: '1024x1792', // Portrait format for worksheet
-        quality: 'hd',
-        style: 'natural'
-      })
-    });
-
-    if (!imageResponse.ok) {
-      const error = await imageResponse.text();
-      console.error('DALL-E API Error:', error);
-      return res.status(imageResponse.status).json({
-        error: 'Erro ao gerar imagem da atividade',
-        details: error
-      });
-    }
-
-    const imageData = await imageResponse.json();
-    const imageUrl = imageData.data[0].url;
-
-    // Return data for frontend PDF generation
+    // Return data for frontend PDF generation (no image needed)
     return res.status(200).json({
       success: true,
-      imageUrl: imageUrl,
       title: activityContent.title,
       words: activityContent.words,
       instructions: activityContent.instructions,
