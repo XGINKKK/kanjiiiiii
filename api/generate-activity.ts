@@ -1,5 +1,4 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import PDFDocument from 'pdfkit';
 
 export default async function handler(
   req: VercelRequest,
@@ -181,137 +180,10 @@ CRITICAL: Create ONLY illustrations/drawings with NO text, NO letters, NO words,
     const imageData = await imageResponse.json();
     const imageUrl = imageData.data[0].url;
 
-    // STEP 3: Fetch the DALL-E illustration
-    const illustrationResponse = await fetch(imageUrl);
-    if (!illustrationResponse.ok) {
-      return res.status(500).json({ error: 'Falha ao baixar ilustração' });
-    }
-    const illustrationBuffer = Buffer.from(await illustrationResponse.arrayBuffer());
-
-    // STEP 4: Generate PDF with pdfkit
-    const doc = new PDFDocument({
-      size: 'A4',
-      margins: { top: 50, bottom: 50, left: 50, right: 50 }
-    });
-
-    const chunks: Buffer[] = [];
-    doc.on('data', (chunk) => chunks.push(chunk));
-
-    const pdfPromise = new Promise<Buffer>((resolve, reject) => {
-      doc.on('end', () => resolve(Buffer.concat(chunks)));
-      doc.on('error', reject);
-    });
-
-    // Colors for child-friendly design
-    const colors = {
-      coral: '#FF6B6B',
-      mint: '#4ECDC4',
-      softBlue: '#95E1D3',
-      yellow: '#FFE66D',
-      navy: '#2C3E50'
-    };
-
-    // Title section with fun styling
-    doc.fontSize(28)
-       .fillColor(colors.coral)
-       .font('Helvetica-Bold')
-       .text(activityContent.title, { align: 'center' });
-
-    doc.moveDown(0.5);
-
-    // Syllable badge
-    doc.fontSize(18)
-       .fillColor(colors.mint)
-       .text(`Sílaba: ${syllable.toUpperCase()}`, { align: 'center' });
-
-    doc.moveDown(0.3);
-
-    // Instructions
-    doc.fontSize(12)
-       .fillColor(colors.navy)
-       .font('Helvetica')
-       .text(activityContent.instructions, { align: 'center', width: 500 });
-
-    doc.moveDown(1);
-
-    // Add DALL-E illustration (centered, medium size)
-    const imageWidth = 400;
-    const imageX = (doc.page.width - imageWidth) / 2;
-    const currentY = doc.y;
-
-    doc.image(illustrationBuffer, imageX, currentY, {
-      width: imageWidth,
-      align: 'center'
-    });
-
-    // Move below image
-    doc.moveDown(15);
-
-    // Words section with tracing/practice space
-    doc.fontSize(16)
-       .fillColor(colors.coral)
-       .font('Helvetica-Bold')
-       .text('Palavras para Praticar:', { align: 'left' });
-
-    doc.moveDown(0.5);
-
-    // Draw each word with practice lines
-    activityContent.words.forEach((word: string, index: number) => {
-      const yPosition = doc.y;
-
-      // Word in large font
-      doc.fontSize(20)
-         .fillColor(colors.navy)
-         .font('Helvetica-Bold')
-         .text(word.toUpperCase(), 70, yPosition);
-
-      // Practice lines for tracing (if tracing activity)
-      if (activityType === 'tracing') {
-        const lineY = yPosition + 30;
-        const lineLength = 400;
-
-        // Dotted line for tracing
-        doc.strokeColor(colors.mint)
-           .lineWidth(1)
-           .dash(5, { space: 3 })
-           .moveTo(70, lineY)
-           .lineTo(70 + lineLength, lineY)
-           .stroke();
-
-        doc.undash(); // Reset dash
-
-        doc.moveDown(2);
-      } else {
-        // Blank space for writing
-        const lineY = yPosition + 30;
-        const lineLength = 400;
-
-        doc.strokeColor(colors.softBlue)
-           .lineWidth(1)
-           .moveTo(70, lineY)
-           .lineTo(70 + lineLength, lineY)
-           .stroke();
-
-        doc.moveDown(2);
-      }
-    });
-
-    // Footer with cute message
-    doc.fontSize(10)
-       .fillColor(colors.mint)
-       .font('Helvetica')
-       .text('✨ Gerado com amor por Kanji Kids! ✨', { align: 'center' });
-
-    // Finalize PDF
-    doc.end();
-
-    // Wait for PDF to be generated
-    const pdfBuffer = await pdfPromise;
-
-    // Return PDF as base64 for easy frontend handling
+    // Return data for frontend PDF generation
     return res.status(200).json({
       success: true,
-      pdfData: pdfBuffer.toString('base64'),
+      imageUrl: imageUrl,
       title: activityContent.title,
       words: activityContent.words,
       instructions: activityContent.instructions,

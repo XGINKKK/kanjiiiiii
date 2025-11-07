@@ -3,12 +3,13 @@ import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { Sparkles, Download, Loader2, Image as ImageIcon } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { jsPDF } from "jspdf";
 
 const Gerador = () => {
   const { toast } = useToast();
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedActivity, setGeneratedActivity] = useState<{
-    pdfData: string;
+    imageUrl: string;
     title: string;
     words: string[];
     instructions: string;
@@ -113,12 +114,12 @@ const Gerador = () => {
 
       const data = await response.json();
 
-      if (!data.success || !data.pdfData) {
+      if (!data.success || !data.imageUrl) {
         throw new Error("Resposta inválida da API");
       }
 
       setGeneratedActivity({
-        pdfData: data.pdfData,
+        imageUrl: data.imageUrl,
         title: data.title,
         words: data.words,
         instructions: data.instructions
@@ -143,38 +144,104 @@ const Gerador = () => {
   };
 
   const handleDownload = async () => {
-    if (generatedActivity) {
-      try {
-        // Convert base64 PDF to blob
-        const byteCharacters = atob(generatedActivity.pdfData);
-        const byteNumbers = new Array(byteCharacters.length);
-        for (let i = 0; i < byteCharacters.length; i++) {
-          byteNumbers[i] = byteCharacters.charCodeAt(i);
+    if (!generatedActivity) return;
+
+    try {
+      // Create PDF with jsPDF
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+
+      // Colors
+      const colors = {
+        coral: [255, 107, 107],
+        mint: [78, 205, 196],
+        navy: [44, 62, 80]
+      };
+
+      // Title
+      pdf.setFontSize(28);
+      pdf.setTextColor(...colors.coral);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text(generatedActivity.title, pageWidth / 2, 30, { align: 'center' });
+
+      // Syllable badge
+      pdf.setFontSize(18);
+      pdf.setTextColor(...colors.mint);
+      pdf.text(`Sílaba: ${formData.syllable.toUpperCase()}`, pageWidth / 2, 45, { align: 'center' });
+
+      // Instructions
+      pdf.setFontSize(12);
+      pdf.setTextColor(...colors.navy);
+      pdf.setFont('helvetica', 'normal');
+      const splitInstructions = pdf.splitTextToSize(generatedActivity.instructions, pageWidth - 40);
+      pdf.text(splitInstructions, pageWidth / 2, 55, { align: 'center' });
+
+      // Add DALL-E illustration
+      const imgData = await fetch(generatedActivity.imageUrl).then(r => r.blob()).then(blob => {
+        return new Promise<string>((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.readAsDataURL(blob);
+        });
+      });
+
+      const imgWidth = 120;
+      const imgHeight = 180;
+      const imgX = (pageWidth - imgWidth) / 2;
+      pdf.addImage(imgData, 'PNG', imgX, 75, imgWidth, imgHeight);
+
+      // Words section
+      let yPosition = 260;
+      pdf.setFontSize(16);
+      pdf.setTextColor(...colors.coral);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Palavras para Praticar:', 20, yPosition);
+
+      yPosition += 10;
+
+      // Draw each word with practice lines
+      pdf.setFontSize(20);
+      pdf.setTextColor(...colors.navy);
+      generatedActivity.words.forEach((word) => {
+        if (yPosition > pageHeight - 30) return; // Avoid overflow
+
+        pdf.text(word.toUpperCase(), 20, yPosition);
+
+        // Practice line
+        if (formData.activityType === 'tracing') {
+          // Dotted line
+          pdf.setLineDash([2, 2]);
+          pdf.setDrawColor(...colors.mint);
+        } else {
+          pdf.setLineDash([]);
+          pdf.setDrawColor(149, 225, 211);
         }
-        const byteArray = new Uint8Array(byteNumbers);
-        const blob = new Blob([byteArray], { type: 'application/pdf' });
+        pdf.line(20, yPosition + 5, pageWidth - 20, yPosition + 5);
 
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `atividade-${formData.syllable}-${Date.now()}.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        yPosition += 15;
+      });
 
-        toast({
-          title: "Download Iniciado!",
-          description: "Seu PDF foi baixado com sucesso. Agora é só imprimir!",
-        });
-      } catch (error) {
-        console.error("Download error:", error);
-        toast({
-          title: "Erro no Download",
-          description: "Não foi possível baixar o PDF. Tente novamente.",
-          variant: "destructive"
-        });
-      }
+      // Footer
+      pdf.setLineDash([]);
+      pdf.setFontSize(10);
+      pdf.setTextColor(...colors.mint);
+      pdf.text('✨ Gerado com amor por Kanji Kids! ✨', pageWidth / 2, pageHeight - 10, { align: 'center' });
+
+      // Save PDF
+      pdf.save(`atividade-${formData.syllable}-${Date.now()}.pdf`);
+
+      toast({
+        title: "Download Iniciado!",
+        description: "Seu PDF foi baixado com sucesso. Agora é só imprimir!",
+      });
+    } catch (error) {
+      console.error("Download error:", error);
+      toast({
+        title: "Erro no Download",
+        description: "Não foi possível gerar o PDF. Tente novamente.",
+        variant: "destructive"
+      });
     }
   };
 
