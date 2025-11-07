@@ -135,25 +135,22 @@ IMPORTANTE:
       });
     }
 
-    // STEP 2: Generate ONLY illustrations with DALL-E (no text!)
-    const imagePrompt = `Create cute, colorful illustrations for a children's educational worksheet about the syllable "${syllable}".
+    // STEP 2: Generate ONLY illustrations with DALL-E (no text at all!)
+    const imagePrompt = `Create a collection of 4-6 super cute kawaii-style cartoon characters or objects related to the theme: ${themeLabel}.
 
-Theme: ${themeLabel}
-Words to illustrate: ${activityContent.words.join(', ')}
+Style requirements:
+- Adorable, child-friendly illustrations
+- Big expressive eyes and happy faces
+- ${activityType === 'coloring' ? 'Simple black outlines on white background, perfect for coloring' : 'Bright vibrant pastel colors (pink, yellow, blue, green)'}
+- Thick bold outlines
+- Pixar/Disney quality but simplified for children
+- Each illustration should be distinct and recognizable
+- Arranged in a clean grid layout (2x2 or 2x3)
+- Professional educational clipart quality
 
-Create a grid layout with 4-6 simple, kawaii-style cartoon illustrations representing these words.
-Each illustration should be:
-- Super cute and child-friendly
-- Simple outlines (${activityType === 'coloring' ? 'ready for coloring' : 'colorful and vibrant'})
-- Related to ${themeLabel}
-- Arranged in a organized grid
-- Large enough for children to see clearly
-- Professional quality like Pixar/Disney style but simplified
+Create variations of ${themeLabel.toLowerCase()} that children would love - make them as cute and appealing as possible!
 
-Style: Bright pastel colors, thick outlines, big eyes, happy expressions, educational clipart quality.
-
-IMPORTANT: DO NOT include any text, letters, words, or numbers. ONLY illustrations/drawings.
-Focus on making the cutest possible ${themeLabel} illustrations that represent: ${activityContent.words.join(', ')}`;
+CRITICAL: Create ONLY illustrations/drawings with NO text, NO letters, NO words, NO labels, NO numbers anywhere in the image. Pure visual content only.`;
 
     const imageResponse = await fetch('https://api.openai.com/v1/images/generations', {
       method: 'POST',
