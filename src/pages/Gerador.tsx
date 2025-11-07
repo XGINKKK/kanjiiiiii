@@ -114,12 +114,12 @@ const Gerador = () => {
 
       const data = await response.json();
 
-      if (!data.success || !data.imageUrl) {
+      if (!data.success) {
         throw new Error("Resposta inválida da API");
       }
 
       setGeneratedActivity({
-        imageUrl: data.imageUrl,
+        imageUrl: data.imageUrl || '',
         title: data.title,
         words: data.words,
         instructions: data.instructions
