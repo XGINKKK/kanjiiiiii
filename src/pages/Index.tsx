@@ -11,11 +11,15 @@ import { GuaranteeSection } from "@/components/GuaranteeSection";
 import { FAQSection } from "@/components/FAQSection";
 import { FinalCTASection } from "@/components/FinalCTASection";
 import { Footer } from "@/components/Footer";
+import { BlackFridayBanner } from "@/components/BlackFridayBanner";
+import { SocialProofNotification } from "@/components/SocialProofNotification";
 import { memo } from "react";
 
 const Index = memo(() => {
   return (
     <div className="min-h-screen font-inter">
+      <BlackFridayBanner />
+      <SocialProofNotification />
       <HeroSection />
       <MethodExplanationSection />
       <HowItWorksSection />
