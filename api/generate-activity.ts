@@ -69,23 +69,30 @@ export default async function handler(
     const difficultyLabel = difficulties[difficulty] || difficulty;
 
     // STEP 1: Generate activity content with GPT-4
-    const contentPrompt = `Você é uma pedagoga especializada em alfabetização infantil. Crie uma atividade de "${activityLabel}" focada na sílaba "${syllable}".
+    const contentPrompt = `Você é uma pedagoga especializada em alfabetização infantil. Crie uma atividade de "${activityLabel}" focada EXCLUSIVAMENTE na sílaba "${syllable}".
 
 Tema: ${themeLabel}
 Nível: ${difficultyLabel}
 
-Retorne APENAS um JSON com este formato exato:
+REGRAS OBRIGATÓRIAS - TODAS AS PALAVRAS DEVEM:
+1. Conter EXATAMENTE a sílaba "${syllable}" (maiúscula ou minúscula)
+2. Ser palavras REAIS do português brasileiro
+3. Estar relacionadas ao tema "${themeLabel}"
+4. Ser apropriadas para crianças de ${difficultyLabel}
+
+Exemplos de palavras CORRETAS com "${syllable}":
+${syllable === 'BA' ? 'BANANA, BALA, CABANA, SÁBADO,ABABÁ' : ''}
+${syllable === 'BI' ? 'BICO, BICICLETA, BIFE, BIBLIOTECA, CABIDE' : ''}
+${syllable === 'JE' ? 'JEITO, PROJETO, SUJEITO, OBJETO, REJEITAR' : ''}
+
+Retorne APENAS um JSON válido:
 {
-  "title": "Título criativo da atividade",
+  "title": "Título criativo",
   "words": ["palavra1", "palavra2", "palavra3", "palavra4", "palavra5"],
-  "instructions": "Instruções curtas para a criança (máximo 2 frases)",
-  "visualDescription": "Descrição detalhada de como a atividade deve ser visualmente (layout, cores, elementos gráficos)"
+  "instructions": "Instruções curtas (máximo 2 frases)"
 }
 
-IMPORTANTE:
-- Todas as palavras DEVEM conter a sílaba "${syllable}"
-- As palavras devem estar relacionadas ao tema "${themeLabel}"
-- Seja apropriado para ${difficultyLabel}`;
+CRÍTICO: Verifique que TODAS as 5 palavras contêm "${syllable}" antes de retornar!`;
 
     const contentResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -127,6 +134,21 @@ IMPORTANTE:
       // Remove markdown code blocks if present
       const cleanedContent = rawContent.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
       activityContent = JSON.parse(cleanedContent);
+
+      // VALIDATE: Check if all words contain the syllable
+      const syllableLower = syllable.toLowerCase();
+      const invalidWords = activityContent.words.filter((word: string) =>
+        !word.toLowerCase().includes(syllableLower)
+      );
+
+      if (invalidWords.length > 0) {
+        console.error(`Invalid words without syllable "${syllable}":`, invalidWords);
+        return res.status(400).json({
+          error: `Erro: Algumas palavras não contêm a sílaba "${syllable}"`,
+          invalidWords: invalidWords
+        });
+      }
+
     } catch (parseError) {
       console.error('JSON Parse Error:', parseError);
       return res.status(500).json({

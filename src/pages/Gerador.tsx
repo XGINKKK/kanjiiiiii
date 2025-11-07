@@ -171,30 +171,23 @@ const Gerador = () => {
       pdf.text(`Sílaba: ${formData.syllable.toUpperCase()}`, pageWidth / 2, 45, { align: 'center' });
 
       // Instructions
-      pdf.setFontSize(12);
+      pdf.setFontSize(11);
       pdf.setTextColor(...colors.navy);
       pdf.setFont('helvetica', 'normal');
       const splitInstructions = pdf.splitTextToSize(generatedActivity.instructions, pageWidth - 40);
       pdf.text(splitInstructions, pageWidth / 2, 55, { align: 'center' });
 
-      // Add DALL-E illustration (using proxy to avoid CORS)
-      const proxyUrl = `/api/download-image?url=${encodeURIComponent(generatedActivity.imageUrl)}`;
-      const imgData = await fetch(proxyUrl).then(r => r.blob()).then(blob => {
-        return new Promise<string>((resolve) => {
-          const reader = new FileReader();
-          reader.onloadend = () => resolve(reader.result as string);
-          reader.readAsDataURL(blob);
-        });
-      });
+      // Decorative stars/icons
+      pdf.setFontSize(20);
+      pdf.setTextColor(...colors.mint);
+      pdf.text('✨', 20, 30);
+      pdf.text('✨', pageWidth - 20, 30);
+      pdf.setTextColor(...colors.coral);
+      pdf.text('★', 30, 40);
+      pdf.text('★', pageWidth - 30, 40);
 
-      // Smaller image - only 1/3 of page
-      const imgWidth = 70;
-      const imgHeight = 105;
-      const imgX = (pageWidth - imgWidth) / 2;
-      pdf.addImage(imgData, 'PNG', imgX, 70, imgWidth, imgHeight);
-
-      // Words section starts after image with good spacing
-      let yPosition = 185;
+      // Words section starts higher
+      let yPosition = 75;
       pdf.setFontSize(16);
       pdf.setTextColor(...colors.coral);
       pdf.setFont('helvetica', 'bold');
@@ -202,40 +195,60 @@ const Gerador = () => {
 
       yPosition += 12;
 
-      // Draw each word with practice lines
-      pdf.setFontSize(18);
-      pdf.setTextColor(...colors.navy);
+      // Draw each word with colorful boxes
       pdf.setFont('helvetica', 'bold');
 
       generatedActivity.words.forEach((word, index) => {
-        if (yPosition > pageHeight - 40) return; // Avoid overflow
+        if (yPosition > pageHeight - 50) return; // Avoid overflow
 
-        // Word
-        pdf.text(word.toUpperCase(), 25, yPosition);
+        // Colorful background box for each word
+        const boxColors = [
+          [255, 235, 235], // light coral
+          [235, 255, 250], // light mint
+          [255, 245, 235], // light orange
+          [240, 235, 255], // light purple
+          [235, 250, 235]  // light green
+        ];
+        const boxColor = boxColors[index % boxColors.length];
+        pdf.setFillColor(...boxColor);
+        pdf.roundedRect(15, yPosition - 8, pageWidth - 30, 25, 3, 3, 'F');
 
-        // Practice line below word
-        const lineY = yPosition + 3;
+        // Word number badge
+        pdf.setFontSize(12);
+        pdf.setTextColor(255, 255, 255);
+        pdf.setFillColor(...colors.coral);
+        pdf.circle(25, yPosition - 1, 5, 'F');
+        pdf.setTextColor(255, 255, 255);
+        pdf.text(String(index + 1), 25, yPosition + 2, { align: 'center' });
+
+        // Word in large font
+        pdf.setFontSize(22);
+        pdf.setTextColor(...colors.navy);
+        pdf.text(word.toUpperCase(), 35, yPosition + 2);
+
+        // Practice lines below
+        yPosition += 12;
+
+        // First practice line (dotted for tracing)
         if (formData.activityType === 'tracing') {
-          // Dotted line for tracing
-          pdf.setLineDash([3, 3]);
+          pdf.setLineDash([2, 2]);
           pdf.setDrawColor(...colors.mint);
-          pdf.setLineWidth(0.5);
+          pdf.setLineWidth(0.8);
         } else {
-          // Solid line for other activities
           pdf.setLineDash([]);
           pdf.setDrawColor(149, 225, 211);
-          pdf.setLineWidth(0.3);
+          pdf.setLineWidth(0.5);
         }
-        pdf.line(25, lineY, pageWidth - 25, lineY);
+        pdf.line(35, yPosition, pageWidth - 25, yPosition);
 
-        // Extra practice line below
-        const extraLineY = yPosition + 10;
+        // Second practice line
+        yPosition += 6;
         pdf.setLineDash([]);
         pdf.setDrawColor(200, 200, 200);
-        pdf.setLineWidth(0.2);
-        pdf.line(25, extraLineY, pageWidth - 25, extraLineY);
+        pdf.setLineWidth(0.3);
+        pdf.line(35, yPosition, pageWidth - 25, yPosition);
 
-        yPosition += 18;
+        yPosition += 15;
       });
 
       // Footer
