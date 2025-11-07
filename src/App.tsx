@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import AreaMembros from "./pages/AreaMembros";
 import MetodoJapones from "./pages/MetodoJapones";
 import GuiaPais from "./pages/GuiaPais";
+import Upsell from "./pages/Upsell";
+import Gerador from "./pages/Gerador";
 import NotFound from "./pages/NotFound";
 
 // CRÍTICO: QueryClient DEVE ser criado fora do componente
@@ -32,6 +34,8 @@ const App = () => (
           <Route path="/membros" element={<AreaMembros />} />
           <Route path="/japones" element={<MetodoJapones />} />
           <Route path="/pais" element={<GuiaPais />} />
+          <Route path="/upsell" element={<Upsell />} />
+          <Route path="/gerador" element={<Gerador />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
