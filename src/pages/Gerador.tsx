@@ -8,7 +8,7 @@ const Gerador = () => {
   const { toast } = useToast();
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedActivity, setGeneratedActivity] = useState<{
-    imageUrl: string;
+    pdfData: string;
     title: string;
     words: string[];
     instructions: string;
@@ -113,12 +113,12 @@ const Gerador = () => {
 
       const data = await response.json();
 
-      if (!data.success || !data.imageUrl) {
+      if (!data.success || !data.pdfData) {
         throw new Error("Resposta inválida da API");
       }
 
       setGeneratedActivity({
-        imageUrl: data.imageUrl,
+        pdfData: data.pdfData,
         title: data.title,
         words: data.words,
         instructions: data.instructions
@@ -127,7 +127,7 @@ const Gerador = () => {
 
       toast({
         title: "🎉 Atividade Gerada!",
-        description: "Sua atividade visual está pronta para download.",
+        description: "Sua atividade em PDF está pronta para imprimir!",
       });
 
     } catch (error) {
@@ -145,17 +145,19 @@ const Gerador = () => {
   const handleDownload = async () => {
     if (generatedActivity) {
       try {
-        // Usar proxy API para evitar CORS
-        const downloadUrl = `/api/download-image?url=${encodeURIComponent(generatedActivity.imageUrl)}`;
+        // Convert base64 PDF to blob
+        const byteCharacters = atob(generatedActivity.pdfData);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], { type: 'application/pdf' });
 
-        const response = await fetch(downloadUrl);
-        if (!response.ok) throw new Error('Download failed');
-
-        const blob = await response.blob();
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `atividade-${formData.syllable}-${Date.now()}.png`;
+        a.download = `atividade-${formData.syllable}-${Date.now()}.pdf`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -163,13 +165,13 @@ const Gerador = () => {
 
         toast({
           title: "Download Iniciado!",
-          description: "Sua atividade foi baixada com sucesso.",
+          description: "Seu PDF foi baixado com sucesso. Agora é só imprimir!",
         });
       } catch (error) {
         console.error("Download error:", error);
         toast({
           title: "Erro no Download",
-          description: "Não foi possível baixar a atividade. Tente novamente.",
+          description: "Não foi possível baixar o PDF. Tente novamente.",
           variant: "destructive"
         });
       }
@@ -375,12 +377,26 @@ const Gerador = () => {
                     </div>
                   </div>
 
-                  <div className="w-full bg-white rounded-lg border-2 border-primary/20 p-2 overflow-hidden">
-                    <img
-                      src={generatedActivity.imageUrl}
-                      alt="Atividade Gerada"
-                      className="w-full h-auto rounded-lg"
-                    />
+                  <div className="w-full bg-white rounded-lg border-2 border-primary/20 p-8 overflow-hidden">
+                    <div className="text-center space-y-4">
+                      <div className="text-6xl">📄</div>
+                      <div className="space-y-2">
+                        <p className="font-fredoka text-xl font-bold text-navy">
+                          PDF Pronto para Imprimir!
+                        </p>
+                        <p className="font-nunito text-sm text-foreground/70">
+                          Seu material pedagógico foi gerado com ilustrações fofas e espaço para prática de escrita
+                        </p>
+                      </div>
+                      <div className="bg-mint/10 p-4 rounded-lg">
+                        <p className="font-inter text-xs text-foreground/60">
+                          ✅ Ilustrações kawaii únicas<br/>
+                          ✅ Texto formatado profissionalmente<br/>
+                          ✅ Linhas de treino para escrita<br/>
+                          ✅ Pronto para impressão em A4
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="space-y-3">
@@ -390,7 +406,7 @@ const Gerador = () => {
                       className="w-full font-nunito font-bold text-lg py-6 bg-mint hover:bg-mint/90"
                     >
                       <Download className="w-5 h-5 mr-2" />
-                      Baixar Imagem em Alta Qualidade
+                      Baixar PDF para Imprimir
                     </Button>
                     <Button
                       onClick={() => setGeneratedActivity(null)}

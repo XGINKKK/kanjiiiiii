@@ -87,7 +87,8 @@ const Upsell = () => {
             </h2>
             <div className="bg-gradient-to-br from-mint/20 to-soft-blue/20 border-2 border-mint/30 rounded-2xl p-8">
               <p className="font-nunito text-lg md:text-xl text-navy leading-relaxed mb-4">
-                Crie <span className="font-bold text-coral">atividades NOVAS e EXCLUSIVAS</span>
+                Crie <span className="font-bold text-coral">PDFs prontos para imprimir</span> com
+                {" "}atividades <span className="font-bold text-coral">NOVAS e EXCLUSIVAS</span>
                 {" "}quando quiser, com apenas 3 cliques!
               </p>
               <div className="flex items-center justify-center gap-2 text-mint">
@@ -118,8 +119,8 @@ const Upsell = () => {
                 },
                 {
                   step: "3",
-                  title: "IA Gera em Segundos",
-                  desc: "Atividade profissional pronta para imprimir!",
+                  title: "Baixe o PDF",
+                  desc: "Atividade em PDF profissional pronta para imprimir e usar!",
                   icon: "⚡"
                 }
               ].map((item, index) => (
@@ -142,12 +143,12 @@ const Upsell = () => {
             </h3>
             <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
               {[
-                "Gerador ilimitado de atividades por 12 meses",
+                "50 PDFs profissionais por mês durante 12 meses",
                 "Todas as sílabas do alfabeto disponíveis",
-                "15+ tipos diferentes de atividades",
-                "Ilustrações únicas criadas por IA",
-                "PDFs em alta qualidade para impressão",
-                "Suporte técnico prioritário",
+                "6 tipos diferentes de atividades pedagógicas",
+                "Ilustrações kawaii fofas e únicas criadas por IA",
+                "PDFs formatados em A4 prontos para impressão",
+                "Texto digitado profissionalmente (sem erros!)",
                 "Acesso imediato após confirmação",
                 "Novas funcionalidades adicionadas mensalmente"
               ].map((benefit, index) => (
