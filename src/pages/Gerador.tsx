@@ -91,65 +91,28 @@ const Gerador = () => {
     setGeneratedActivity(null);
 
     try {
-      // Integração com OpenAI API
-      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-
-      // Encontrar labels para melhor contexto
-      const activityType = activityTypes.find(t => t.value === formData.activityType);
-      const theme = themes.find(t => t.value === formData.theme);
-      const difficulty = difficulties.find(d => d.value === formData.difficulty);
-
-      // Gerar prompt para a OpenAI
-      const prompt = `Crie uma atividade educacional de alfabetização em português para crianças focada na sílaba "${formData.syllable}".
-
-Tipo de atividade: ${activityType?.label}
-Tema: ${theme?.label}
-Nível de dificuldade: ${difficulty?.label}
-
-A atividade deve:
-1. Ser adequada para a faixa etária especificada
-2. Incluir 5-8 palavras que contenham a sílaba "${formData.syllable}"
-3. Ser visualmente atraativa e educativa
-4. Seguir o método de grafismo fonético
-5. Incluir instruções claras para a criança
-
-Forneça:
-- Lista de palavras selecionadas
-- Instruções da atividade
-- Dicas pedagógicas para os pais`;
-
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      // Chamar API serverless ao invés de chamar OpenAI diretamente
+      const response = await fetch("/api/generate-activity", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${apiKey}`
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          model: "gpt-4",
-          messages: [
-            {
-              role: "system",
-              content: "Você é uma pedagoga especializada em alfabetização infantil usando o método de grafismo fonético japonês. Crie atividades lúdicas e educativas."
-            },
-            {
-              role: "user",
-              content: prompt
-            }
-          ],
-          temperature: 0.7,
-          max_tokens: 1000
-        })
+        body: JSON.stringify(formData)
       });
 
       if (!response.ok) {
-        throw new Error("Erro ao gerar atividade com IA");
+        const errorData = await response.json();
+        console.error("API Error:", errorData);
+        throw new Error(errorData.error || "Erro ao gerar atividade");
       }
 
       const data = await response.json();
-      const activityContent = data.choices[0].message.content;
 
-      // Por enquanto, armazenar o conteúdo gerado (você pode implementar geração de PDF depois)
-      setGeneratedActivity(activityContent);
+      if (!data.success || !data.content) {
+        throw new Error("Resposta inválida da API");
+      }
+
+      setGeneratedActivity(data.content);
       setGenerationsLeft(prev => prev - 1);
 
       toast({
@@ -161,7 +124,7 @@ Forneça:
       console.error("Erro:", error);
       toast({
         title: "Erro",
-        description: "Não foi possível gerar a atividade. Tente novamente.",
+        description: error instanceof Error ? error.message : "Não foi possível gerar a atividade. Tente novamente.",
         variant: "destructive"
       });
     } finally {
