@@ -68,31 +68,57 @@ export default async function handler(
     const themeLabel = themes[theme] || theme;
     const difficultyLabel = difficulties[difficulty] || difficulty;
 
+    // Generate examples dynamically
+    const syllableLower = syllable.toLowerCase();
+    const exampleWords: Record<string, string[]> = {
+      'ba': ['BANANA', 'BALA', 'CABANA', 'SÁBADO', 'TABACO'],
+      'be': ['BEBÊ', 'BEIJO', 'BEBIDA', 'ABELHA', 'BERÇO'],
+      'bi': ['BICO', 'BICICLETA', 'BIFE', 'BIBLIOTECA', 'CABIDE'],
+      'bo': ['BOLA', 'BOCA', 'BONÉ', 'ROBÔ', 'CABELO'],
+      'bu': ['BÚFALO', 'BUZINA', 'BURACO', 'ÔNIBUS', 'TOBU'],
+      'ca': ['CASA', 'CAMA', 'CARRO', 'MACACO', 'CAVALO'],
+      'co': ['COELHO', 'COLA', 'CORUJA', 'COCO', 'ESCOLA'],
+      'da': ['DADO', 'DAMA', 'DANÇA', 'CADEIRA', 'MEDALHA'],
+      'fa': ['FACA', 'FAMÍLIA', 'FADA', 'ELEFANTE', 'SOFÁ'],
+      'ga': ['GATO', 'GALO', 'GARFO', 'LAGARTO', 'JOGO'],
+      'ja': ['JACARÉ', 'JANELA', 'JARDIM', 'LARANJA', 'CAIXA'],
+      'je': ['JEITO', 'PROJETO', 'SUJEITO', 'OBJETO', 'DESEJO'],
+      'la': ['LAGO', 'LATA', 'LÁPIS', 'PALHAÇO', 'SALA'],
+      'ma': ['MALA', 'MÃOS', 'MAMÃE', 'TOMATE', 'CAMA'],
+      'na': ['NARIZ', 'NAVIO', 'BANANA', 'JANELA', 'CANÁRIO'],
+      'pa': ['PATO', 'PAPAI', 'PÃO', 'SAPATO', 'ESPADA'],
+      'ra': ['RATO', 'RAÇÃO', 'RÁDIO', 'GIRAFA', 'BARATA'],
+      'sa': ['SAPO', 'SALA', 'SACO', 'CASA', 'MESA'],
+      'ta': ['TATU', 'TACO', 'TAPETE', 'BATATA', 'LATA'],
+      'va': ['VACA', 'VASSOURA', 'VARAL', 'CAVALO', 'NAVIO']
+    };
+
+    const examples = exampleWords[syllableLower] || ['palavra1', 'palavra2', 'palavra3', 'palavra4', 'palavra5'];
+
     // STEP 1: Generate activity content with GPT-4
-    const contentPrompt = `Você é uma pedagoga especializada em alfabetização infantil. Crie uma atividade de "${activityLabel}" focada EXCLUSIVAMENTE na sílaba "${syllable}".
+    const contentPrompt = `Você é especialista em alfabetização. Crie uma atividade focada na sílaba "${syllable}".
 
 Tema: ${themeLabel}
 Nível: ${difficultyLabel}
 
-REGRAS OBRIGATÓRIAS - TODAS AS PALAVRAS DEVEM:
-1. Conter EXATAMENTE a sílaba "${syllable}" (maiúscula ou minúscula)
-2. Ser palavras REAIS do português brasileiro
-3. Estar relacionadas ao tema "${themeLabel}"
-4. Ser apropriadas para crianças de ${difficultyLabel}
+REGRA CRÍTICA: TODAS as 5 palavras DEVEM conter a sílaba "${syllable}".
 
 Exemplos de palavras CORRETAS com "${syllable}":
-${syllable === 'BA' ? 'BANANA, BALA, CABANA, SÁBADO,ABABÁ' : ''}
-${syllable === 'BI' ? 'BICO, BICICLETA, BIFE, BIBLIOTECA, CABIDE' : ''}
-${syllable === 'JE' ? 'JEITO, PROJETO, SUJEITO, OBJETO, REJEITAR' : ''}
+${examples.join(', ')}
 
-Retorne APENAS um JSON válido:
+Cada palavra deve:
+- Conter "${syllable}" em QUALQUER posição (início, meio ou fim)
+- Ser relacionada ao tema "${themeLabel}"
+- Ser apropriada para crianças
+
+JSON:
 {
   "title": "Título criativo",
   "words": ["palavra1", "palavra2", "palavra3", "palavra4", "palavra5"],
-  "instructions": "Instruções curtas (máximo 2 frases)"
+  "instructions": "Instruções curtas"
 }
 
-CRÍTICO: Verifique que TODAS as 5 palavras contêm "${syllable}" antes de retornar!`;
+VERIFIQUE: Todas as palavras contêm "${syllable}"?`;
 
     const contentResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
