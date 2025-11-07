@@ -177,8 +177,9 @@ const Gerador = () => {
       const splitInstructions = pdf.splitTextToSize(generatedActivity.instructions, pageWidth - 40);
       pdf.text(splitInstructions, pageWidth / 2, 55, { align: 'center' });
 
-      // Add DALL-E illustration
-      const imgData = await fetch(generatedActivity.imageUrl).then(r => r.blob()).then(blob => {
+      // Add DALL-E illustration (using proxy to avoid CORS)
+      const proxyUrl = `/api/download-image?url=${encodeURIComponent(generatedActivity.imageUrl)}`;
+      const imgData = await fetch(proxyUrl).then(r => r.blob()).then(blob => {
         return new Promise<string>((resolve) => {
           const reader = new FileReader();
           reader.onloadend = () => resolve(reader.result as string);
