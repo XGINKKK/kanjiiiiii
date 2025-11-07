@@ -68,31 +68,26 @@ export default async function handler(
     const themeLabel = themes[theme] || theme;
     const difficultyLabel = difficulties[difficulty] || difficulty;
 
-    // Generate prompt for OpenAI
-    const prompt = `Crie uma atividade educacional de alfabetização em português para crianças focada na sílaba "${syllable}".
+    // STEP 1: Generate activity content with GPT-4
+    const contentPrompt = `Você é uma pedagoga especializada em alfabetização infantil. Crie uma atividade de "${activityLabel}" focada na sílaba "${syllable}".
 
-Tipo de atividade: ${activityLabel}
 Tema: ${themeLabel}
-Nível de dificuldade: ${difficultyLabel}
+Nível: ${difficultyLabel}
 
-A atividade deve:
-1. Ser adequada para a faixa etária especificada
-2. Incluir 5-8 palavras que contenham a sílaba "${syllable}"
-3. Ser visualmente atraativa e educativa
-4. Seguir o método de grafismo fonético
-5. Incluir instruções claras para a criança
+Retorne APENAS um JSON com este formato exato:
+{
+  "title": "Título criativo da atividade",
+  "words": ["palavra1", "palavra2", "palavra3", "palavra4", "palavra5"],
+  "instructions": "Instruções curtas para a criança (máximo 2 frases)",
+  "visualDescription": "Descrição detalhada de como a atividade deve ser visualmente (layout, cores, elementos gráficos)"
+}
 
-Forneça:
-- Título da atividade
-- Lista de palavras selecionadas (com a sílaba em destaque)
-- Instruções detalhadas da atividade
-- Dicas pedagógicas para os pais
-- Sugestões de variações da atividade
+IMPORTANTE:
+- Todas as palavras DEVEM conter a sílaba "${syllable}"
+- As palavras devem estar relacionadas ao tema "${themeLabel}"
+- Seja apropriado para ${difficultyLabel}`;
 
-Formate a resposta de forma clara e organizada.`;
-
-    // Call OpenAI API
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const contentResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -103,33 +98,103 @@ Formate a resposta de forma clara e organizada.`;
         messages: [
           {
             role: 'system',
-            content: 'Você é uma pedagoga especializada em alfabetização infantil usando o método de grafismo fonético japonês. Crie atividades lúdicas, educativas e bem estruturadas.'
+            content: 'Você é uma pedagoga especializada. Retorne APENAS JSON válido, sem markdown, sem explicações extras.'
           },
           {
             role: 'user',
-            content: prompt
+            content: contentPrompt
           }
         ],
-        temperature: 0.7,
-        max_tokens: 1500
+        temperature: 0.8,
+        max_tokens: 500
       })
     });
 
-    if (!response.ok) {
-      const error = await response.text();
-      console.error('OpenAI API Error:', error);
-      return res.status(response.status).json({
-        error: 'Erro ao gerar atividade com IA',
+    if (!contentResponse.ok) {
+      const error = await contentResponse.text();
+      console.error('OpenAI Content API Error:', error);
+      return res.status(contentResponse.status).json({
+        error: 'Erro ao gerar conteúdo da atividade',
         details: error
       });
     }
 
-    const data = await response.json();
-    const activityContent = data.choices[0].message.content;
+    const contentData = await contentResponse.json();
+    let activityContent;
+
+    try {
+      const rawContent = contentData.choices[0].message.content;
+      // Remove markdown code blocks if present
+      const cleanedContent = rawContent.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+      activityContent = JSON.parse(cleanedContent);
+    } catch (parseError) {
+      console.error('JSON Parse Error:', parseError);
+      return res.status(500).json({
+        error: 'Erro ao processar conteúdo da atividade',
+        details: contentData.choices[0].message.content
+      });
+    }
+
+    // STEP 2: Generate visual activity image with DALL-E
+    const imagePrompt = `Create a colorful, child-friendly educational worksheet in Brazilian Portuguese for literacy learning.
+
+Activity Type: ${activityLabel}
+Theme: ${themeLabel}
+Target Syllable: ${syllable.toUpperCase()}
+Difficulty: ${difficultyLabel}
+
+Title at top: "${activityContent.title}"
+
+Include these words prominently: ${activityContent.words.join(', ')}
+
+Visual style:
+- Bright, cheerful colors suitable for children
+- Large, clear fonts (suitable for ${difficultyLabel})
+- ${activityType === 'tracing' ? 'Dotted/dashed lines for tracing practice' : ''}
+- ${activityType === 'coloring' ? 'Simple outlines for coloring' : ''}
+- ${activityType === 'matching' ? 'Items to connect with lines' : ''}
+- ${activityType === 'wordsearch' ? 'Letter grid with hidden words' : ''}
+- Cute, simple illustrations related to ${themeLabel}
+- Professional educational worksheet layout
+- Leave space for child to write/draw
+- Instructions in Portuguese: "${activityContent.instructions}"
+
+Make it look like a professional, printed educational worksheet that a teacher would use in class.`;
+
+    const imageResponse = await fetch('https://api.openai.com/v1/images/generations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: 'dall-e-3',
+        prompt: imagePrompt,
+        n: 1,
+        size: '1024x1792', // Portrait format for worksheet
+        quality: 'hd',
+        style: 'natural'
+      })
+    });
+
+    if (!imageResponse.ok) {
+      const error = await imageResponse.text();
+      console.error('DALL-E API Error:', error);
+      return res.status(imageResponse.status).json({
+        error: 'Erro ao gerar imagem da atividade',
+        details: error
+      });
+    }
+
+    const imageData = await imageResponse.json();
+    const imageUrl = imageData.data[0].url;
 
     return res.status(200).json({
       success: true,
-      content: activityContent,
+      imageUrl: imageUrl,
+      title: activityContent.title,
+      words: activityContent.words,
+      instructions: activityContent.instructions,
       syllable,
       activityType: activityLabel,
       theme: themeLabel,

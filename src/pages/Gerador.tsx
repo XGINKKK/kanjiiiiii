@@ -7,7 +7,12 @@ import { useToast } from "@/hooks/use-toast";
 const Gerador = () => {
   const { toast } = useToast();
   const [isGenerating, setIsGenerating] = useState(false);
-  const [generatedActivity, setGeneratedActivity] = useState<string | null>(null);
+  const [generatedActivity, setGeneratedActivity] = useState<{
+    imageUrl: string;
+    title: string;
+    words: string[];
+    instructions: string;
+  } | null>(null);
   const [formData, setFormData] = useState({
     syllable: "",
     activityType: "tracing",
@@ -91,7 +96,7 @@ const Gerador = () => {
     setGeneratedActivity(null);
 
     try {
-      // Chamar API serverless ao invés de chamar OpenAI diretamente
+      // Chamar API serverless que usa GPT-4 + DALL-E
       const response = await fetch("/api/generate-activity", {
         method: "POST",
         headers: {
@@ -108,16 +113,21 @@ const Gerador = () => {
 
       const data = await response.json();
 
-      if (!data.success || !data.content) {
+      if (!data.success || !data.imageUrl) {
         throw new Error("Resposta inválida da API");
       }
 
-      setGeneratedActivity(data.content);
+      setGeneratedActivity({
+        imageUrl: data.imageUrl,
+        title: data.title,
+        words: data.words,
+        instructions: data.instructions
+      });
       setGenerationsLeft(prev => prev - 1);
 
       toast({
         title: "🎉 Atividade Gerada!",
-        description: "Sua atividade está pronta para download.",
+        description: "Sua atividade visual está pronta para download.",
       });
 
     } catch (error) {
@@ -132,23 +142,32 @@ const Gerador = () => {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (generatedActivity) {
-      // Criar um arquivo de texto para download
-      const blob = new Blob([generatedActivity], { type: 'text/plain' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `atividade-${formData.syllable}-${Date.now()}.txt`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      try {
+        // Baixar a imagem da URL do DALL-E
+        const response = await fetch(generatedActivity.imageUrl);
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `atividade-${formData.syllable}-${Date.now()}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
 
-      toast({
-        title: "Download Iniciado!",
-        description: "Sua atividade foi baixada com sucesso.",
-      });
+        toast({
+          title: "Download Iniciado!",
+          description: "Sua atividade foi baixada com sucesso.",
+        });
+      } catch (error) {
+        toast({
+          title: "Erro no Download",
+          description: "Não foi possível baixar a atividade. Tente novamente.",
+          variant: "destructive"
+        });
+      }
     }
   };
 
@@ -337,17 +356,26 @@ const Gerador = () => {
                 <div className="space-y-6 w-full animate-fade-in">
                   <div className="space-y-3 text-center">
                     <h3 className="font-fredoka text-2xl font-bold text-primary">
-                      ✨ Atividade Pronta!
+                      ✨ {generatedActivity.title}
                     </h3>
-                    <p className="font-nunito text-foreground/70">
-                      Sua atividade personalizada foi gerada com sucesso
+                    <p className="font-nunito text-sm text-foreground/70 italic">
+                      "{generatedActivity.instructions}"
                     </p>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {generatedActivity.words.map((word, idx) => (
+                        <span key={idx} className="px-3 py-1 bg-mint/20 text-mint font-nunito font-bold text-sm rounded-full">
+                          {word}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="w-full bg-white rounded-lg border-2 border-primary/20 p-6 max-h-[500px] overflow-y-auto">
-                    <div className="font-inter text-sm text-foreground/90 whitespace-pre-wrap text-left">
-                      {generatedActivity}
-                    </div>
+                  <div className="w-full bg-white rounded-lg border-2 border-primary/20 p-2 overflow-hidden">
+                    <img
+                      src={generatedActivity.imageUrl}
+                      alt="Atividade Gerada"
+                      className="w-full h-auto rounded-lg"
+                    />
                   </div>
 
                   <div className="space-y-3">
@@ -357,7 +385,7 @@ const Gerador = () => {
                       className="w-full font-nunito font-bold text-lg py-6 bg-mint hover:bg-mint/90"
                     >
                       <Download className="w-5 h-5 mr-2" />
-                      Baixar PDF em Alta Qualidade
+                      Baixar Imagem em Alta Qualidade
                     </Button>
                     <Button
                       onClick={() => setGeneratedActivity(null)}
