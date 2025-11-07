@@ -159,6 +159,20 @@ const Gerador = () => {
         navy: [44, 62, 80]
       };
 
+      // Theme emojis
+      const themeEmojis: Record<string, string[]> = {
+        'animals': ['🦁', '🐘', '🐯', '🦒', '🐼'],
+        'vehicles': ['🚗', '🚕', '🚙', '🚌', '🚎'],
+        'nature': ['🌳', '🌺', '🌻', '🌿', '🌸'],
+        'food': ['🍎', '🍌', '🍊', '🍇', '🍓'],
+        'toys': ['🧸', '🎨', '🎯', '🎪', '🎭'],
+        'space': ['🚀', '🌟', '⭐', '✨', '🌙'],
+        'ocean': ['🐠', '🐟', '🐡', '🦈', '🐙'],
+        'fantasy': ['🦄', '🧚', '🎪', '🎭', '✨']
+      };
+
+      const currentEmojis = themeEmojis[formData.theme] || ['✨', '🎨', '🎯', '🎪', '⭐'];
+
       // Title
       pdf.setFontSize(28);
       pdf.setTextColor(...colors.coral);
@@ -177,14 +191,13 @@ const Gerador = () => {
       const splitInstructions = pdf.splitTextToSize(generatedActivity.instructions, pageWidth - 40);
       pdf.text(splitInstructions, pageWidth / 2, 55, { align: 'center' });
 
-      // Decorative stars/icons
-      pdf.setFontSize(20);
-      pdf.setTextColor(...colors.mint);
-      pdf.text('✨', 20, 30);
-      pdf.text('✨', pageWidth - 20, 30);
-      pdf.setTextColor(...colors.coral);
-      pdf.text('★', 30, 40);
-      pdf.text('★', pageWidth - 30, 40);
+      // Decorative theme emojis
+      pdf.setFontSize(24);
+      pdf.text(currentEmojis[0], 15, 30);
+      pdf.text(currentEmojis[1], pageWidth - 20, 30);
+      pdf.setFontSize(18);
+      pdf.text(currentEmojis[2], 25, 48);
+      pdf.text(currentEmojis[3], pageWidth - 30, 48);
 
       // Words section starts higher
       let yPosition = 75;
@@ -226,6 +239,11 @@ const Gerador = () => {
         pdf.setTextColor(...colors.navy);
         pdf.text(word.toUpperCase(), 35, yPosition + 2);
 
+        // Emoji illustration next to word
+        pdf.setFontSize(28);
+        const emoji = currentEmojis[index % currentEmojis.length];
+        pdf.text(emoji, pageWidth - 35, yPosition + 2);
+
         // Practice lines below
         yPosition += 12;
 
@@ -251,8 +269,17 @@ const Gerador = () => {
         yPosition += 15;
       });
 
-      // Footer
+      // Footer with decorative emojis
       pdf.setLineDash([]);
+
+      // Emoji decoration line
+      pdf.setFontSize(16);
+      const footerEmojis = [currentEmojis[0], currentEmojis[1], currentEmojis[2], currentEmojis[3], currentEmojis[4]];
+      const spacing = (pageWidth - 40) / footerEmojis.length;
+      footerEmojis.forEach((emoji, idx) => {
+        pdf.text(emoji, 20 + (spacing * idx), pageHeight - 20);
+      });
+
       pdf.setFontSize(10);
       pdf.setTextColor(...colors.mint);
       pdf.text('✨ Gerado com amor por Kanji Kids! ✨', pageWidth / 2, pageHeight - 10, { align: 'center' });
