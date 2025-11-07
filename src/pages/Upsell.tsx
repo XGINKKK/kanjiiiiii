@@ -17,8 +17,7 @@ const Upsell = () => {
   const seconds = timeLeft % 60;
 
   const handleAcceptOffer = () => {
-    // TODO: Redirecionar para checkout do upsell
-    window.location.href = "https://www.ggcheckout.com/checkout/v2/LINK_UPSELL_AQUI";
+    window.location.href = "https://www.ggcheckout.com/checkout/v2/e0Cu3brM3kj47JA4s53T";
   };
 
   const handleDeclineOffer = () => {

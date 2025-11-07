@@ -91,21 +91,65 @@ const Gerador = () => {
     setGeneratedActivity(null);
 
     try {
-      // TODO: Integrar com OpenAI API
-      const response = await fetch("/api/generate-activity", {
+      // Integração com OpenAI API
+      const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+
+      // Encontrar labels para melhor contexto
+      const activityType = activityTypes.find(t => t.value === formData.activityType);
+      const theme = themes.find(t => t.value === formData.theme);
+      const difficulty = difficulties.find(d => d.value === formData.difficulty);
+
+      // Gerar prompt para a OpenAI
+      const prompt = `Crie uma atividade educacional de alfabetização em português para crianças focada na sílaba "${formData.syllable}".
+
+Tipo de atividade: ${activityType?.label}
+Tema: ${theme?.label}
+Nível de dificuldade: ${difficulty?.label}
+
+A atividade deve:
+1. Ser adequada para a faixa etária especificada
+2. Incluir 5-8 palavras que contenham a sílaba "${formData.syllable}"
+3. Ser visualmente atraativa e educativa
+4. Seguir o método de grafismo fonético
+5. Incluir instruções claras para a criança
+
+Forneça:
+- Lista de palavras selecionadas
+- Instruções da atividade
+- Dicas pedagógicas para os pais`;
+
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          model: "gpt-4",
+          messages: [
+            {
+              role: "system",
+              content: "Você é uma pedagoga especializada em alfabetização infantil usando o método de grafismo fonético japonês. Crie atividades lúdicas e educativas."
+            },
+            {
+              role: "user",
+              content: prompt
+            }
+          ],
+          temperature: 0.7,
+          max_tokens: 1000
+        })
       });
 
       if (!response.ok) {
-        throw new Error("Erro ao gerar atividade");
+        throw new Error("Erro ao gerar atividade com IA");
       }
 
       const data = await response.json();
-      setGeneratedActivity(data.pdfUrl);
+      const activityContent = data.choices[0].message.content;
+
+      // Por enquanto, armazenar o conteúdo gerado (você pode implementar geração de PDF depois)
+      setGeneratedActivity(activityContent);
       setGenerationsLeft(prev => prev - 1);
 
       toast({
@@ -127,7 +171,21 @@ const Gerador = () => {
 
   const handleDownload = () => {
     if (generatedActivity) {
-      window.open(generatedActivity, "_blank");
+      // Criar um arquivo de texto para download
+      const blob = new Blob([generatedActivity], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `atividade-${formData.syllable}-${Date.now()}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      toast({
+        title: "Download Iniciado!",
+        description: "Sua atividade foi baixada com sucesso.",
+      });
     }
   };
 
@@ -313,33 +371,39 @@ const Gerador = () => {
                   </div>
                 </div>
               ) : generatedActivity ? (
-                <div className="text-center space-y-6 w-full animate-fade-in">
-                  <div className="w-full aspect-[210/297] bg-gradient-to-br from-soft-blue/20 to-mint/20 rounded-lg border-4 border-dashed border-primary/30 flex items-center justify-center">
-                    <ImageIcon className="w-24 h-24 text-primary/30" />
-                  </div>
-                  <div className="space-y-3">
+                <div className="space-y-6 w-full animate-fade-in">
+                  <div className="space-y-3 text-center">
                     <h3 className="font-fredoka text-2xl font-bold text-primary">
                       ✨ Atividade Pronta!
                     </h3>
                     <p className="font-nunito text-foreground/70">
-                      Sua atividade personalizada está pronta para download
+                      Sua atividade personalizada foi gerada com sucesso
                     </p>
                   </div>
-                  <Button
-                    onClick={handleDownload}
-                    size="lg"
-                    className="w-full font-nunito font-bold text-lg py-6 bg-mint hover:bg-mint/90"
-                  >
-                    <Download className="w-5 h-5 mr-2" />
-                    Baixar PDF em Alta Qualidade
-                  </Button>
-                  <Button
-                    onClick={() => setGeneratedActivity(null)}
-                    variant="outline"
-                    className="w-full"
-                  >
-                    Gerar Nova Atividade
-                  </Button>
+
+                  <div className="w-full bg-white rounded-lg border-2 border-primary/20 p-6 max-h-[500px] overflow-y-auto">
+                    <div className="font-inter text-sm text-foreground/90 whitespace-pre-wrap text-left">
+                      {generatedActivity}
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <Button
+                      onClick={handleDownload}
+                      size="lg"
+                      className="w-full font-nunito font-bold text-lg py-6 bg-mint hover:bg-mint/90"
+                    >
+                      <Download className="w-5 h-5 mr-2" />
+                      Baixar PDF em Alta Qualidade
+                    </Button>
+                    <Button
+                      onClick={() => setGeneratedActivity(null)}
+                      variant="outline"
+                      className="w-full"
+                    >
+                      Gerar Nova Atividade
+                    </Button>
+                  </div>
                 </div>
               ) : (
                 <div className="text-center space-y-4">
