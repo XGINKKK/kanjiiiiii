@@ -187,40 +187,55 @@ const Gerador = () => {
         });
       });
 
-      const imgWidth = 120;
-      const imgHeight = 180;
+      // Smaller image - only 1/3 of page
+      const imgWidth = 70;
+      const imgHeight = 105;
       const imgX = (pageWidth - imgWidth) / 2;
-      pdf.addImage(imgData, 'PNG', imgX, 75, imgWidth, imgHeight);
+      pdf.addImage(imgData, 'PNG', imgX, 70, imgWidth, imgHeight);
 
-      // Words section
-      let yPosition = 260;
+      // Words section starts after image with good spacing
+      let yPosition = 185;
       pdf.setFontSize(16);
       pdf.setTextColor(...colors.coral);
       pdf.setFont('helvetica', 'bold');
       pdf.text('Palavras para Praticar:', 20, yPosition);
 
-      yPosition += 10;
+      yPosition += 12;
 
       // Draw each word with practice lines
-      pdf.setFontSize(20);
+      pdf.setFontSize(18);
       pdf.setTextColor(...colors.navy);
-      generatedActivity.words.forEach((word) => {
-        if (yPosition > pageHeight - 30) return; // Avoid overflow
+      pdf.setFont('helvetica', 'bold');
 
-        pdf.text(word.toUpperCase(), 20, yPosition);
+      generatedActivity.words.forEach((word, index) => {
+        if (yPosition > pageHeight - 40) return; // Avoid overflow
 
-        // Practice line
+        // Word
+        pdf.text(word.toUpperCase(), 25, yPosition);
+
+        // Practice line below word
+        const lineY = yPosition + 3;
         if (formData.activityType === 'tracing') {
-          // Dotted line
-          pdf.setLineDash([2, 2]);
+          // Dotted line for tracing
+          pdf.setLineDash([3, 3]);
           pdf.setDrawColor(...colors.mint);
+          pdf.setLineWidth(0.5);
         } else {
+          // Solid line for other activities
           pdf.setLineDash([]);
           pdf.setDrawColor(149, 225, 211);
+          pdf.setLineWidth(0.3);
         }
-        pdf.line(20, yPosition + 5, pageWidth - 20, yPosition + 5);
+        pdf.line(25, lineY, pageWidth - 25, lineY);
 
-        yPosition += 15;
+        // Extra practice line below
+        const extraLineY = yPosition + 10;
+        pdf.setLineDash([]);
+        pdf.setDrawColor(200, 200, 200);
+        pdf.setLineWidth(0.2);
+        pdf.line(25, extraLineY, pageWidth - 25, extraLineY);
+
+        yPosition += 18;
       });
 
       // Footer
