@@ -7,39 +7,62 @@
 ```
 A vibrant, professional product mockup showing an AI-powered educational planner for children's literacy.
 
+Background:
+- Soft gradient from light beige (#F5E6D3) at top to pale mint green (#E8F8F5) at bottom
+- Subtle geometric pattern of educational icons (stars, books, pencils) in very light opacity (5-10%)
+- Circular soft light glow emanating from center
+- Professional studio photography backdrop feel
+
 Main elements:
-- Center: A glowing holographic tablet or smart device displaying a colorful 4-week calendar/planner interface
-- The calendar shows cute emoji icons representing different learning activities (📚, 🎯, ✏️, 🎨)
+- Center: A sleek modern tablet or iPad displaying a colorful 4-week calendar/planner interface
+- The screen shows:
+  - Weekly grid with days Monday to Friday
+  - Cute emoji icons for activities (📚, 🎯, ✏️, 🎨, 🧠)
+  - Progress bars in mint green and coral
+  - Small checkmarks indicating completed tasks
+  - Colorful category tags
 - Around the device: Floating 3D elements including:
-  - Small brain icon with sparkles (representing AI intelligence)
-  - Colorful alphabet letters (A, B, C in Portuguese style)
-  - Progress charts showing upward growth
-  - Cute cartoon children avatars (diverse, ages 3-12)
-  - Calendar pages with checkmarks
+  - Small brain icon with sparkles and AI glow (representing AI intelligence)
+  - Colorful alphabet letters (A, B, C in Portuguese style) with soft shadows
+  - Progress charts showing upward growth arrows
+  - Cute cartoon children avatars (diverse, ages 3-12) as small circular icons
+  - Calendar pages with checkmarks floating in 3D space
+  - Small stars and sparkle effects
 
 Color palette:
 - Primary: Soft mint green (#4ECDC4)
 - Secondary: Coral pink (#FF6B6B)
 - Accent: Soft blue (#87CEEB)
-- Background: Light beige gradient with subtle pattern
+- Background: Light beige to pale mint gradient (#F5E6D3 → #E8F8F5)
+- Device: Silver/white modern tablet
 
 Style:
-- Modern, clean, professional
-- 3D rendered elements with soft shadows
-- Bright, warm, inviting atmosphere
-- Educational but playful
-- High quality, commercial product photography style
-- Kawaii-inspired cute elements
-- Soft pastel lighting
+- Modern, clean, professional product photography
+- 3D rendered floating elements with soft drop shadows
+- Bright, warm, inviting atmosphere with soft studio lighting
+- Educational but playful and approachable
+- High quality commercial product photography style
+- Kawaii-inspired cute elements (big eyes, rounded shapes)
+- Soft pastel lighting from top-left creating gentle highlights
+- Depth of field with slight blur on background elements
+
+Lighting:
+- Main soft light from top-left
+- Gentle rim light on right side of tablet
+- Ambient fill light to avoid harsh shadows
+- Soft glow around floating elements
 
 Technical:
 - Square format 1080x1080px
 - High resolution, 4K quality
-- PNG with transparent background option
+- JPEG format with beautiful background
 - Professional product mockup style
 - Suitable for e-commerce/sales pages
+- Optimized for social media and landing pages
 
-No text on the image, pure visual representation of personalized AI learning plans for children.
+Mood: Professional, trustworthy, innovative, child-friendly, premium educational product
+
+No text on the image, pure visual representation of personalized AI learning plans for children with a complete, beautiful background.
 ```
 
 ---
