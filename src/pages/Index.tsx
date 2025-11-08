@@ -3,7 +3,7 @@ import { MethodExplanationSection } from "@/components/MethodExplanationSection"
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { VideoSection } from "@/components/VideoSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { AudioTestimonialsSection } from "@/components/AudioTestimonialsSection";
 import { BonusSection } from "@/components/BonusSection";
 import { WhatIsIncludedSection } from "@/components/WhatIsIncludedSection";
 import { PricingSection } from "@/components/PricingSection";
@@ -25,7 +25,7 @@ const Index = memo(() => {
       <HowItWorksSection />
       <VideoSection />
       <BenefitsSection />
-      <TestimonialsSection />
+      <AudioTestimonialsSection />
       <WhatIsIncludedSection />
       <BonusSection />
       <PricingSection />
