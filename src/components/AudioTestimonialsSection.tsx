@@ -11,32 +11,32 @@ interface AudioTestimonial {
 
 const audioTestimonials: AudioTestimonial[] = [
   {
-    name: "Ana Paula",
+    name: "Ana Paula Mendonça",
     avatar: "/avatars/avatar-gen17031bc98f4f6fcf99b157c7ef4d4407.jpg",
     audioFile: "/audios/ElevenLabs_2025-11-08T00_01_35_DEPOIMENTO EM AUDIO_gen_sp105_s50_sb86_se70_b_m2.mp3",
     duration: "0:45"
   },
   {
-    name: "Juliana",
+    name: "Juliana Rodrigues",
     avatar: "/avatars/avatar-gen458f209e95874138b60dda87500fc67c.jpg",
     audioFile: "/audios/1107.MP3",
     duration: "0:38"
   },
   {
-    name: "Fernanda",
+    name: "Fernanda Almeida",
     avatar: "/avatars/avatar-gen6d6b41cacb74b811db046c0a6e286e42.jpg",
     audioFile: "/audios/ElevenLabs_2025-11-08T00_24_00_DPS_gen_sp100_s50_sb75_v3.mp3",
     duration: "0:22"
   },
   {
-    name: "Camila",
+    name: "Camila Ferreira",
     avatar: "/avatars/avatar-gene3d99a090940ff2f92c3cd980b5e61d3.jpg",
     audioFile: "/audios/ElevenLabs_2025-11-08T00_25_37_cansada_gen_sp100_s50_sb75_v3.mp3",
     duration: "0:28"
   },
   {
-    name: "Beatriz",
-    avatar: "/avatars/avatar-gen17031bc98f4f6fcf99b157c7ef4d4407.jpg",
+    name: "Beatriz Tavares",
+    avatar: "/avatars/beatriz-avatar.jpg",
     audioFile: "/audios/ElevenLabs_2025-11-08T00_28_27_DPS_gen_sp100_s50_sb75_v3.mp3",
     duration: "0:15"
   }
