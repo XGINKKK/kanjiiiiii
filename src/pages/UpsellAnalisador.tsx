@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -67,7 +67,7 @@ export default function UpsellAnalisador() {
     }, 100);
   };
 
-  const handleGeneratePlan = async () => {
+  const handleGeneratePlan = useCallback(async () => {
     setIsGenerating(true);
 
     try {
@@ -99,7 +99,7 @@ export default function UpsellAnalisador() {
     } finally {
       setIsGenerating(false);
     }
-  };
+  }, [formData]);
 
   // Polling para verificar status do pagamento
   useEffect(() => {
@@ -124,7 +124,7 @@ export default function UpsellAnalisador() {
 
     // Limpar ao desmontar
     return () => clearInterval(interval);
-  }, [stage, orderId]);
+  }, [stage, orderId, handleGeneratePlan]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-soft-blue/20 via-background to-beige/20">
