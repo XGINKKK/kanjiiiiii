@@ -10,6 +10,7 @@ import MetodoJapones from "./pages/MetodoJapones";
 import GuiaPais from "./pages/GuiaPais";
 import Upsell from "./pages/Upsell";
 import UpsellAnalisador from "./pages/UpsellAnalisador";
+import FormularioPlano from "./pages/FormularioPlano";
 import Gerador from "./pages/Gerador";
 import NotFound from "./pages/NotFound";
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/pais" element={<GuiaPais />} />
           <Route path="/upsell" element={<Upsell />} />
           <Route path="/analisador" element={<UpsellAnalisador />} />
+          <Route path="/formulario" element={<FormularioPlano />} />
           <Route path="/gerador" element={<Gerador />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
