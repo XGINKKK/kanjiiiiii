@@ -2,9 +2,8 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle2, Sparkles, Target, Clock, Brain, Heart, ArrowRight } from "lucide-react";
 
 export default function UpsellAnalisador() {
-  // URL para o seu checkout (pode ser Stripe, Hotmart, etc.)
-  // Substitua pela sua URL de checkout real
-  const CHECKOUT_URL = "https://seugateway.com/checkout/analisador-pedagogico";
+  // URL para o checkout do Analisador Pedagógico IA
+  const CHECKOUT_URL = "https://www.ggcheckout.com/checkout/v2/QnUWMGO6JkHt6vJCX8sR";
 
   const handleBuyNow = () => {
     // Redireciona para o checkout externo

@@ -67,53 +67,80 @@ No text on the image, pure visual representation of personalized AI learning pla
 
 ---
 
-## 2. Banner Checkout: Analisador Pedagógico IA (2:3 - 1200x1800px)
+## 2. Banner Checkout: Analisador Pedagógico IA (3:2 - 1800x1200px)
 
 ### Prompt para Sora/DALL-E/Midjourney:
 
 ```
-Vertical banner (2:3 aspect ratio) for a checkout page promoting an AI-powered personalized learning plan for Brazilian children.
+Horizontal banner (3:2 aspect ratio) for a checkout page promoting an AI-powered personalized learning plan for Brazilian children.
 
-Composition (top to bottom):
-- Top 1/3: Gradient background (mint green to soft blue) with floating educational icons
-  - Include: AI brain icon, calendar, growth chart, star ratings
-  - Soft bokeh effect with light particles
-
-- Middle 1/3: Main visual focus
-  - Happy Brazilian mother and child (age 5-7) sitting together
-  - Child holding colorful learning materials with alphabet letters
-  - Both smiling, warm interaction
-  - Natural indoor lighting, cozy home environment
+Composition (left to right):
+- Left 1/3: Happy Brazilian mother and child (age 5-7) sitting together
+  - Modern, cozy home environment
+  - Both smiling at a tablet/iPad together
+  - Natural window lighting from left side
+  - Warm, caring interaction
+  - Child appears engaged and happy
+  - Mother appears supportive and proud
   - Modern, middle-class Brazilian home setting
+  - Soft focus on background, sharp on subjects
 
-- Bottom 1/3: Product representation
-  - Tablet/device showing the 4-week planner interface
-  - Icons representing: TDAH support, Autism support, personalized approach
-  - Subtle checkmarks and success indicators
-  - Soft glow effect around the device
+- Center 1/3: The tablet/device they're looking at
+  - Sleek iPad or tablet displaying colorful 4-week planner interface
+  - Screen clearly shows:
+    - Weekly calendar grid
+    - Cute emoji icons for activities (📚, 🎯, ✏️, 🎨, 🧠)
+    - Progress bars in mint green and coral colors
+    - Checkmarks indicating progress
+    - Colorful category tags
+  - Device slightly angled towards viewer
+  - Soft glow from screen
+
+- Right 1/3: Floating 3D educational elements
+  - AI brain icon with sparkles and glow
+  - Colorful alphabet letters (A, B, C) floating
+  - Small growth chart with upward arrow
+  - Icons representing: TDAH support 🧠, Autism support ❤️, personalization 🎯
+  - Calendar pages with checkmarks
+  - Subtle star ratings and success indicators
+  - Soft bokeh effect background
+  - Gradient from soft blue to mint green
+
+Background:
+- Soft gradient from warm beige on left to pale mint green (#E8F8F5) on right
+- Very subtle educational icon pattern at 5% opacity
+- Gentle circular light glow emanating from center
+- Professional, clean, uncluttered
 
 Visual style:
-- Professional photography quality
+- Professional lifestyle photography quality
 - Warm, inviting color temperature
-- Soft focus background, sharp foreground
-- Natural skin tones for Brazilian family
+- Natural skin tones for Brazilian family (medium to tan)
 - Educational and trustworthy atmosphere
+- Premium, high-end feel
+- Photorealistic with slight soft focus on edges
 
 Color palette:
 - Mint green (#4ECDC4)
 - Coral (#FF6B6B)
 - Soft blue (#87CEEB)
 - Navy blue (#2C3E50)
-- Warm beige background tones
+- Warm beige to pale mint gradient background
 
-Mood: Hopeful, professional, caring, educational, premium quality
+Lighting:
+- Natural window light from left (on family)
+- Soft fill light overall
+- Screen glow in center
+- Gentle rim light on right side elements
+
+Mood: Hopeful, professional, caring, educational, premium quality, trustworthy
 
 Technical specs:
-- Vertical orientation: 1200x1800px (2:3 ratio)
+- Horizontal orientation: 1800x1200px (3:2 ratio)
 - High resolution for web use
 - JPEG format
 - Optimized for checkout/payment pages
-- Mobile-first design consideration
+- Desktop and tablet optimized
 
 No visible text, only pure imagery that conveys personalized AI education support for children.
 ```

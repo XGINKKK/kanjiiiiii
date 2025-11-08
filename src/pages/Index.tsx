@@ -13,6 +13,7 @@ import { FinalCTASection } from "@/components/FinalCTASection";
 import { Footer } from "@/components/Footer";
 import { BlackFridayBanner } from "@/components/BlackFridayBanner";
 import { SocialProofNotification } from "@/components/SocialProofNotification";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { memo } from "react";
 
 const Index = memo(() => {
@@ -45,6 +46,7 @@ const Index = memo(() => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 });
