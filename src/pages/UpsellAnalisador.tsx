@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,13 +11,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CheckCircle2, Sparkles, Target, Clock, Brain, Heart, ArrowRight, Loader2 } from "lucide-react";
+import { CheckCircle2, Sparkles, Target, Clock, Brain, Heart, ArrowRight, Loader2, CreditCard } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
 export default function UpsellAnalisador() {
-  const [stage, setStage] = useState<'offer' | 'form' | 'plan'>('offer');
+  const [stage, setStage] = useState<'offer' | 'form' | 'payment' | 'plan'>('offer');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedPlan, setGeneratedPlan] = useState('');
+  const [orderId, setOrderId] = useState('');
   const [formData, setFormData] = useState({
     childName: '',
     childAge: '',
@@ -46,8 +47,27 @@ export default function UpsellAnalisador() {
     }));
   };
 
-  const handleGeneratePlan = async (e: React.FormEvent) => {
+  const handleSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Gerar ID único para este pedido
+    const newOrderId = `order_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    setOrderId(newOrderId);
+
+    // Salvar dados do formulário no localStorage
+    localStorage.setItem('analisador_form_data', JSON.stringify(formData));
+    localStorage.setItem('analisador_order_id', newOrderId);
+
+    // Ir para página de pagamento
+    setStage('payment');
+
+    // Scroll to payment
+    setTimeout(() => {
+      document.getElementById('payment-section')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
+  const handleGeneratePlan = async () => {
     setIsGenerating(true);
 
     try {
@@ -80,6 +100,31 @@ export default function UpsellAnalisador() {
       setIsGenerating(false);
     }
   };
+
+  // Polling para verificar status do pagamento
+  useEffect(() => {
+    if (stage !== 'payment' || !orderId) return;
+
+    const checkPayment = async () => {
+      try {
+        const response = await fetch(`/api/check-payment?order_id=${orderId}`);
+        const data = await response.json();
+
+        if (data.status === 'paid') {
+          // Pagamento confirmado! Gerar plano
+          await handleGeneratePlan();
+        }
+      } catch (error) {
+        console.error('Error checking payment:', error);
+      }
+    };
+
+    // Verificar a cada 3 segundos
+    const interval = setInterval(checkPayment, 3000);
+
+    // Limpar ao desmontar
+    return () => clearInterval(interval);
+  }, [stage, orderId]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-soft-blue/20 via-background to-beige/20">
@@ -279,7 +324,7 @@ export default function UpsellAnalisador() {
               </p>
             </div>
 
-            <form onSubmit={handleGeneratePlan} className="bg-white rounded-2xl shadow-xl p-6 md:p-8 space-y-6">
+            <form onSubmit={handleSubmitForm} className="bg-white rounded-2xl shadow-xl p-6 md:p-8 space-y-6">
               {/* Child Name */}
               <div>
                 <Label htmlFor="childName" className="font-fredoka font-bold text-navy text-lg mb-2">
@@ -453,25 +498,120 @@ export default function UpsellAnalisador() {
                   type="submit"
                   variant="hero"
                   size="lg"
-                  disabled={isGenerating}
                   className="w-full font-fredoka font-bold text-xl py-8"
                 >
-                  {isGenerating ? (
-                    <>
-                      <Loader2 className="w-6 h-6 mr-2 animate-spin" />
-                      Gerando Seu Plano Personalizado...
-                    </>
-                  ) : (
-                    <>
-                      Gerar Meu Plano Personalizado 🎯
-                    </>
-                  )}
+                  Continuar para Pagamento 💳
                 </Button>
                 <p className="text-center text-sm text-foreground/50 mt-3">
-                  ⚡ Isso levará cerca de 30-60 segundos
+                  ✓ Você será direcionado para realizar o pagamento de R$ 97,00
                 </p>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Payment Section */}
+      {stage === 'payment' && (
+        <div id="payment-section" className="container mx-auto px-4 py-12">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 bg-coral/10 text-coral px-4 py-2 rounded-full mb-4">
+                <CreditCard className="w-5 h-5" />
+                <span className="font-fredoka font-bold text-sm">PÁGINA DE PAGAMENTO</span>
+              </div>
+              <h2 className="font-fredoka text-3xl md:text-4xl font-bold text-navy mb-3">
+                💳 Finalize seu Pedido
+              </h2>
+              <p className="font-inter text-lg text-foreground/70">
+                Complete o pagamento para receber seu plano personalizado
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 space-y-6">
+              {/* Order Summary */}
+              <div className="bg-gradient-to-r from-mint/10 to-soft-blue/10 rounded-xl p-6 border-2 border-mint/30">
+                <h3 className="font-fredoka font-bold text-navy text-xl mb-4">
+                  📋 Resumo do Pedido
+                </h3>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="font-inter text-foreground/70">Produto:</span>
+                    <span className="font-inter font-semibold text-navy">Analisador Pedagógico IA</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-inter text-foreground/70">Criança:</span>
+                    <span className="font-inter font-semibold text-navy">
+                      {formData.childName || 'Não informado'}, {formData.childAge} anos
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-inter text-foreground/70">ID do Pedido:</span>
+                    <span className="font-inter font-mono text-sm text-foreground/60">{orderId}</span>
+                  </div>
+                  <div className="border-t-2 border-mint/30 pt-2 mt-2">
+                    <div className="flex justify-between items-center">
+                      <span className="font-fredoka text-lg font-bold text-navy">Total:</span>
+                      <span className="font-fredoka text-3xl font-bold text-coral">R$ 97,00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Payment Instructions */}
+              <div className="bg-gradient-to-br from-beige/30 to-soft-blue/20 rounded-xl p-6 border-2 border-coral/20">
+                <h3 className="font-fredoka font-bold text-navy text-lg mb-4 flex items-center gap-2">
+                  <span className="text-2xl">⚠️</span>
+                  INSTRUÇÕES IMPORTANTES
+                </h3>
+                <div className="space-y-3">
+                  <p className="font-inter text-sm text-foreground/80 leading-relaxed">
+                    <strong className="text-navy">Para testar:</strong> Use a URL do webhook abaixo para simular um pagamento:
+                  </p>
+                  <div className="bg-white rounded-lg p-4 border border-foreground/20">
+                    <p className="font-mono text-xs text-foreground/70 mb-2">POST /api/payment-webhook</p>
+                    <code className="font-mono text-xs bg-gray-100 p-2 rounded block overflow-x-auto">
+{`{
+  "event": "pix_paid",
+  "payment_id": "${orderId}",
+  "customer_email": "cliente@email.com",
+  "amount": 97,
+  "metadata": {
+    "order_id": "${orderId}"
+  }
+}`}
+                    </code>
+                  </div>
+                  <p className="font-inter text-xs text-foreground/60 italic">
+                    💡 Em produção, integre com sua plataforma de pagamento (Stripe, Mercado Pago, etc.) e configure o webhook para enviar notificações automaticamente.
+                  </p>
+                </div>
+              </div>
+
+              {/* Aguardando Pagamento */}
+              <div className="text-center py-8">
+                <Loader2 className="w-12 h-12 text-mint animate-spin mx-auto mb-4" />
+                <h4 className="font-fredoka font-bold text-navy text-xl mb-2">
+                  Aguardando Confirmação do Pagamento...
+                </h4>
+                <p className="font-inter text-foreground/70">
+                  Assim que o pagamento for confirmado, seu plano será gerado automaticamente!
+                </p>
+                <p className="font-inter text-sm text-foreground/50 mt-4">
+                  ⏱️ Verificando a cada 3 segundos...
+                </p>
+              </div>
+
+              {/* Garantia */}
+              <div className="bg-mint/10 rounded-xl p-4 border border-mint/30">
+                <div className="flex items-center gap-2 text-navy">
+                  <CheckCircle2 className="w-5 h-5 text-mint flex-shrink-0" />
+                  <p className="font-inter text-sm">
+                    <strong>Garantia de 7 dias:</strong> Se você não ficar satisfeito, devolvemos 100% do seu dinheiro.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
