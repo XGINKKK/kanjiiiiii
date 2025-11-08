@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   BookOpen,
+  Book,
   Brain,
   Lightbulb,
   Target,
@@ -16,7 +17,9 @@ import {
   Sparkles,
   Users,
   Clock,
-  BarChart
+  BarChart,
+  Star,
+  AlertCircle
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
