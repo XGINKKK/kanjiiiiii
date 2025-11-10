@@ -1,46 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Check, Lock, Clock } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Check, Lock } from "lucide-react";
 
 export const PricingSection = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-
-  useEffect(() => {
-    const getEndTime = () => {
-      const now = new Date();
-      const endOfDay = new Date(now);
-      endOfDay.setHours(23, 59, 59, 999);
-      return endOfDay;
-    };
-
-    const calculateTimeLeft = () => {
-      const now = new Date().getTime();
-      const endTime = getEndTime().getTime();
-      const difference = endTime - now;
-
-      if (difference > 0) {
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        setTimeLeft({ hours, minutes, seconds });
-      } else {
-        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
-
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const formatTime = (num: number) => String(num).padStart(2, "0");
-
   const handleCheckout = () => {
     window.location.href = "https://www.ggcheckout.com/checkout/v2/50wDz3HYenjVvuvmY2Zv";
   };
@@ -72,31 +33,15 @@ export const PricingSection = () => {
 
             <div className="space-y-8">
 
-              {/* Limited Time Badge with Countdown - INSIDE CARD */}
-              <div className="bg-coral text-white px-4 md:px-6 py-4 md:py-5 rounded-2xl shadow-xl -mx-4 md:-mx-8 -mt-4 md:-mt-8 mb-6">
-                <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 md:w-5 md:h-5 animate-pulse" />
-                    <span className="font-bold text-xs md:text-base">
-                      🔥 OFERTA TERMINA EM:
-                    </span>
-                  </div>
-                  <div className="flex gap-1 font-fredoka font-bold text-sm md:text-lg">
-                    <span className="bg-white/20 px-2 md:px-3 py-1 rounded min-w-[28px] md:min-w-[36px] text-center">
-                      {formatTime(timeLeft.hours)}
-                    </span>
-                    <span className="px-1">:</span>
-                    <span className="bg-white/20 px-2 md:px-3 py-1 rounded min-w-[28px] md:min-w-[36px] text-center">
-                      {formatTime(timeLeft.minutes)}
-                    </span>
-                    <span className="px-1">:</span>
-                    <span className="bg-white/20 px-2 md:px-3 py-1 rounded min-w-[28px] md:min-w-[36px] text-center">
-                      {formatTime(timeLeft.seconds)}
-                    </span>
-                  </div>
-                </div>
-                <div className="text-center mt-2 text-xs md:text-sm opacity-90">
-                  Depois volta para <span className="font-bold line-through">R$ 97,00</span>
+              {/* Black Friday Badge - INSIDE CARD */}
+              <div className="bg-gradient-to-r from-coral to-primary text-white px-4 md:px-6 py-4 md:py-5 rounded-2xl shadow-xl -mx-4 md:-mx-8 -mt-4 md:-mt-8 mb-6">
+                <div className="text-center">
+                  <p className="font-fredoka text-lg md:text-2xl font-bold mb-1">
+                    🔥 BLACK FRIDAY - NOVEMBRO 🔥
+                  </p>
+                  <p className="font-nunito text-sm md:text-base opacity-90">
+                    Desconto especial de lançamento • Depois volta para <span className="font-bold line-through">R$ 289,00</span>
+                  </p>
                 </div>
               </div>
 
@@ -289,10 +234,10 @@ export const PricingSection = () => {
           {/* Urgency Element */}
           <div className="text-center mt-8 p-6 bg-coral/10 border-2 border-coral/30 rounded-2xl">
             <p className="font-nunito text-lg md:text-xl font-bold text-navy mb-2">
-              ⏰ Atenção: Preço promocional válido apenas para hoje
+              🔥 Black Friday de Novembro: Oferta Especial
             </p>
             <p className="font-inter text-sm md:text-base text-foreground/80">
-              Após meia-noite, o valor volta para R$ 289,00.
+              Desconto de lançamento pode acabar a qualquer momento e o valor volta para R$ 289,00.
               Não perca esta oportunidade de transformar a alfabetização do seu filho.
             </p>
           </div>
