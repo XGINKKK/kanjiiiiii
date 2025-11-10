@@ -1,7 +1,46 @@
 import { Button } from "@/components/ui/button";
-import { Check, Lock } from "lucide-react";
+import { Check, Lock, Clock } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export const PricingSection = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    const getEndTime = () => {
+      const now = new Date();
+      const endOfDay = new Date(now);
+      endOfDay.setHours(23, 59, 59, 999);
+      return endOfDay;
+    };
+
+    const calculateTimeLeft = () => {
+      const now = new Date().getTime();
+      const endTime = getEndTime().getTime();
+      const difference = endTime - now;
+
+      if (difference > 0) {
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeLeft({ hours, minutes, seconds });
+      } else {
+        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (num: number) => String(num).padStart(2, "0");
+
   const handleCheckout = () => {
     window.location.href = "https://www.ggcheckout.com/checkout/v2/50wDz3HYenjVvuvmY2Zv";
   };
@@ -31,10 +70,33 @@ export const PricingSection = () => {
           {/* Pricing Card */}
           <div className="bg-card border-4 border-primary/30 rounded-3xl p-8 md:p-12 shadow-2xl relative">
 
-            {/* Limited Time Badge */}
-            <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-[90%] md:w-auto">
-              <div className="bg-coral text-white px-4 md:px-6 py-2 md:py-3 rounded-full font-nunito font-bold text-xs md:text-base shadow-xl text-center">
-                🔥 Preço Promocional - Apenas Hoje!
+            {/* Limited Time Badge with Countdown */}
+            <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-[95%] md:w-auto">
+              <div className="bg-coral text-white px-4 md:px-6 py-3 md:py-4 rounded-full font-nunito shadow-xl">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 md:w-5 md:h-5 animate-pulse" />
+                    <span className="font-bold text-xs md:text-base">
+                      🔥 OFERTA TERMINA EM:
+                    </span>
+                  </div>
+                  <div className="flex gap-1 font-fredoka font-bold text-sm md:text-lg">
+                    <span className="bg-white/20 px-2 md:px-3 py-1 rounded min-w-[28px] md:min-w-[36px] text-center">
+                      {formatTime(timeLeft.hours)}
+                    </span>
+                    <span className="px-1">:</span>
+                    <span className="bg-white/20 px-2 md:px-3 py-1 rounded min-w-[28px] md:min-w-[36px] text-center">
+                      {formatTime(timeLeft.minutes)}
+                    </span>
+                    <span className="px-1">:</span>
+                    <span className="bg-white/20 px-2 md:px-3 py-1 rounded min-w-[28px] md:min-w-[36px] text-center">
+                      {formatTime(timeLeft.seconds)}
+                    </span>
+                  </div>
+                </div>
+                <div className="text-center mt-2 text-xs md:text-sm opacity-90">
+                  Depois volta para <span className="font-bold line-through">R$ 97,00</span>
+                </div>
               </div>
             </div>
 
