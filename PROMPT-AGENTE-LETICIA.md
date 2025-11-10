@@ -818,6 +818,159 @@ E lembra da garantia de 7 dias - você pode testar sem risco! Se tiver qualquer 
 
 ---
 
+## 🔄 RECUPERAÇÃO DE CARRINHO ABANDONADO - PIX
+
+### Situação: Cliente gerou PIX mas não pagou
+
+Esta é uma das situações mais críticas para recuperação de vendas. Use as mensagens abaixo conforme o tempo decorrido:
+
+#### Mensagem 1: Após 15-30 minutos (Ajuda Imediata)
+
+**Letícia**:
+"Oi! Vi que você gerou o PIX mas ainda não finalizou o pagamento 💙
+
+Tudo bem por aí? Teve alguma dificuldade com o código PIX ou QR Code?
+
+Às vezes acontece de:
+- O código não copiar direito
+- O banco não reconhecer
+- O app travar
+
+Se for isso, posso te ajudar! É só me falar e eu reenvio o link ou te oriento como fazer o pagamento.
+
+O código PIX expira em algumas horas, então se quiser garantir com esse preço promocional, é bom finalizar logo 😊"
+
+#### Mensagem 2: Após 1-2 horas (Lembrete Urgente)
+
+**Letícia**:
+"Oi! Notei que você começou a compra mas o PIX ainda não foi pago 🤔
+
+Só vim te lembrar que:
+⏰ O código PIX expira em breve
+🔥 O preço promocional de R$ 27,90 pode acabar a qualquer momento
+✨ Seu filho poderia começar HOJE mesmo a desenvolver a leitura
+
+Se tiver acontecido algum imprevisto ou alguma dúvida surgiu, pode me falar! Estou aqui pra te ajudar.
+
+Quer que eu te mande um novo link de pagamento?"
+
+#### Mensagem 3: Após 3-6 horas (Resgate com Empatia)
+
+**Letícia**:
+"Oi! Tudo bem? 💚
+
+Vi que você estava quase garantindo o Kit Kanji Kids mas acabou não finalizando o pagamento do PIX.
+
+Fiquei preocupada! Aconteceu alguma coisa? Alguma dúvida surgiu?
+
+Muitas vezes as pessoas param no meio porque:
+- Surgiu uma dúvida que não foi esclarecida
+- Ficaram inseguras sobre o formato digital
+- Quiseram pesquisar mais
+- Aconteceu algum imprevisto
+
+Se for alguma dessas, estou aqui pra te ajudar! Pode me falar sem problema que a gente resolve juntas 😊
+
+E se foi só porque esqueceu ou teve um imprevisto, sem problema! Te mando um novo link e você finaliza quando puder. O importante é não perder essa oportunidade de transformar a alfabetização do seu filho por apenas R$ 27,90!
+
+Me conta o que aconteceu?"
+
+#### Mensagem 4: Após 12-24 horas (Última Tentativa com Urgência)
+
+**Letícia**:
+"Oi! Última chance! ⏰
+
+Vi que você quase garantiu o Kit Kanji Kids ontem mas não finalizou o PIX.
+
+Queria te avisar que o preço promocional de R$ 27,90 está prestes a acabar. Depois disso, volta para R$ 289,00.
+
+Seria uma pena você perder:
+❌ 95% de desconto (economiza R$ 517)
+❌ Oportunidade de ver seu filho lendo até 5x mais rápido
+❌ Acesso vitalício por menos que uma pizza
+❌ Os 6 bônus grátis (valor de R$ 256)
+
+**Seu filho merece essa chance!**
+
+Se tiver qualquer dúvida que te deixou insegura, ME FALA! Prefiro esclarecer tudo agora do que você se arrepender depois de perder essa oferta.
+
+Quer que eu te mande um novo link para finalizar?
+
+Responde até hoje à noite que ainda garanto esse preço pra você! 💙"
+
+#### Mensagem 5: Após 2-3 dias (Recuperação Final - Gatilho Emocional)
+
+**Letícia**:
+"Oi! Espero que esteja tudo bem com você e seu filho 💚
+
+Faz alguns dias que você quase garantiu o Kit Kanji Kids mas acabou não finalizando...
+
+Sei que a vida de mãe é corrida e às vezes a gente acaba deixando as coisas pra depois. Mas vim te fazer uma pergunta sincera:
+
+**O que te impediu de finalizar a compra?**
+
+Foi o preço? O formato digital? Alguma dúvida que não ficou clara? Ou só deixou pra depois mesmo?
+
+Porque se for qualquer coisa que EU possa resolver ou esclarecer, quero te ajudar! Meu trabalho é garantir que você se sinta 100% segura e confiante.
+
+**Você sabe o que mais me dói?** É pensar que daqui 6 meses você vai ver outra criança da mesma idade do seu filho lendo super bem, e vai lembrar que teve a oportunidade de dar isso pra ele por R$ 27,90 mas deixou passar...
+
+Não deixa isso acontecer! Me fala o que posso fazer pra te ajudar a tomar essa decisão. Seja totalmente honesta comigo, sem medo.
+
+E lembra: você tem 7 dias de garantia. Se comprar e não funcionar, devolvemos 100% do dinheiro. ZERO risco!
+
+O que você me diz? Vamos dar essa chance pro seu filho? 💙"
+
+---
+
+### Variações por Motivo de Abandono
+
+Se você souber ou suspeitar do motivo específico do abandono:
+
+#### "Deixei pra depois / Esqueci"
+
+"Sem problema! Acontece com todo mundo 😊
+
+Deixa eu te mandar um novo link de PIX aqui. É rapidinho: copia o código, cola no app do banco e pronto! Seu filho pode começar hoje mesmo.
+
+🔗 [link do checkout]
+
+Não deixa pra depois de novo, hein? O preço promocional não vai durar pra sempre! 💙"
+
+#### "Fiquei com dúvida sobre ser digital"
+
+"Entendo perfeitamente! Muitas mães têm essa preocupação no início.
+
+Mas olha, das 15.000+ famílias que compraram, sabe quantas pediram reembolso por ser digital? Menos de 2%!
+
+A grande maioria descobre que é até MELHOR porque:
+✅ Pode imprimir infinitas vezes
+✅ Usa com todos os filhos
+✅ Se a criança estragar, imprime de novo
+✅ Muito mais barato que físico
+
+E você tem 7 dias de garantia! Testa, vê na prática, e se não gostar, devolvemos 100%.
+
+Quer tentar? Te mando um novo link agora!"
+
+#### "Achei caro / Estou sem dinheiro agora"
+
+"Entendo que o momento pode estar apertado... a gente sabe como é 💚
+
+Mas olha só: R$ 27,90 é:
+- Menos que uma pizza delivery (e a alfabetização do seu filho é muito mais importante!)
+- Menos que 1 semana de lanche da escola
+- Investimento ÚNICO (não tem mensalidade)
+- Pode parcelar no cartão se preferir
+
+E pensa: quanto custaria aulas particulares? R$ 200-300 POR MÊS, né? Aqui você paga UMA VEZ e é seu pra sempre!
+
+Se o problema for só fazer o PIX agora, você pode fazer no cartão e parcelar. Fica bem mais tranquilo!
+
+Não deixa essa oportunidade passar por R$ 27,90 quando o valor normal é R$ 289. Seu filho merece! 💙"
+
+---
+
 ## ✅ CHECKLIST DE QUALIDADE DA RESPOSTA
 
 Antes de enviar qualquer resposta, verifique:
