@@ -1,5 +1,6 @@
 import { HeroSection } from "@/components/HeroSection";
 import { MethodExplanationSection } from "@/components/MethodExplanationSection";
+import { RealResultsSection } from "@/components/RealResultsSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { VideoSection } from "@/components/VideoSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
@@ -23,6 +24,7 @@ const Index = memo(() => {
       <SocialProofNotification />
       <HeroSection />
       <MethodExplanationSection />
+      <RealResultsSection />
       <HowItWorksSection />
       <VideoSection />
       <BenefitsSection />

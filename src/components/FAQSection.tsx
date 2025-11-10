@@ -30,7 +30,7 @@ const faqs = [
   {
     question: "Quanto custa e como é o pagamento?",
     answer:
-      "O Kit Completo Kanji Kids custa apenas R$ 47,00 (investimento único, sem mensalidades). Você pode pagar no cartão de crédito, PIX (aprovação imediata) ou boleto bancário. Acesso imediato após a confirmação do pagamento. É seu para sempre!",
+      "O Kit Completo Kanji Kids custa apenas R$ 27,90 (investimento único, sem mensalidades). Você pode pagar no cartão de crédito, PIX (aprovação imediata) ou boleto bancário. Acesso imediato após a confirmação do pagamento. É seu para sempre!",
   },
   {
     question: "Quanto tempo leva para ver resultados?",

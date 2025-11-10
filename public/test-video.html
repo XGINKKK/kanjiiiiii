@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste VSL</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+        }
+        video {
+            width: 100%;
+            border-radius: 12px;
+        }
+        .info {
+            color: white;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color: white;">Teste do Vídeo VSL</h2>
+        <video id="testVideo" controls muted playsinline preload="auto">
+            <source src="/vsl.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        <div class="info" id="info">
+            <p>Status: <span id="status">Carregando...</span></p>
+            <p>ReadyState: <span id="readyState">-</span></p>
+            <p>NetworkState: <span id="networkState">-</span></p>
+            <p>CurrentSrc: <span id="currentSrc">-</span></p>
+            <p>Duration: <span id="duration">-</span></p>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('testVideo');
+        const statusEl = document.getElementById('status');
+        const readyStateEl = document.getElementById('readyState');
+        const networkStateEl = document.getElementById('networkState');
+        const currentSrcEl = document.getElementById('currentSrc');
+        const durationEl = document.getElementById('duration');
+
+        function updateInfo() {
+            readyStateEl.textContent = video.readyState;
+            networkStateEl.textContent = video.networkState;
+            currentSrcEl.textContent = video.currentSrc || 'Nenhum';
+            durationEl.textContent = video.duration ? video.duration.toFixed(2) + 's' : 'Carregando...';
+        }
+
+        video.addEventListener('loadstart', () => {
+            console.log('loadstart');
+            statusEl.textContent = 'Início do carregamento';
+            updateInfo();
+        });
+
+        video.addEventListener('loadedmetadata', () => {
+            console.log('loadedmetadata');
+            statusEl.textContent = 'Metadados carregados';
+            updateInfo();
+        });
+
+        video.addEventListener('loadeddata', () => {
+            console.log('loadeddata');
+            statusEl.textContent = 'Dados carregados';
+            updateInfo();
+        });
+
+        video.addEventListener('canplay', () => {
+            console.log('canplay');
+            statusEl.textContent = 'Pronto para reproduzir';
+            updateInfo();
+        });
+
+        video.addEventListener('canplaythrough', () => {
+            console.log('canplaythrough');
+            statusEl.textContent = 'Pode reproduzir até o fim';
+            updateInfo();
+        });
+
+        video.addEventListener('error', (e) => {
+            console.error('Video error:', e);
+            statusEl.textContent = 'ERRO: ' + (video.error ? video.error.message : 'Desconhecido');
+            statusEl.style.color = 'red';
+        });
+
+        video.addEventListener('play', () => {
+            console.log('play');
+            statusEl.textContent = 'Reproduzindo';
+        });
+
+        setInterval(updateInfo, 100);
+    </script>
+</body>
+</html>

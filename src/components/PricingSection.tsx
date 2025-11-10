@@ -25,7 +25,7 @@ export const PricingSection = () => {
 
           {/* Main Title */}
           <h2 className="font-fredoka text-2xl md:text-4xl lg:text-5xl font-bold text-navy text-center mb-12 leading-tight px-4">
-            Quanto vale ver seu filho lendo com confiança e alegria?
+            Quanto vale ver seu filho lendo, escrevendo e se desenvolvendo com confiança?
           </h2>
 
           {/* Pricing Card */}
@@ -157,8 +157,9 @@ export const PricingSection = () => {
               {/* Price Justification */}
               <div className="bg-mint/10 border-2 border-mint/30 rounded-2xl p-6 text-center">
                 <p className="font-inter text-base md:text-lg text-foreground/90 leading-relaxed">
-                  <span className="font-bold text-navy">Menos que uma pizza em família</span> para dar ao seu filho a
-                  habilidade mais importante da vida: <span className="font-bold text-primary">ler com confiança</span>.
+                  <span className="font-bold text-navy">Menos que uma pizza em família</span> para dar ao seu filho
+                  <span className="font-bold text-primary"> leitura, escrita, coordenação e concentração</span> —
+                  as habilidades essenciais para a vida toda!
                 </p>
                 <p className="font-nunito text-sm text-coral mt-3 font-bold">
                   95% de desconto! Economize R$ 517,10 hoje!
@@ -223,7 +224,8 @@ export const PricingSection = () => {
           {/* Post-Price Social Proof */}
           <div className="text-center mt-12 space-y-4">
             <p className="font-inter text-base md:text-lg text-foreground/80 italic">
-              "Vale cada centavo! Meu filho evoluiu mais em 1 mês com o método japonês
+              "Vale cada centavo! Meu filho não só aprendeu a ler mais rápido, como a letra dele melhorou muito!
+              Ele adora fazer as atividades e pede para fazer. Evoluiu mais em 1 mês com o método japonês
               do que em 6 meses com aulas particulares que custaram R$ 800."
             </p>
             <p className="font-nunito font-bold text-navy">
@@ -238,7 +240,7 @@ export const PricingSection = () => {
             </p>
             <p className="font-inter text-sm md:text-base text-foreground/80">
               Desconto de lançamento pode acabar a qualquer momento e o valor volta para R$ 289,00.
-              Não perca esta oportunidade de transformar a alfabetização do seu filho.
+              Não perca esta oportunidade de ver seu filho lendo, escrevendo e se desenvolvendo com alegria.
             </p>
           </div>
 

@@ -31,7 +31,13 @@
       "Bash(cat:*)",
       "Bash(git pull:*)",
       "Bash(git stash:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(ls:*)",
+      "Bash(nul)",
+      "Bash(findstr:*)",
+      "Bash(timeout 5 bash:*)",
+      "Bash(timeout 2 bash:*)",
+      "Bash(git remote set-url:*)"
     ],
     "deny": [],
     "ask": []

@@ -9,33 +9,33 @@ import iconBrazilianPortuguese from "@/assets/icon-brazilian-portuguese.jpg";
 const benefits = [
   {
     icon: iconJapaneseMethod,
-    title: "Método de reconhecimento visual japonês",
+    title: "✏️ Leitura + Escrita juntas",
     description:
-      "Técnica milenar comprovada que ensina o cérebro infantil a reconhecer padrões de leitura de forma intuitiva e natural, sem decoreba forçada.",
-  },
-  {
-    icon: icon10Minutes,
-    title: "Apenas 10 minutos por dia",
-    description:
-      "Sessões curtas e poderosas que mantêm a criança engajada e motivada, sem cansaço ou resistência.",
+      "Técnica japonesa que desenvolve leitura e escrita simultaneamente, através do grafismo fonético. Seu filho aprende a ler enquanto melhora a coordenação motora e a letra.",
   },
   {
     icon: iconBrainLearning,
-    title: "No ritmo da criança",
+    title: "🎮 Aprende brincando",
     description:
-      "Respeita o tempo de desenvolvimento único de cada pequeno, sem pressão, comparações ou frustração — apenas descoberta natural.",
+      "Atividades lúdicas e divertidas que as crianças ADORAM fazer! Não parece estudo chato — parece jogo. Muitas crianças pedem para fazer as atividades.",
+  },
+  {
+    icon: icon10Minutes,
+    title: "🎯 Melhora concentração e letra",
+    description:
+      "Apenas 10 minutos por dia desenvolvem foco, atenção e coordenação motora fina. Resultado: criança mais concentrada e letra mais bonita.",
   },
   {
     icon: iconSpecialNeeds,
-    title: "Para necessidades especiais",
+    title: "🌈 Funciona com todo tipo de criança",
     description:
-      "Funciona perfeitamente com crianças com TDAH, Autismo, dislexia ou dificuldades de foco, adaptando-se ao jeito de cada uma aprender.",
+      "Eficaz até com TDAH, Autismo, dislexia ou dificuldades de foco. O método visual se adapta ao jeito único de cada criança aprender.",
   },
   {
     icon: iconBrazilianPortuguese,
-    title: "100% adaptado ao português",
+    title: "📚 Método completo e progressivo",
     description:
-      "Todo o poder do método japonês, mas desenvolvido especificamente para a língua portuguesa e a realidade brasileira.",
+      "Todo o poder do método japonês adaptado ao português brasileiro, com níveis progressivos que respeitam o ritmo natural de cada criança.",
   },
 ];
 
@@ -45,14 +45,23 @@ export const BenefitsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-card">
-      <div className="container mx-auto px-4">
+    <section
+      className="py-20 bg-card relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/imagens-melhorias/background-porque-precisa-kit.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center 30%",
+        backgroundBlendMode: "overlay",
+        backgroundColor: "rgba(255, 255, 255, 0.95)"
+      }}
+    >
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="font-fredoka text-3xl md:text-4xl lg:text-5xl font-bold text-navy">
-            Por que o método japonês funciona tão bem?
+            Seu filho aprende lendo, escrevendo e brincando!
           </h2>
           <p className="font-nunito text-lg md:text-xl text-muted-foreground">
-            O Kit Kanji Kids™ combina sabedoria oriental, neurociência e diversão
+            O Kit Kanji Kids™ desenvolve leitura, escrita, coordenação e concentração — tudo ao mesmo tempo
           </p>
         </div>
 
@@ -91,7 +100,7 @@ export const BenefitsSection = () => {
             size="lg"
             className="font-nunito font-bold text-base md:text-lg px-8 md:px-12 w-full md:w-auto"
           >
-            Quero o método japonês!
+            Quero meu filho lendo e escrevendo!
           </Button>
         </div>
       </div>

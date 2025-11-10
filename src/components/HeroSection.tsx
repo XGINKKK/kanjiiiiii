@@ -20,35 +20,34 @@ export const HeroSection = () => {
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto text-center space-y-12 animate-fade-in-up px-4">
           {/* Hero Image Mockup */}
-          <div className="relative w-full max-w-5xl mx-auto -mx-4 md:mx-auto">
-            <div className="bg-gradient-to-b from-background via-background to-soft-blue/10 rounded-2xl p-2 md:p-10">
-              <img
-                src={heroMockup}
-                alt="Kit de Grafismo Fonético - Mockup"
-                className="w-full h-auto object-contain"
-              />
-            </div>
+          <div className="relative w-full max-w-3xl mx-auto">
+            <img
+              src={heroMockup}
+              alt="Kit de Grafismo Fonético - Mockup"
+              className="w-full h-auto object-contain drop-shadow-2xl"
+            />
           </div>
 
           {/* Main Headline */}
           <h1 className="font-fredoka text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.2] max-w-5xl mx-auto px-2">
             Descubra a{" "}
-            <span className="text-soft-blue">técnica japonesa que ensina as crianças a ler</span>{" "}
+            <span className="text-soft-blue">técnica japonesa que ensina as crianças a ler e escrever</span>{" "}
             até <span className="text-coral">5 vezes mais rápido</span>
-            <span className="text-navy">, sem pressão!</span>
+            <span className="text-navy">, brincando!</span>
           </h1>
 
           {/* Subtitle */}
           <p className="font-nunito text-xl md:text-2xl text-foreground/80">
-            Com apenas <span className="font-bold text-navy">10 minutos</span> por dia.
+            Seu filho aprende <span className="font-bold text-coral">lendo, escrevendo e se divertindo</span> com apenas <span className="font-bold text-navy">10 minutos</span> por dia.
           </p>
 
           {/* Benefits List */}
           <div className="space-y-4 max-w-3xl mx-auto">
             {[
-              "Ideal para crianças de 2 a 12 anos, no ritmo natural de cada uma",
-              "Mesmo que ainda não reconheça letras ou sons",
-              "Funciona também com crianças com TDAH, Autismo ou dificuldades de foco",
+              "✏️ Desenvolve a leitura, escrita e coordenação motora ao mesmo tempo",
+              "🎯 Melhora a concentração e a letra da criança enquanto aprende",
+              "🎮 Aprende brincando: atividades lúdicas que as crianças pedem para fazer",
+              "🌈 Ideal para crianças de 2 a 12 anos, funciona até com TDAH e Autismo",
             ].map((benefit, index) => (
               <div key={index} className="flex items-start gap-3 justify-center text-left">
                 <div className="mt-1 flex-shrink-0">
@@ -83,7 +82,7 @@ export const HeroSection = () => {
               size="xl"
               className="font-nunito font-bold text-base md:text-lg px-8 md:px-12 w-full max-w-md md:w-auto hover:scale-[1.02] transition-all duration-300 animate-pulse-subtle"
             >
-              Quero meu pequeno lendo rápido!
+              Quero meu filho lendo e escrevendo!
             </Button>
 
             <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
