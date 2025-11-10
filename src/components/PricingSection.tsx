@@ -70,9 +70,10 @@ export const PricingSection = () => {
           {/* Pricing Card */}
           <div className="bg-card border-4 border-primary/30 rounded-3xl p-8 md:p-12 shadow-2xl relative">
 
-            {/* Limited Time Badge with Countdown */}
-            <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-[95%] md:w-auto">
-              <div className="bg-coral text-white px-4 md:px-6 py-3 md:py-4 rounded-full font-nunito shadow-xl">
+            <div className="space-y-8">
+
+              {/* Limited Time Badge with Countdown - INSIDE CARD */}
+              <div className="bg-coral text-white px-4 md:px-6 py-4 md:py-5 rounded-2xl shadow-xl -mx-4 md:-mx-8 -mt-4 md:-mt-8 mb-6">
                 <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 md:w-5 md:h-5 animate-pulse" />
@@ -98,9 +99,6 @@ export const PricingSection = () => {
                   Depois volta para <span className="font-bold line-through">R$ 97,00</span>
                 </div>
               </div>
-            </div>
-
-            <div className="space-y-8 mt-4">
 
               {/* Value Stack */}
               <div className="space-y-3">
