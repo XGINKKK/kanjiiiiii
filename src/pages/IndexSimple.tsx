@@ -340,7 +340,7 @@ const IndexSimple = memo(() => {
                   onCanPlay={() => console.log('Video: canplay event')}
                   onCanPlayThrough={() => console.log('Video: canplaythrough event')}
                 >
-                  <source src="/83BE9427-F692-4ef2-8EB1-A8813BD77FB2_video.mp4" type="video/mp4" />
+                  <source src="/vsl-nova.mp4" type="video/mp4" />
                   Seu navegador não suporta vídeos HTML5.
                 </video>
 
