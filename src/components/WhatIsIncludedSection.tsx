@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const items = [
   {
-    title: "+ de 100 Atividades de Grafismo Fonético",
+    title: "+ de 400 Atividades de Grafismo Fonético",
     subtitle: "Traduzido do japonês pro português do Brasil",
     icon: BookOpen,
     color: "coral",

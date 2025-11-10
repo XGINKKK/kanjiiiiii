@@ -9,6 +9,7 @@ import { FAQSection } from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { FakeSalesNotifications } from "@/components/FakeSalesNotifications";
+import { UrgencyBanner } from "@/components/UrgencyBanner";
 
 const IndexSimple = memo(() => {
   const scrollToCheckout = () => {
@@ -179,6 +180,9 @@ const IndexSimple = memo(() => {
 
   return (
     <div className="min-h-screen font-inter bg-gradient-to-b from-soft-blue/20 via-white to-mint/10">
+      {/* Urgency Banner */}
+      <UrgencyBanner />
+
       {/* Paradise Player Styles */}
       <style dangerouslySetInnerHTML={{ __html: `
         #paradisePlayer_1762653567282::-webkit-media-controls,
@@ -270,7 +274,7 @@ const IndexSimple = memo(() => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-2xl mx-auto pt-4">
             {[
               "Crianças de 2 a 12 anos",
-              "100+ atividades prontas",
+              "400+ atividades prontas",
               "Funciona com TDAH e Autismo",
               "Acesso vitalício",
             ].map((benefit, index) => (

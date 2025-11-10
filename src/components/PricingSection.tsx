@@ -51,7 +51,7 @@ export const PricingSection = () => {
                 </p>
 
                 {[
-                  { item: "+ de 100 Atividades de Grafismo Fonético", value: "R$ 67,00" },
+                  { item: "+ de 400 Atividades de Grafismo Fonético", value: "R$ 67,00" },
                   { item: "Atividades Nível 01 - Palavras com 02 Sílabas", value: "R$ 27,00" },
                   { item: "Atividades Nível 02 - Palavras com 03 Sílabas", value: "R$ 27,00" },
                   { item: "Atividades Nível 03 - Palavras com 04 Sílabas", value: "R$ 27,00" },
