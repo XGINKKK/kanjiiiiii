@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { memo, useEffect } from "react";
-import { AudioTestimonialsSection } from "@/components/AudioTestimonialsSection";
+import { VideoTestimonialsSection } from "@/components/VideoTestimonialsSection";
 import { BonusSection } from "@/components/BonusSection";
 import { WhatIsIncludedSection } from "@/components/WhatIsIncludedSection";
 import { PricingSection } from "@/components/PricingSection";
@@ -498,8 +498,8 @@ const IndexSimple = memo(() => {
       {/* CARROSSEL DE ATIVIDADES - Componente completo importado */}
       <WhatIsIncludedSection />
 
-      {/* DEPOIMENTOS EM ÁUDIO - Componente completo importado */}
-      <AudioTestimonialsSection />
+      {/* DEPOIMENTOS EM VÍDEO - Componente completo importado */}
+      <VideoTestimonialsSection />
 
       {/* BÔNUS - Componente completo com mockups importado */}
       <BonusSection />
