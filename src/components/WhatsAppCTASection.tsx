@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export const WhatsAppCTASection = () => {
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/5511999999999?text=Olá!%20Tenho%20dúvidas%20sobre%20o%20Kit%20Kanji%20Kids", "_blank");
+    window.open("https://wa.me/5547997682599?text=Olá!%20Tenho%20dúvidas%20sobre%20o%20Kit%20Kanji%20Kids", "_blank");
   };
 
   return (
