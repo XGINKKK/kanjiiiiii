@@ -60,7 +60,7 @@ const IndexSimple = memo(() => {
     });
 
     // --- Configuração Inicial ---
-    video.playbackRate = 1;
+    video.playbackRate = 1.2;
 
     // --- Lógica de Autoplay Inteligente ---
     video.muted = true;
@@ -158,8 +158,8 @@ const IndexSimple = memo(() => {
 
       fakeProgressBar.style.width = (Math.min(fakeProgressValue, 1) * 100) + '%';
 
-      // CTA aparece imediatamente (ctaTime = 0)
-      if (ctaButton && video.currentTime >= 0 && ctaButton.style.display === 'none') {
+      // CTA aparece após 20 segundos
+      if (ctaButton && video.currentTime >= 20 && ctaButton.style.display === 'none') {
         ctaButton.style.display = 'block';
         ctaButton.style.animation = 'paradise-fadeInUp 0.5s ease-out forwards';
       }
