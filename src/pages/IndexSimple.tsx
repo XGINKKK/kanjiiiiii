@@ -261,13 +261,13 @@ const IndexSimple = memo(() => {
 
           {/* Headline Principal - COPY ÚNICA */}
           <h1 className="font-fredoka text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-navy">
-            Seu filho <span className="text-soft-blue">lendo e escrevendo</span> até{" "}
+            Seu filho <span className="text-coral">lendo e escrevendo</span> até{" "}
             <span className="text-coral">5x mais rápido</span> com apenas 10 minutos por dia
           </h1>
 
           {/* Subheadline */}
           <p className="font-nunito text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto">
-            Grafismo Fonético do método japonês - desenvolve leitura, escrita, coordenação e concentração brincando!
+            Desenvolve leitura, escrita, coordenação e concentração brincando!
           </p>
 
           {/* Benefícios rápidos com ícones */}

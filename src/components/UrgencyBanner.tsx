@@ -11,10 +11,6 @@ export const UrgencyBanner = () => {
               🔥 Mês de Novembro: Desconto de Black Friday!
             </span>
           </div>
-
-          <span className="font-nunito text-xs md:text-sm">
-            Apenas <span className="font-bold">R$ 27,90</span> • Depois volta para <span className="font-bold line-through">R$ 289,00</span>
-          </span>
         </div>
       </div>
     </div>
