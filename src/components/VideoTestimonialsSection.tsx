@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -29,19 +29,34 @@ const videoTestimonials: VideoTestimonial[] = [
 
 const VideoPlayer = ({ testimonial }: { testimonial: VideoTestimonial }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlayClick = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
 
   const handlePlay = () => {
     setIsPlaying(true);
   };
 
+  const handlePause = () => {
+    setIsPlaying(false);
+  };
+
   return (
     <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-lg border-2 border-navy/10 bg-black">
       <video
+        ref={videoRef}
         className="w-full h-full object-cover"
-        controls={isPlaying}
+        controls
         playsInline
         preload="metadata"
         onPlay={handlePlay}
+        onPause={handlePause}
+        onEnded={handlePause}
         poster={testimonial.thumbnail}
       >
         <source src={testimonial.videoFile} type="video/mp4" />
@@ -49,7 +64,10 @@ const VideoPlayer = ({ testimonial }: { testimonial: VideoTestimonial }) => {
       </video>
 
       {!isPlaying && (
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer group hover:bg-black/50 transition-colors">
+        <div
+          onClick={handlePlayClick}
+          className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer group hover:bg-black/50 transition-colors"
+        >
           <div className="w-16 h-16 rounded-full bg-coral flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
             <Play className="w-8 h-8 text-white fill-white ml-1" />
           </div>
