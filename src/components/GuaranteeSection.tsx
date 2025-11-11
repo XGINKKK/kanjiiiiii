@@ -1,74 +1,76 @@
-import { Shield } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Shield, Mail } from "lucide-react";
 
 export const GuaranteeSection = () => {
-  const scrollToPricing = () => {
-    document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <section className="py-20 bg-beige/70">
+    <section className="py-16 bg-gradient-to-br from-mint/20 via-background to-soft-blue/20">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-card border-4 border-success/50 rounded-3xl p-8 md:p-12 shadow-xl">
-            <div className="flex flex-col items-center text-center space-y-6">
+          {/* Main Guarantee Card */}
+          <div className="bg-white rounded-3xl shadow-2xl border-4 border-mint/30 p-8 md:p-12 relative overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute top-0 right-0 opacity-5">
+              <Shield className="w-64 h-64 text-mint" />
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 text-center space-y-6">
               {/* Icon */}
-              <div className="w-20 h-20 rounded-full bg-success/20 flex items-center justify-center">
-                <Shield className="w-12 h-12 text-success" />
+              <div className="flex justify-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-mint to-mint/70 rounded-full flex items-center justify-center shadow-lg">
+                  <Shield className="w-10 h-10 text-white" />
+                </div>
               </div>
 
               {/* Title */}
-              <h2 className="font-fredoka text-3xl md:text-4xl font-bold text-navy">
-                Garantia de Satisfação Total de 7 Dias
+              <h2 className="font-fredoka text-3xl md:text-4xl lg:text-5xl font-bold text-navy">
+                Garantia Incondicional de 7 Dias
               </h2>
 
               {/* Description */}
-              <div className="space-y-4 font-inter text-base md:text-lg text-foreground/90 leading-relaxed">
-                <p>
-                  Teste o Kit Kanji Kids™ por <span className="font-bold text-primary">7 dias completos</span>.
-                  Se você não estiver completamente satisfeita com a evolução do seu filho na leitura,
-                  devolvemos <span className="font-bold text-primary">100% do seu investimento</span>.
+              <div className="max-w-2xl mx-auto space-y-4">
+                <p className="font-nunito text-lg md:text-xl text-foreground/90 leading-relaxed">
+                  Você tem <span className="font-bold text-mint">7 dias de garantia incondicional</span>.
+                  Se por qualquer motivo sentir que o Kit Kanji Kids não foi pra você, basta enviar uma mensagem para:
                 </p>
-                <p className="font-bold">
-                  Sem perguntas incômodas, sem burocracia.
-                </p>
-                <p className="italic text-lg">
-                  O risco é todo nosso. A transformação é toda do seu filho.
-                </p>
-              </div>
 
-              {/* Visual elements */}
-              <div className="flex flex-wrap justify-center gap-6 pt-4">
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center">
-                    <span className="text-success font-bold">📅</span>
-                  </div>
-                  <span className="font-nunito">7 dias</span>
+                {/* Email Badge */}
+                <div className="inline-flex items-center gap-3 bg-mint/10 border-2 border-mint/30 rounded-full px-6 py-3">
+                  <Mail className="w-5 h-5 text-mint" />
+                  <a
+                    href="mailto:suportekanjakids@gmail.com"
+                    className="font-nunito font-bold text-navy hover:text-mint transition-colors"
+                  >
+                    suportekanjakids@gmail.com
+                  </a>
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center">
-                    <span className="text-success font-bold">💰</span>
+
+                <p className="font-nunito text-lg md:text-xl text-foreground/90 leading-relaxed">
+                  e devolvemos <span className="font-bold text-mint">100% do seu dinheiro</span>.
+                  Simples assim.
+                </p>
+
+                {/* Risk Badge */}
+                <div className="pt-4">
+                  <div className="inline-block bg-gradient-to-r from-mint to-mint/80 text-white px-8 py-4 rounded-2xl shadow-lg">
+                    <p className="font-fredoka text-xl md:text-2xl font-bold">
+                      O risco é todo nosso.
+                    </p>
                   </div>
-                  <span className="font-nunito">100% do valor</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-8 h-8 rounded-full bg-success/20 flex items-center justify-center">
-                    <span className="text-success font-bold">🛡️</span>
-                  </div>
-                  <span className="font-nunito">Sem burocracia</span>
                 </div>
               </div>
 
-              {/* CTA Button */}
-              <div className="pt-6">
-                <Button
-                  onClick={scrollToPricing}
-                  variant="hero"
-                  size="lg"
-                  className="font-nunito font-bold text-base md:text-lg px-8 md:px-12"
-                >
-                  Quero começar sem riscos!
-                </Button>
+              {/* Trust Badges */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8">
+                {[
+                  { icon: "✅", text: "Sem perguntas" },
+                  { icon: "⚡", text: "Reembolso rápido" },
+                  { icon: "🛡️", text: "100% garantido" }
+                ].map((badge, index) => (
+                  <div key={index} className="flex flex-col items-center gap-2 p-4 bg-mint/5 rounded-xl border border-mint/20">
+                    <span className="text-3xl">{badge.icon}</span>
+                    <span className="font-nunito text-sm font-semibold text-navy">{badge.text}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
