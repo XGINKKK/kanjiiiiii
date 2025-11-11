@@ -71,7 +71,7 @@ const AreaMembros = () => {
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="w-5 h-5" />
-              <span>10 Materiais Bônus</span>
+              <span>12 Materiais Bônus</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="w-5 h-5" />
@@ -368,12 +368,14 @@ const AreaMembros = () => {
               </h2>
             </div>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              10 atividades extras para complementar o aprendizado do seu filho
+              12 atividades extras para complementar o aprendizado do seu filho
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
+              { nome: "Caderno de Caligrafia", arquivo: "caderno-caligrafia.pdf" },
+              { nome: "Caligrafia com Imagens", arquivo: "caligrafia-com-imagens.pdf" },
               { nome: "Alfabeto com Carinhas", arquivo: "alfabeto-com-carinhas.pdf" },
               { nome: "Alfabeto com Imagem", arquivo: "alfabeto_com_imagem.pdf" },
               { nome: "Alfabeto com Pintura", arquivo: "alfabeto_com_pintura.pdf" },
