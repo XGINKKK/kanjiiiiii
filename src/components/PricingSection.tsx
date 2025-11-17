@@ -38,15 +38,19 @@ export const PricingSection = () => {
 
             {/* Pre-headline */}
             <div className="text-center mb-8">
-              <p className="font-nunito text-lg md:text-xl text-muted-foreground">
-                Escolha o plano ideal para seu filho
+              <p className="font-nunito text-lg md:text-xl text-coral font-semibold">
+                ✨ Escolha a aventura de aprendizado perfeita
               </p>
             </div>
 
             {/* Main Title */}
-            <h2 className="font-fredoka text-2xl md:text-4xl lg:text-5xl font-bold text-navy text-center mb-12 leading-tight px-4">
-              Quanto vale ver seu filho lendo, escrevendo e se desenvolvendo com confiança?
+            <h2 className="font-fredoka text-3xl md:text-4xl lg:text-5xl font-bold text-navy text-center mb-6 leading-tight px-4">
+              Imagine ver o sorriso do seu filho descobrindo que consegue ler sozinho ✨
             </h2>
+            <p className="font-nunito text-lg md:text-xl text-center text-foreground/70 mb-12 max-w-3xl mx-auto">
+              Aquele momento mágico quando ele aponta para uma palavra e diz: "Olha, eu sei ler isso!"
+              Escolha o kit que combina com vocês:
+            </p>
 
             {/* Two Pricing Cards */}
             <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -56,23 +60,27 @@ export const PricingSection = () => {
                 <div className="space-y-6">
 
                   {/* Badge */}
-                  <div className="bg-gray-100 text-gray-700 px-4 py-2 rounded-xl text-center">
-                    <p className="font-fredoka text-lg font-bold">
-                      Plano Básico
+                  <div className="bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 px-4 py-3 rounded-xl text-center border-2 border-gray-200">
+                    <p className="font-fredoka text-xl font-bold">
+                      🌱 Primeiros Passos
                     </p>
+                    <p className="text-xs text-gray-600 mt-1">Perfeito para começar</p>
                   </div>
 
                   {/* Price */}
                   <div className="text-center space-y-2">
-                    <p className="text-sm text-gray-500 line-through">R$ 47,00</p>
-                    <p className="text-5xl font-bold text-gray-700">R$ 10</p>
-                    <p className="text-sm text-gray-600">pagamento único</p>
+                    <p className="text-sm text-gray-500 line-through">De R$ 47,00</p>
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-2xl font-bold text-gray-600">R$</span>
+                      <span className="text-6xl font-bold text-gray-700">10</span>
+                    </div>
+                    <p className="text-sm text-gray-600 font-medium">✨ pagamento único</p>
                   </div>
 
                   {/* What's Included */}
                   <div className="space-y-3">
-                    <p className="font-nunito font-bold text-navy text-center">
-                      Você recebe:
+                    <p className="font-fredoka font-bold text-navy text-center text-lg">
+                      O que vem no kit:
                     </p>
 
                     <div className="space-y-2">
@@ -127,9 +135,9 @@ export const PricingSection = () => {
                     onClick={handleCheckoutBasic}
                     variant="outline"
                     size="lg"
-                    className="w-full font-nunito font-bold text-base py-6 border-2 border-gray-400 hover:bg-gray-50"
+                    className="w-full font-fredoka font-bold text-lg py-7 border-2 border-gray-400 hover:bg-gray-50 hover:border-coral transition-all duration-300"
                   >
-                    Começar por R$ 10,00
+                    💚 Começar por R$ 10
                   </Button>
 
                   <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
@@ -142,37 +150,42 @@ export const PricingSection = () => {
               {/* PLANO COMPLETO - R$ 19,90 */}
               <div className="bg-card border-4 border-coral rounded-3xl p-6 md:p-8 shadow-2xl relative">
                 {/* Most Popular Badge */}
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className="bg-coral text-white px-6 py-2 rounded-full shadow-lg">
-                    <p className="font-fredoka text-sm font-bold">
-                      ⭐ MAIS ESCOLHIDO
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                  <div className="bg-gradient-to-r from-coral to-primary text-white px-8 py-3 rounded-full shadow-xl animate-pulse">
+                    <p className="font-fredoka text-base font-bold flex items-center gap-2">
+                      ⭐ Favorito das Famílias
                     </p>
                   </div>
                 </div>
 
-                <div className="space-y-6 mt-4">
+                <div className="space-y-6 mt-6">
 
                   {/* Badge */}
-                  <div className="bg-gradient-to-r from-coral to-primary text-white px-4 py-2 rounded-xl text-center">
-                    <p className="font-fredoka text-lg font-bold">
-                      Kit Completo
+                  <div className="bg-gradient-to-br from-coral/10 via-mint/10 to-soft-blue/10 text-navy px-4 py-4 rounded-2xl text-center border-2 border-coral/30">
+                    <p className="font-fredoka text-2xl font-bold">
+                      🎉 Aventura Completa
                     </p>
+                    <p className="text-sm text-coral font-semibold mt-1">Tudo que seu filho precisa</p>
                   </div>
 
                   {/* Price */}
-                  <div className="text-center space-y-2">
-                    <p className="text-sm text-gray-500 line-through">R$ 289,00</p>
-                    <p className="text-5xl font-bold text-coral">R$ 19<span className="text-3xl">,90</span></p>
-                    <p className="text-sm text-navy font-semibold">ou 3x de R$ 6,63 sem juros</p>
-                    <div className="inline-block bg-mint/20 text-mint px-3 py-1 rounded-full">
-                      <p className="text-xs font-bold">💰 ECONOMIZE R$ 269</p>
+                  <div className="text-center space-y-3">
+                    <p className="text-base text-gray-500 line-through">De R$ 289,00</p>
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-3xl font-bold text-coral">R$</span>
+                      <span className="text-7xl font-bold text-coral">19</span>
+                      <span className="text-4xl font-bold text-coral">,90</span>
+                    </div>
+                    <p className="text-base text-navy font-semibold">ou <span className="text-coral">3x de R$ 6,63</span> sem juros</p>
+                    <div className="inline-block bg-gradient-to-r from-mint to-mint/80 text-white px-5 py-2 rounded-full shadow-lg">
+                      <p className="text-sm font-bold">✨ Economize R$ 269</p>
                     </div>
                   </div>
 
                   {/* What's Included */}
-                  <div className="space-y-3">
-                    <p className="font-nunito font-bold text-navy text-center">
-                      Você recebe TUDO:
+                  <div className="space-y-4">
+                    <p className="font-fredoka font-bold text-navy text-center text-xl">
+                      Tudo isso para vocês:
                     </p>
 
                     <div className="bg-coral/5 rounded-xl p-4 space-y-2">
@@ -243,10 +256,13 @@ export const PricingSection = () => {
                   <Button
                     onClick={handleCheckoutComplete}
                     size="lg"
-                    className="w-full font-nunito font-bold text-base md:text-lg py-7 shadow-2xl hover:shadow-3xl hover:scale-[1.02] transition-all duration-300 bg-gradient-to-r from-coral to-primary hover:from-coral/95 hover:to-primary/95"
+                    className="w-full font-fredoka font-bold text-xl py-8 shadow-2xl hover:shadow-3xl hover:scale-[1.05] transition-all duration-300 bg-gradient-to-r from-coral via-primary to-mint hover:from-coral/95 hover:via-primary/95 hover:to-mint/95"
                   >
-                    Quero o Kit Completo por R$ 19,90!
+                    🎉 Sim! Quero a Aventura Completa
                   </Button>
+                  <p className="text-center text-xs text-gray-500 -mt-2">
+                    ⚡ Acesso imediato • Diversão garantida
+                  </p>
 
                   <div className="space-y-2">
                     <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
@@ -321,33 +337,38 @@ export const PricingSection = () => {
 
               {/* Headline */}
               <div className="text-center space-y-3">
-                <h3 className="font-fredoka text-3xl md:text-4xl font-bold text-navy">
-                  ⚠️ ESPERE!
+                <h3 className="font-fredoka text-3xl md:text-4xl font-bold text-navy leading-tight">
+                  Opa! Tenho uma surpresa pra você ✨
                 </h3>
-                <p className="font-fredoka text-xl md:text-2xl text-coral font-bold">
-                  Oferta Especial Só Para Você
+                <p className="font-fredoka text-lg md:text-xl text-coral font-semibold">
+                  Antes de você ir, deixa eu te contar uma coisa...
                 </p>
               </div>
 
               {/* Offer */}
-              <div className="bg-gradient-to-br from-coral/10 to-mint/10 rounded-2xl p-6 border-2 border-coral/30">
-                <p className="font-nunito text-lg text-center mb-4">
-                  Que tal levar o <span className="font-bold text-coral">Kit COMPLETO</span> com tudo que seu filho precisa?
+              <div className="bg-gradient-to-br from-coral/10 via-mint/10 to-soft-blue/10 rounded-2xl p-6 border-2 border-coral/30">
+                <p className="font-nunito text-lg text-center mb-4 leading-relaxed">
+                  Que tal dar pro seu filho a <span className="font-bold text-coral">experiência completa</span>?
+                  Aquele kit com TUDO que ele precisa pra se apaixonar pela leitura e escrita?
                 </p>
 
-                <div className="text-center space-y-2 mb-4">
-                  <p className="text-sm text-gray-500 line-through">De R$ 19,90</p>
-                  <p className="text-5xl font-bold text-coral">
-                    R$ 14<span className="text-3xl">,90</span>
+                <div className="text-center space-y-3 mb-4">
+                  <p className="text-sm text-gray-500">
+                    <span className="line-through">De R$ 19,90</span> por apenas:
                   </p>
-                  <div className="inline-block bg-mint text-white px-4 py-2 rounded-full">
-                    <p className="text-sm font-bold">ECONOMIZE R$ 5 AGORA</p>
+                  <div className="flex items-baseline justify-center gap-1">
+                    <span className="text-3xl font-bold text-coral">R$</span>
+                    <span className="text-7xl font-bold text-coral">14</span>
+                    <span className="text-4xl font-bold text-coral">,90</span>
+                  </div>
+                  <div className="inline-block bg-gradient-to-r from-mint to-mint/80 text-white px-6 py-3 rounded-full shadow-lg">
+                    <p className="text-base font-bold">✨ Presente exclusivo: R$ 5 de desconto</p>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 space-y-2">
-                  <p className="font-fredoka text-sm text-navy font-bold mb-2">
-                    Por apenas R$ 4,90 a mais você ganha:
+                <div className="bg-white rounded-xl p-5 space-y-3 border-2 border-coral/20">
+                  <p className="font-fredoka text-base text-navy font-bold mb-3 text-center">
+                    Olha só o que você leva por <span className="text-coral">apenas R$ 4,90 a mais</span>:
                   </p>
                   <div className="flex items-start gap-2">
                     <Check className="w-5 h-5 text-coral mt-1 flex-shrink-0" />
@@ -377,40 +398,43 @@ export const PricingSection = () => {
               </div>
 
               {/* Value comparison */}
-              <div className="bg-navy/5 rounded-xl p-4 text-center">
-                <p className="font-nunito text-sm text-navy">
-                  Você estava levando só 1 nível por <span className="font-bold">R$ 10</span>
+              <div className="bg-gradient-to-br from-coral/5 to-mint/5 rounded-2xl p-6 text-center border-2 border-coral/20">
+                <p className="font-nunito text-base text-navy leading-relaxed">
+                  Você ia levar <span className="font-bold">só o primeiro passo</span> por R$ 10...
                 </p>
-                <p className="font-fredoka text-lg text-coral font-bold mt-2">
-                  Agora leva TUDO por apenas R$ 14,90!
+                <p className="font-fredoka text-2xl text-coral font-bold mt-3 mb-2">
+                  Agora leva a jornada INTEIRA por R$ 14,90! 🎉
                 </p>
-                <p className="text-xs text-gray-600 mt-1">
-                  (Economia de R$ 274 vs. preço original de R$ 289)
+                <p className="text-sm text-gray-600">
+                  São centenas de atividades, horas de diversão e desenvolvimento
                 </p>
               </div>
 
               {/* CTA Buttons */}
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <Button
                   onClick={handleCheckoutUpsell}
                   size="lg"
-                  className="w-full font-nunito font-bold text-lg py-7 shadow-2xl hover:shadow-3xl hover:scale-[1.02] transition-all duration-300 bg-gradient-to-r from-coral to-primary"
+                  className="w-full font-fredoka font-bold text-xl py-8 shadow-2xl hover:shadow-3xl hover:scale-[1.05] transition-all duration-300 bg-gradient-to-r from-coral via-primary to-mint"
                 >
-                  🎉 SIM! Quero o Kit Completo por R$ 14,90
+                  ✨ Sim! Quero a Experiência Completa
                 </Button>
+                <p className="text-center text-xs text-coral font-semibold -mt-2">
+                  💝 Presente especial: R$ 14,90 (ao invés de R$ 19,90)
+                </p>
 
                 <button
                   onClick={handleDeclineUpsell}
-                  className="w-full text-sm text-gray-500 hover:text-gray-700 underline py-2"
+                  className="w-full text-sm text-gray-500 hover:text-gray-700 underline py-3 transition-colors"
                 >
-                  Não, quero continuar apenas com o plano básico de R$ 10
+                  Não, vou começar só com o primeiro passo por R$ 10
                 </button>
               </div>
 
               {/* Urgency */}
-              <div className="text-center pt-4 border-t">
-                <p className="text-xs text-gray-500">
-                  ⚠️ Esta oferta de R$ 14,90 só aparece uma vez
+              <div className="text-center pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-600 font-medium">
+                  💌 Este presentinho especial só aparece uma vez
                 </p>
               </div>
 
