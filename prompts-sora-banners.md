@@ -1,102 +1,190 @@
-# Prompts Sora - Banners de Checkout (3:2)
+# Prompts para Banners de Checkout (3:2 - Imagens Estáticas)
 
 ## Boas Práticas Aplicadas:
-- **Aspect Ratio**: 3:2 (ideal para banners de checkout)
-- **Foco em emoção e resultado**: Mostra a transformação, não o produto
-- **Cores quentes e acolhedoras**: Paleta infantil mas elegante
-- **Movimento sutil**: Convida à ação sem distrair
-- **Clareza visual**: Informação digestível em poucos segundos
+- **Aspect Ratio**: 3:2 (1500x1000px ideal para checkout)
+- **Foco em emoção e resultado**: Mostra a transformação, não apenas o produto
+- **Cores quentes e acolhedoras**: Paleta infantil mas elegante (coral, mint, navy, beige)
+- **Composição limpa**: Espaço para texto/CTA sem poluição visual
+- **Alta qualidade**: Professional stock photo quality, 4K
+- **Autenticidade**: Emoções genuínas, não poses forçadas
 
 ---
 
 ## 1. Banner R$ 19,90 - Kit Completo (Oferta Principal)
 
-**Prompt para Sora:**
+**Prompt para Midjourney/DALL-E:**
 
 ```
-Create a warm, inviting 3:2 aspect ratio video banner showing a bright, cozy home setting. A young child (4-6 years old) sits at a wooden table with colorful educational worksheets spread out, their face lighting up with joy as they trace letters with a pencil. Soft morning sunlight streams through a window, creating a gentle, hopeful atmosphere. The child looks up and smiles proudly, pointing at a word they just read. Camera slowly pushes in slightly. Color palette: soft coral, mint green, navy blue, warm beige. Cinematic, shallow depth of field, professional commercial quality. No text overlays. Duration: 5-8 seconds.
+A heartwarming scene of a young child (4-6 years old) sitting at a clean wooden table, smiling proudly while pointing at a colorful educational worksheet with letters and drawings. Soft morning sunlight streams from the left, creating a warm, hopeful atmosphere. The child's face shows genuine joy and accomplishment. Colorful worksheets visible on table with coral, mint green, and navy blue accents. Background is softly blurred showing a cozy home setting. Professional commercial photography, shallow depth of field, natural lighting, 3:2 aspect ratio, 4K quality, stock photo aesthetic. Clean composition with negative space on the right side for text overlay. --ar 3:2 --style raw --quality 2
 ```
 
-**Versão em Português:**
+**Versão Midjourney Simplificada:**
 ```
-Crie um banner em vídeo 3:2 acolhedor e caloroso mostrando um ambiente doméstico claro e confortável. Uma criança pequena (4-6 anos) está sentada em uma mesa de madeira com folhas de atividades coloridas espalhadas, seu rosto se iluminando de alegria enquanto traça letras com um lápis. Luz suave da manhã entra pela janela, criando uma atmosfera gentil e esperançosa. A criança olha para cima e sorri orgulhosa, apontando para uma palavra que acabou de ler. Câmera se aproxima sutilmente. Paleta de cores: coral suave, verde menta, azul marinho, bege quente. Cinematográfico, profundidade de campo rasa, qualidade comercial profissional. Sem textos. Duração: 5-8 segundos.
+Happy 5 year old child at wooden table pointing proudly at colorful alphabet worksheet, soft morning light from window, coral mint and navy colors, cozy home background blurred, professional stock photo, clean composition with right side empty for text, joyful authentic expression, 3:2 --ar 3:2 --v 6 --style raw
+```
+
+**Versão DALL-E 3:**
+```
+Professional stock photograph, 3:2 aspect ratio. A joyful young child (5 years old) sits at a clean wooden table in a bright home setting, pointing proudly at a colorful educational worksheet with letters. Soft natural window light from the left creates a warm atmosphere. The child shows genuine happiness and accomplishment. Colorful worksheets in coral, mint green, and navy blue visible on table. Background softly blurred showing cozy home. Clean composition with empty space on right third for text overlay. High quality, shallow depth of field, authentic emotion.
 ```
 
 ---
 
 ## 2. Banner R$ 10,00 - Kit Primeiros Passos (Oferta Básica)
 
-**Prompt para Sora:**
+**Prompt para Midjourney/DALL-E:**
 
 ```
-Create a simple, authentic 3:2 aspect ratio video banner showing a close-up of small child's hands holding a colorful alphabet worksheet. The hands carefully trace a large letter with a crayon, showing concentration and early learning. Natural window light from the side. Background slightly blurred showing a simple home table with one or two crayons. Warm, accessible feeling - not too polished, relatable and real. Color palette: soft pastels, warm natural tones. The child looks up briefly with a small smile of accomplishment. Camera stays steady with gentle micro-movements. Commercial quality but feels authentic and approachable. No text overlays. Duration: 5-8 seconds.
+Close-up shot of small child's hands carefully tracing a large letter on a simple alphabet worksheet with a crayon. Natural window light illuminates the scene from the side. Simple wooden table surface, one or two colorful crayons visible. Authentic, relatable moment of early learning and concentration. Warm, accessible feeling - not too polished. Soft pastel colors: light coral, mint, beige tones. Background minimally blurred showing simple home environment. Professional photography but feels genuine and approachable. Clean left side for text overlay. 3:2 aspect ratio, 4K quality. --ar 3:2 --style raw --quality 2
 ```
 
-**Versão em Português:**
+**Versão Midjourney Simplificada:**
 ```
-Crie um banner em vídeo 3:2 simples e autêntico mostrando um close das mãos pequenas de uma criança segurando uma folha de alfabeto colorida. As mãos traçam cuidadosamente uma letra grande com um lápis de cera, mostrando concentração e aprendizado inicial. Luz natural da janela lateral. Fundo levemente desfocado mostrando uma mesa simples de casa com um ou dois lápis. Sensação calorosa e acessível - não muito polido, relacionável e real. Paleta de cores: pastéis suaves, tons naturais quentes. A criança olha para cima brevemente com um pequeno sorriso de conquista. Câmera permanece estável com micro-movimentos gentis. Qualidade comercial mas autêntico e acessível. Sem textos. Duração: 5-8 seconds.
+Close up child's hands tracing large letter on simple alphabet worksheet with crayon, natural side light, wooden table, warm accessible feeling, soft pastels coral mint beige, clean authentic not overly polished, professional stock photo, left side empty for text overlay, 3:2 --ar 3:2 --v 6 --style raw
+```
+
+**Versão DALL-E 3:**
+```
+Professional stock photograph, 3:2 aspect ratio. Close-up of young child's small hands carefully tracing a large colorful letter on an alphabet worksheet using a crayon. Natural window light from the side. Simple wooden table with one or two crayons. Shows concentration and early learning moment. Warm, authentic, accessible feeling - genuine not overly polished. Soft pastel colors: coral, mint, beige. Background gently blurred showing simple home setting. Clean composition with left third empty for text overlay. High quality, approachable aesthetic.
 ```
 
 ---
 
 ## 3. Banner R$ 14,90 - Oferta Especial Popup/Última Chance (Urgência)
 
-**Prompt para Sora:**
+**Prompt para Midjourney/DALL-E:**
 
 ```
-Create an energetic, exciting 3:2 aspect ratio video banner showing a child's delighted reaction. Start with the child looking at a colorful activity book on a table, then their eyes widen with excitement and they break into a big genuine smile. Parent's hand enters frame from the side, gently pointing at the page, sharing the joy. Warm, golden-hour lighting creates sense of special moment. Quick but smooth camera movement - slight zoom in to capture the emotional peak. Color palette: vibrant coral, energetic mint, warm gold highlights. Feels like discovering something amazing. High energy but warm. Professional commercial quality with cinematic color grading. No text overlays. Duration: 5-8 seconds.
+Dynamic composition showing a child's delighted face looking up with wide excited eyes and big genuine smile while discovering something amazing in a colorful activity book on table. Parent's hand visible entering frame from side, finger pointing at the page, sharing the excitement. Warm golden-hour lighting creates sense of special moment and opportunity. Vibrant but warm colors: energetic coral, bright mint, golden highlights. The child's expression captures that "aha!" moment of discovery. Professional commercial photography, bokeh background, high energy but warm atmosphere. Clean top portion for text overlay. 3:2 aspect ratio, 4K quality. --ar 3:2 --style raw --quality 2
 ```
 
-**Versão em Português:**
+**Versão Midjourney Simplificada:**
 ```
-Crie um banner em vídeo 3:2 energético e emocionante mostrando a reação encantada de uma criança. Comece com a criança olhando para um caderno de atividades colorido na mesa, então seus olhos se arregalam de empolgação e ela abre um grande sorriso genuíno. Mão do pai/mãe entra no quadro pela lateral, apontando gentilmente para a página, compartilhando a alegria. Iluminação quente de golden-hour cria sensação de momento especial. Movimento de câmera rápido mas suave - zoom sutil para capturar o pico emocional. Paleta de cores: coral vibrante, menta energético, destaques dourados quentes. Sensação de descobrir algo incrível. Alta energia mas caloroso. Qualidade comercial profissional com color grading cinematográfico. Sem textos. Duração: 5-8 segundos.
+Excited child looking up with wide eyes and big smile at colorful activity book, parent's hand pointing at page sharing joy, warm golden hour light, vibrant coral mint and gold colors, aha moment of discovery, high energy warm atmosphere, professional stock photo, bokeh background, top area empty for text, 3:2 --ar 3:2 --v 6 --style raw
+```
+
+**Versão DALL-E 3:**
+```
+Professional stock photograph, 3:2 aspect ratio. A young child looking up with wide excited eyes and a big genuine smile while discovering something in a colorful educational activity book on a table. Parent's hand entering frame from the side, pointing at the page, sharing the excitement. Warm golden-hour lighting creates a special moment feeling. Vibrant but warm colors: coral, bright mint, golden highlights. Child's face shows authentic "aha!" moment. Professional commercial quality, blurred background with bokeh effect. High energy yet warm atmosphere. Clean space in top third for text overlay.
 ```
 
 ---
 
 ## 4. Banner R$ 9,90 - Upgrade da Área de Membros (Complemento)
 
-**Prompt para Sora:**
+**Prompt para Midjourney/DALL-E:**
 
 ```
-Create an inspiring, progressive 3:2 aspect ratio video banner showing a child's learning journey. Two or three colorful activity worksheets are laid out on a clean white table, showing progression from simple to more complex. A child's hand enters frame and confidently points to words on the advanced worksheet, then picks it up with pride. Soft, even lighting from above. Camera slowly pans across the worksheets showing the progression, then focuses on the child's confident gesture. Color palette: fresh mint green, encouraging coral, clean whites. Feels like natural next step, growth, and achievement. Calm but motivating energy. Professional commercial quality. No text overlays. Duration: 5-8 seconds.
+Inspiring composition showing progression: two or three colorful educational worksheets laid out on a clean white table, showing clear visual progression from simple (left) to more advanced (right). A child's hand confidently pointing at or holding the advanced worksheet with pride. Top-down angled shot. Soft, even natural lighting from above. Fresh, clean aesthetic with mint green and coral accents on the worksheets. White or light wood table surface. Feels like natural next step, growth, achievement. Professional product photography style but warm and inviting. Calm but motivating energy. Bottom portion clean for text overlay. 3:2 aspect ratio, 4K quality. --ar 3:2 --style raw --quality 2
 ```
 
-**Versão em Português:**
+**Versão Midjourney Simplificada:**
 ```
-Crie um banner em vídeo 3:2 inspirador e progressivo mostrando a jornada de aprendizado de uma criança. Duas ou três folhas de atividades coloridas estão dispostas em uma mesa branca limpa, mostrando progressão do simples ao mais complexo. A mão de uma criança entra no quadro e aponta confiantemente para palavras na folha avançada, depois a pega com orgulho. Iluminação suave e uniforme de cima. Câmera desliza lentamente pelas folhas mostrando a progressão, depois foca no gesto confiante da criança. Paleta de cores: verde menta fresco, coral encorajador, brancos limpos. Sensação de próximo passo natural, crescimento e conquista. Energia calma mas motivadora. Qualidade comercial profissional. Sem textos. Duração: 5-8 segundos.
+Top down view three colorful worksheets on white table showing progression simple to advanced, child's hand confidently holding advanced worksheet, soft even lighting from above, fresh clean aesthetic, mint coral accents, professional product photo style, calm motivating energy, natural next step feeling, bottom area empty for text, 3:2 --ar 3:2 --v 6 --style raw
+```
+
+**Versão DALL-E 3:**
+```
+Professional stock photograph, 3:2 aspect ratio. Top-down angled view of three colorful educational worksheets laid out on a clean white table, showing clear progression from simple (left) to more advanced (right). Young child's hand confidently pointing at or holding the advanced worksheet with pride. Soft, even natural lighting from above. Fresh, clean aesthetic with mint green and coral accents. White table surface. Conveys natural progression, growth, and achievement. Professional product photography style, warm and inviting. Calm but motivating atmosphere. Clean space in bottom third for text overlay.
 ```
 
 ---
 
-## Especificações Técnicas para Todos os Banners:
+## Especificações Técnicas:
 
-- **Aspect Ratio**: 3:2 (1500x1000px ou 1800x1200px)
-- **Duração**: 5-8 segundos (ideal para banners de checkout)
-- **Qualidade**: 4K, comercial profissional
-- **Movimento**: Sutil, não distrai da decisão de compra
-- **Áudio**: Opcional (recomenda-se sem áudio ou música ambiente muito baixa)
-- **Loop**: Deve poder fazer loop suave se necessário
-- **Peso do arquivo**: Otimizar para web (máx 5MB se possível)
+### Dimensões Recomendadas:
+- **Resolução**: 1500x1000px ou 1800x1200px (3:2)
+- **Formato**: JPG (otimizado) ou PNG (se precisar transparência)
+- **Peso**: Máximo 300KB para web (use compressão)
+- **DPI**: 72 para web, 300 se for imprimir
 
-## Estratégia de Uso:
+### Composição:
+- **Espaço para texto**: Cada banner tem área específica limpa (direita/esquerda/topo/baixo)
+- **Regra dos terços**: Elementos principais posicionados estrategicamente
+- **Hierarquia visual**: Foco no rosto/mãos da criança, secundário nos materiais
 
-1. **R$ 19,90**: Transformação completa, criança realizando o sonho de ler
-2. **R$ 10,00**: Acessível, primeiro passo, relatable, sem pressão
-3. **R$ 14,90**: Urgência positiva, momento especial, "descoberta incrível"
-4. **R$ 9,90**: Progressão natural, próximo nível, confiança crescente
+### Cores da Paleta (para consistência):
+```
+Coral: #FF6B6B, #FA8072
+Mint: #51CF66, #4ECDC4
+Navy: #1A365D, #2D3748
+Beige: #F5E6D3, #FFF4E6
+```
+
+---
+
+## Estratégia de Uso por Oferta:
+
+### 1. **R$ 19,90 - Kit Completo**
+- **Emoção**: Realização, orgulho, transformação completa
+- **Composição**: Rosto da criança visível, sorriso genuíno
+- **Espaço texto**: Lado direito
+- **Mensagem visual**: "Ele já consegue ler!"
+
+### 2. **R$ 10,00 - Primeiros Passos**
+- **Emoção**: Concentração, primeiro passo, acessível
+- **Composição**: Close nas mãos, mais intimista
+- **Espaço texto**: Lado esquerdo
+- **Mensagem visual**: "Começando a jornada"
+
+### 3. **R$ 14,90 - Oferta Especial**
+- **Emoção**: Descoberta, empolgação, momento especial
+- **Composição**: Expressão facial marcante, energia
+- **Espaço texto**: Topo
+- **Mensagem visual**: "Não perca essa chance!"
+
+### 4. **R$ 9,90 - Upgrade**
+- **Emoção**: Progresso, confiança, próximo nível
+- **Composição**: Vista superior, mostra evolução
+- **Espaço texto**: Base
+- **Mensagem visual**: "Evolua para o próximo nível"
+
+---
+
+## Ferramentas Recomendadas:
+
+### Geração de Imagens:
+1. **Midjourney v6** (melhor qualidade fotográfica)
+2. **DALL-E 3** (ótimo para seguir instruções detalhadas)
+3. **Adobe Firefly** (comercialmente seguro)
+4. **Ideogram** (bom para composições específicas)
+
+### Edição/Otimização:
+1. **Photoshop** - ajustes finais de cor/contraste
+2. **Canva** - adicionar texto/CTA se necessário
+3. **TinyPNG** - compressão sem perda de qualidade
+4. **Squoosh** - otimização para web
+
+---
+
+## Checklist Antes de Usar:
+
+✅ Imagem em 3:2 (1500x1000px mínimo)
+✅ Espaço limpo para texto no local especificado
+✅ Cores alinhadas com paleta da marca
+✅ Emoção autêntica e clara
+✅ Peso otimizado (< 300KB)
+✅ Alta qualidade mas carrega rápido
+✅ Funciona bem em mobile (elementos não muito pequenos)
+✅ Não tem textos/marcas d'água de stock photos
+
+---
 
 ## Testes A/B Sugeridos:
 
-Após gerar os vídeos, considere testar:
-- Versão com criança sorrindo vs. concentrada
-- Close nas mãos vs. rosto da criança
-- Luz natural vs. luz dourada
-- Movimento de câmera vs. estático
+Após ter os banners, teste:
+- **Variação 1**: Foco no rosto vs. foco nas mãos
+- **Variação 2**: Criança sozinha vs. com pai/mãe
+- **Variação 3**: Luz natural vs. luz dourada
+- **Variação 4**: Close up vs. plano mais aberto
+- **Variação 5**: Diferentes etnias de crianças
 
-## Observações Importantes:
+---
 
-- **Sem texto nos vídeos**: Deixe espaço para sobreposição de texto na implementação
-- **Diversidade**: Considere gerar versões com crianças de diferentes etnias
-- **Autenticidade**: Movimentos naturais, não ensaiados demais
-- **Emoção genuína**: Foco em micro-expressões reais de alegria/concentração
+## Observações Finais:
+
+- **Direitos autorais**: Use apenas imagens com licença comercial
+- **Diversidade**: Considere versões com crianças de diferentes etnias
+- **Consistência**: Mantenha estilo visual similar entre os 4 banners
+- **Mobile-first**: Teste como ficam em telas pequenas
+- **Loading speed**: Priorize otimização, conversão depende de velocidade
