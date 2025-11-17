@@ -11,18 +11,18 @@ export const PricingSection = () => {
   };
 
   const handleCheckoutComplete = () => {
-    window.location.href = "https://www.ggcheckout.com/checkout/v2/50wDz3HYenjVvuvmY2Zv";
+    window.location.href = "https://www.ggcheckout.com/checkout/v2/nhcfJQlNTgBMskQSAwuO";
   };
 
   const handleCheckoutUpsell = () => {
     // Link para checkout do plano completo com desconto (R$ 14,90)
-    window.location.href = "https://www.ggcheckout.com/checkout/v2/50wDz3HYenjVvuvmY2Zv";
+    window.location.href = "https://www.ggcheckout.com/checkout/v2/mZ4tAdEPoqODH2pv5E41";
   };
 
   const handleDeclineUpsell = () => {
     setShowUpsellPopup(false);
     // Link para checkout do plano básico (R$ 10,00)
-    window.location.href = "https://www.ggcheckout.com/checkout/v2/LINK_BASICO_AQUI";
+    window.location.href = "https://www.ggcheckout.com/checkout/v2/5v91ZpXfas3NXmAaW6DN";
   };
 
   return (

@@ -13,6 +13,7 @@ import Upsell from "./pages/Upsell";
 import UpsellAnalisador from "./pages/UpsellAnalisador";
 import FormularioPlano from "./pages/FormularioPlano";
 import Gerador from "./pages/Gerador";
+import UltimaChance from "./pages/UltimaChance";
 import NotFound from "./pages/NotFound";
 
 // CRÍTICO: QueryClient DEVE ser criado fora do componente
@@ -44,6 +45,7 @@ const App = () => (
           <Route path="/analisador" element={<UpsellAnalisador />} />
           <Route path="/formulario" element={<FormularioPlano />} />
           <Route path="/gerador" element={<Gerador />} />
+          <Route path="/ultima-chance" element={<UltimaChance />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

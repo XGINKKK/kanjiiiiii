@@ -213,11 +213,11 @@ const Simples = memo(() => {
             </div>
 
             <Button
-              onClick={() => window.location.href = 'https://www.ggcheckout.com/checkout/v2/50wDz3HYenjVvuvmY2Zv'}
+              onClick={() => window.location.href = 'https://www.ggcheckout.com/checkout/v2/mZ4tAdEPoqODH2pv5E41'}
               size="lg"
-              className="font-fredoka font-bold text-xl px-12 py-8 bg-gradient-to-r from-coral via-primary to-mint hover:from-coral/95 hover:via-primary/95 hover:to-mint/95 shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300"
+              className="font-fredoka font-bold text-base md:text-xl px-8 md:px-12 py-6 md:py-8 bg-gradient-to-r from-coral via-primary to-mint hover:from-coral/95 hover:via-primary/95 hover:to-mint/95 shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300"
             >
-              ✨ Fazer Upgrade por R$ 9,90
+              ✨ Upgrade por R$ 9,90
             </Button>
 
             <p className="text-xs text-foreground/50 mt-4">
