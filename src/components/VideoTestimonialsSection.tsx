@@ -87,14 +87,11 @@ export const VideoTestimonialsSection = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-12">
-          <h2 className="font-fredoka text-3xl md:text-4xl lg:text-5xl font-bold text-navy mb-3">
-            Veja o que mães reais
+          <h2 className="font-fredoka text-3xl md:text-4xl lg:text-5xl font-bold text-navy mb-4 leading-tight">
+            "Meu filho pede para fazer as atividades"
           </h2>
-          <h3 className="font-fredoka text-2xl md:text-3xl lg:text-4xl font-bold text-coral mb-4">
-            estão dizendo sobre o Kit Kanji Kids!
-          </h3>
-          <p className="font-inter text-base text-foreground/70">
-            📹 Assista aos depoimentos em vídeo abaixo
+          <p className="font-nunito text-xl md:text-2xl text-foreground/60 max-w-2xl mx-auto">
+            Ouça de mães que vivem isso todos os dias
           </p>
         </div>
 
@@ -107,37 +104,18 @@ export const VideoTestimonialsSection = () => {
           </div>
         </div>
 
-        {/* Description */}
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg border-2 border-mint/20 p-6 mb-8">
-          <div className="flex items-start gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-coral to-accent rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="text-2xl">📹</span>
-            </div>
-            <div>
-              <h4 className="font-fredoka font-bold text-navy text-lg mb-2">
-                Depoimentos 100% Reais
-              </h4>
-              <p className="font-inter text-sm text-foreground/80 leading-relaxed">
-                Estes são vídeos de mães que estão usando o Kit Kanji Kids com seus filhos.
-                Sem edição, sem roteiro - apenas experiências verdadeiras de transformação na alfabetização!
-                Clique para assistir e se inspire com essas histórias reais.
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* Trust Badge */}
-        <div className="text-center space-y-6">
-          <p className="font-nunito text-lg text-muted-foreground">
-            ⭐ Mais de <span className="font-bold text-navy">15.000 famílias</span> já confiaram no método
+        <div className="text-center space-y-6 max-w-2xl mx-auto">
+          <p className="font-nunito text-lg text-foreground/60">
+            Mais de 15 mil famílias já vivem essa experiência
           </p>
           <Button
             onClick={scrollToPricing}
             variant="hero"
             size="lg"
-            className="font-nunito font-bold text-base md:text-lg px-8 md:px-12"
+            className="font-fredoka font-bold text-lg px-10 py-6"
           >
-            Quero resultados como esses!
+            Quero isso para o meu filho
           </Button>
         </div>
       </div>

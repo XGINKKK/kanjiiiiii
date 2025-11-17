@@ -257,34 +257,30 @@ const IndexSimple = memo(() => {
           </div>
 
           {/* Logo/Badge */}
-          <div className="inline-block bg-coral/10 border-2 border-coral px-6 py-2 rounded-full">
-            <p className="font-nunito font-bold text-coral text-sm md:text-base">TÉCNICA JAPONESA</p>
+          <div className="inline-block bg-white border border-coral/20 px-6 py-2 rounded-full shadow-sm">
+            <p className="font-nunito font-semibold text-coral text-sm md:text-base">Método Japonês Adaptado</p>
           </div>
 
           {/* Headline Principal - COPY ÚNICA */}
-          <h1 className="font-fredoka text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-navy">
-            Seu filho <span className="text-coral">lendo e escrevendo</span> até{" "}
-            <span className="text-coral">5x mais rápido</span> com apenas 10 minutos por dia
+          <h1 className="font-fredoka text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-navy max-w-4xl mx-auto">
+            E se aprender a ler e escrever fosse a parte favorita do dia do seu filho?
           </h1>
 
           {/* Subheadline */}
-          <p className="font-nunito text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto">
-            Desenvolve leitura, escrita, coordenação e concentração brincando!
+          <p className="font-nunito text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+            Descubra como crianças de 2 a 12 anos estão desenvolvendo amor pela leitura
+            em apenas 10 minutos diários - sem pressão, sem tédio, só descoberta.
           </p>
 
-          {/* Benefícios rápidos com ícones */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-2xl mx-auto pt-4">
+          {/* Benefícios rápidos - mais clean */}
+          <div className="flex flex-wrap justify-center gap-4 max-w-2xl mx-auto pt-4">
             {[
-              "Crianças de 2 a 12 anos",
-              "400+ atividades prontas",
-              "Funciona com TDAH e Autismo",
-              "Acesso vitalício",
+              "Resultados em semanas",
+              "Funciona até com TDAH",
+              "Seu para sempre",
             ].map((benefit, index) => (
-              <div key={index} className="flex items-center gap-2 text-left bg-white/50 rounded-lg p-3">
-                <div className="w-5 h-5 rounded-full bg-mint flex items-center justify-center flex-shrink-0">
-                  <Check className="w-3 h-3 text-white" />
-                </div>
-                <p className="font-inter text-sm md:text-base text-foreground/90">{benefit}</p>
+              <div key={index} className="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+                <p className="font-nunito text-sm text-navy font-medium">{benefit}</p>
               </div>
             ))}
           </div>
@@ -292,13 +288,13 @@ const IndexSimple = memo(() => {
       </section>
 
       {/* VSL SECTION - Paradise Player 9:16 */}
-      <section className="py-12 px-4 bg-gradient-to-b from-white to-soft-blue/10">
+      <section className="py-16 px-4 bg-gradient-to-b from-white to-soft-blue/10">
         <div className="max-w-2xl mx-auto text-center space-y-6">
-          <h2 className="font-fredoka text-2xl md:text-3xl lg:text-4xl font-bold text-navy">
-            Veja como funciona na prática e ganhe um presente incrível!
+          <h2 className="font-fredoka text-3xl md:text-4xl font-bold text-navy leading-tight">
+            Veja uma mãe mostrando como funciona (e por que as crianças pedem para fazer)
           </h2>
-          <p className="font-nunito text-base md:text-lg text-foreground/70">
-            Descubra o segredo que está transformando a alfabetização de milhares de crianças
+          <p className="font-nunito text-lg md:text-xl text-foreground/60 max-w-xl mx-auto">
+            Em 3 minutos você vai entender por que mais de 15 mil famílias escolheram este caminho
           </p>
 
           {/* Paradise Player 9:16 */}

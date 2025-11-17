@@ -22,15 +22,15 @@ export const GuaranteeSection = () => {
               </div>
 
               {/* Title */}
-              <h2 className="font-fredoka text-3xl md:text-4xl lg:text-5xl font-bold text-navy">
-                Garantia Incondicional de 7 Dias
+              <h2 className="font-fredoka text-3xl md:text-4xl lg:text-5xl font-bold text-navy leading-tight">
+                Experimente por 7 dias. Se não funcionar, devolvemos seu dinheiro.
               </h2>
 
               {/* Description */}
               <div className="max-w-2xl mx-auto space-y-4">
-                <p className="font-nunito text-lg md:text-xl text-foreground/90 leading-relaxed">
-                  Você tem <span className="font-bold text-mint">7 dias de garantia incondicional</span>.
-                  Se por qualquer motivo sentir que o Kit Kanji Kids não foi pra você, basta enviar uma mensagem para:
+                <p className="font-nunito text-lg md:text-xl text-foreground/70 leading-relaxed">
+                  Use o kit com seu filho por uma semana inteira. Se você não ver o brilho nos olhos dele,
+                  se não perceber a vontade de aprender crescendo... basta nos avisar:
                 </p>
 
                 {/* Email Badge */}
@@ -44,31 +44,29 @@ export const GuaranteeSection = () => {
                   </a>
                 </div>
 
-                <p className="font-nunito text-lg md:text-xl text-foreground/90 leading-relaxed">
-                  e devolvemos <span className="font-bold text-mint">100% do seu dinheiro</span>.
-                  Simples assim.
+                <p className="font-nunito text-lg md:text-xl text-foreground/70 leading-relaxed">
+                  E pronto. Devolvemos cada centavo. Sem burocracia, sem perguntas difíceis.
                 </p>
 
                 {/* Risk Badge */}
-                <div className="pt-4">
-                  <div className="inline-block bg-gradient-to-r from-mint to-mint/80 text-white px-8 py-4 rounded-2xl shadow-lg">
-                    <p className="font-fredoka text-xl md:text-2xl font-bold">
-                      O risco é todo nosso.
+                <div className="pt-6">
+                  <div className="inline-block bg-gradient-to-r from-mint to-mint/80 text-white px-8 py-5 rounded-2xl shadow-lg">
+                    <p className="font-fredoka text-2xl md:text-3xl font-bold">
+                      Zero risco para você
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Trust Badges */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8">
+              {/* Trust Badges - mais clean */}
+              <div className="flex flex-wrap justify-center gap-4 pt-8">
                 {[
-                  { icon: "✅", text: "Sem perguntas" },
-                  { icon: "⚡", text: "Reembolso rápido" },
-                  { icon: "🛡️", text: "100% garantido" }
-                ].map((badge, index) => (
-                  <div key={index} className="flex flex-col items-center gap-2 p-4 bg-mint/5 rounded-xl border border-mint/20">
-                    <span className="text-3xl">{badge.icon}</span>
-                    <span className="font-nunito text-sm font-semibold text-navy">{badge.text}</span>
+                  "Sem perguntas difíceis",
+                  "Reembolso em 24h",
+                  "Você decide"
+                ].map((text, index) => (
+                  <div key={index} className="bg-white px-5 py-2 rounded-full border border-mint/20 shadow-sm">
+                    <span className="font-nunito text-sm font-medium text-navy">{text}</span>
                   </div>
                 ))}
               </div>
