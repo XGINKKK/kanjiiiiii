@@ -185,9 +185,9 @@ const UltimaChance = memo(() => {
                 <Button
                   onClick={handleCheckout}
                   size="lg"
-                  className="w-full font-fredoka font-bold text-xl md:text-2xl px-12 py-8 md:py-10 bg-gradient-to-r from-coral via-primary to-mint hover:from-coral/90 hover:via-primary/90 hover:to-mint/90 shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300"
+                  className="w-full font-fredoka font-bold text-base md:text-xl lg:text-2xl px-6 md:px-10 lg:px-12 py-6 md:py-8 lg:py-10 bg-gradient-to-r from-coral via-primary to-mint hover:from-coral/90 hover:via-primary/90 hover:to-mint/90 shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300"
                 >
-                  🎉 SIM! Quero o Kit Completo por R$ 14,90
+                  🎉 SIM! Quero o Kit Completo
                 </Button>
                 <p className="text-center text-sm text-foreground/60">
                   ⚡ Acesso imediato • Garantia de 7 dias • Pagamento 100% seguro
