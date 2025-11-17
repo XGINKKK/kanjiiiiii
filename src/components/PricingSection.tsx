@@ -1,251 +1,423 @@
 import { Button } from "@/components/ui/button";
-import { Check, Lock } from "lucide-react";
+import { Check, Lock, X, Sparkles } from "lucide-react";
+import { useState } from "react";
 
 export const PricingSection = () => {
-  const handleCheckout = () => {
+  const [showUpsellPopup, setShowUpsellPopup] = useState(false);
+
+  const handleCheckoutBasic = () => {
+    // Mostrar popup de upsell antes de ir para checkout básico
+    setShowUpsellPopup(true);
+  };
+
+  const handleCheckoutComplete = () => {
     window.location.href = "https://www.ggcheckout.com/checkout/v2/50wDz3HYenjVvuvmY2Zv";
   };
 
+  const handleCheckoutUpsell = () => {
+    // Link para checkout do plano completo com desconto (R$ 14,90)
+    window.location.href = "https://www.ggcheckout.com/checkout/v2/50wDz3HYenjVvuvmY2Zv";
+  };
+
+  const handleDeclineUpsell = () => {
+    setShowUpsellPopup(false);
+    // Link para checkout do plano básico (R$ 10,00)
+    window.location.href = "https://www.ggcheckout.com/checkout/v2/LINK_BASICO_AQUI";
+  };
+
   return (
-    <section id="pricing" className="py-20 bg-gradient-to-br from-soft-blue/20 via-background to-pink-soft/10 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-10 right-10 opacity-10">
-        <div className="text-8xl">🎁</div>
-      </div>
+    <>
+      <section id="pricing" className="py-20 bg-gradient-to-br from-soft-blue/20 via-background to-pink-soft/10 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-10 right-10 opacity-10">
+          <div className="text-8xl">🎁</div>
+        </div>
 
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
 
-          {/* Pre-headline */}
-          <div className="text-center mb-8">
-            <p className="font-nunito text-lg md:text-xl text-muted-foreground">
-              Oferta Especial de Lançamento
-            </p>
-          </div>
+            {/* Pre-headline */}
+            <div className="text-center mb-8">
+              <p className="font-nunito text-lg md:text-xl text-muted-foreground">
+                Escolha o plano ideal para seu filho
+              </p>
+            </div>
 
-          {/* Main Title */}
-          <h2 className="font-fredoka text-2xl md:text-4xl lg:text-5xl font-bold text-navy text-center mb-12 leading-tight px-4">
-            Quanto vale ver seu filho lendo, escrevendo e se desenvolvendo com confiança?
-          </h2>
+            {/* Main Title */}
+            <h2 className="font-fredoka text-2xl md:text-4xl lg:text-5xl font-bold text-navy text-center mb-12 leading-tight px-4">
+              Quanto vale ver seu filho lendo, escrevendo e se desenvolvendo com confiança?
+            </h2>
 
-          {/* Pricing Card */}
-          <div className="bg-card border-4 border-primary/30 rounded-3xl p-8 md:p-12 shadow-2xl relative">
+            {/* Two Pricing Cards */}
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
 
-            <div className="space-y-8">
+              {/* PLANO BÁSICO - R$ 10,00 */}
+              <div className="bg-card border-2 border-gray-300 rounded-3xl p-6 md:p-8 shadow-lg relative">
+                <div className="space-y-6">
 
-              {/* Black Friday Badge - INSIDE CARD */}
-              <div className="bg-gradient-to-r from-coral to-primary text-white px-4 md:px-6 py-4 md:py-5 rounded-2xl shadow-xl -mx-4 md:-mx-8 -mt-4 md:-mt-8 mb-6">
-                <div className="text-center">
-                  <p className="font-fredoka text-lg md:text-2xl font-bold mb-1">
-                    🔥 BLACK FRIDAY - NOVEMBRO 🔥
-                  </p>
-                  <p className="font-nunito text-sm md:text-base opacity-90">
-                    Desconto especial de lançamento • Depois volta para <span className="font-bold line-through">R$ 289,00</span>
-                  </p>
-                </div>
-              </div>
-
-              {/* Value Stack */}
-              <div className="space-y-3">
-                <h3 className="font-nunito text-xl md:text-2xl font-bold text-navy text-center mb-6">
-                  Você recebe TUDO isso:
-                </h3>
-
-                <p className="font-fredoka text-lg text-coral text-center font-bold mb-4">
-                  📦 KIT PRINCIPAL:
-                </p>
-
-                {[
-                  { item: "+ de 400 Atividades de Grafismo Fonético", value: "R$ 67,00" },
-                  { item: "Atividades Nível 01 - Palavras com 02 Sílabas", value: "R$ 27,00" },
-                  { item: "Atividades Nível 02 - Palavras com 03 Sílabas", value: "R$ 27,00" },
-                  { item: "Atividades Nível 03 - Palavras com 04 Sílabas", value: "R$ 27,00" },
-                  { item: "Atividades Grafismo - Cursiva e Bastão", value: "R$ 37,00" },
-                  { item: "Guia Completo para Pais", value: "R$ 47,00" },
-                  { item: "Método Visual Japonês Adaptado", value: "R$ 57,00" },
-                ].map((line, index) => (
-                  <div key={index} className="flex justify-between items-center py-2 border-b border-border/30">
-                    <div className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-success mt-1 flex-shrink-0" />
-                      <span className="font-inter text-sm md:text-base text-foreground/90">
-                        {line.item}
-                      </span>
-                    </div>
-                    <span className="font-nunito font-semibold text-primary text-xs md:text-sm whitespace-nowrap ml-4">
-                      {line.value}
-                    </span>
+                  {/* Badge */}
+                  <div className="bg-gray-100 text-gray-700 px-4 py-2 rounded-xl text-center">
+                    <p className="font-fredoka text-lg font-bold">
+                      Plano Básico
+                    </p>
                   </div>
-                ))}
 
-                <p className="font-fredoka text-lg text-mint text-center font-bold mb-4 mt-6">
-                  🎁 6 SUPER BÔNUS:
-                </p>
-
-                {[
-                  { item: "Caderno Alfabeto com Imagem", value: "R$ 37,00" },
-                  { item: "Caderno Quebra Cabeça Alfabeto", value: "R$ 47,00" },
-                  { item: "Caderno Formando Palavras", value: "R$ 57,00" },
-                  { item: "Caderno Alfabeto com Relógio", value: "R$ 39,00" },
-                  { item: "Caderno Alfabeto Traçado", value: "R$ 27,00" },
-                  { item: "Caderno Alfabeto com Carinhas", value: "R$ 49,00" },
-                ].map((line, index) => (
-                  <div key={index} className="flex justify-between items-center py-2 border-b border-border/30 bg-mint/5">
-                    <div className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-mint mt-1 flex-shrink-0" />
-                      <span className="font-inter text-sm md:text-base text-foreground/90">
-                        {line.item}
-                      </span>
-                    </div>
-                    <span className="font-nunito font-semibold text-mint text-xs md:text-sm whitespace-nowrap ml-4">
-                      {line.value}
-                    </span>
+                  {/* Price */}
+                  <div className="text-center space-y-2">
+                    <p className="text-sm text-gray-500 line-through">R$ 47,00</p>
+                    <p className="text-5xl font-bold text-gray-700">R$ 10</p>
+                    <p className="text-sm text-gray-600">pagamento único</p>
                   </div>
-                ))}
 
-                <p className="font-fredoka text-lg text-navy text-center font-bold mb-4 mt-6">
-                  ✨ INCLUSO:
-                </p>
+                  {/* What's Included */}
+                  <div className="space-y-3">
+                    <p className="font-nunito font-bold text-navy text-center">
+                      Você recebe:
+                    </p>
 
-                {[
-                  { item: "Acesso Vitalício - Para Sempre", value: "Incluído" },
-                  { item: "Suporte Contínuo", value: "Incluído" },
-                  { item: "Garantia Incondicional de 7 dias", value: "Incluído" },
-                ].map((line, index) => (
-                  <div key={index} className="flex justify-between items-center py-2 border-b border-border/30 bg-yellow-soft/5">
-                    <div className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-coral mt-1 flex-shrink-0" />
-                      <span className="font-inter text-sm md:text-base text-foreground/90 font-semibold">
-                        {line.item}
-                      </span>
+                    <div className="space-y-2">
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-gray-600 mt-1 flex-shrink-0" />
+                        <span className="font-inter text-sm text-foreground/90">
+                          Atividades Nível 01 - Palavras com 2 Sílabas
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-gray-600 mt-1 flex-shrink-0" />
+                        <span className="font-inter text-sm text-foreground/90">
+                          Guia Rápido para Iniciar
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-gray-600 mt-1 flex-shrink-0" />
+                        <span className="font-inter text-sm text-foreground/90">
+                          Acesso Vitalício
+                        </span>
+                      </div>
                     </div>
-                    <span className="font-nunito font-bold text-coral text-xs md:text-sm whitespace-nowrap ml-4">
-                      {line.value}
-                    </span>
+
+                    {/* What's NOT included */}
+                    <div className="pt-4 border-t border-gray-200">
+                      <p className="text-xs text-gray-500 mb-2">Não inclui:</p>
+                      <div className="space-y-1">
+                        <div className="flex items-start gap-2">
+                          <X className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                          <span className="font-inter text-xs text-gray-500">
+                            Níveis 02 e 03 (palavras com 3 e 4 sílabas)
+                          </span>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <X className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                          <span className="font-inter text-xs text-gray-500">
+                            6 Super Bônus (R$ 256 de valor)
+                          </span>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <X className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                          <span className="font-inter text-xs text-gray-500">
+                            Método Visual Japonês Completo
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                ))}
-              </div>
 
-              {/* Total Value */}
-              <div className="bg-soft-blue/20 rounded-2xl p-6 text-center">
-                <p className="font-nunito text-base md:text-lg text-foreground/70 mb-1">
-                  Valor Total de Tudo:
-                </p>
-                <p className="font-fredoka text-3xl md:text-4xl font-bold text-muted-foreground line-through">
-                  R$ 545,00
-                </p>
-                <p className="font-inter text-sm text-muted-foreground mt-2">
-                  (Kit R$ 289 + Bônus R$ 256)
-                </p>
-              </div>
+                  {/* CTA */}
+                  <Button
+                    onClick={handleCheckoutBasic}
+                    variant="outline"
+                    size="lg"
+                    className="w-full font-nunito font-bold text-base py-6 border-2 border-gray-400 hover:bg-gray-50"
+                  >
+                    Começar por R$ 10,00
+                  </Button>
 
-              {/* Discount Reveal */}
-              <div className="text-center space-y-2 px-4">
-                <p className="font-nunito text-lg md:text-xl lg:text-2xl text-foreground/80">
-                  De <span className="line-through whitespace-nowrap">R$ 545,00</span> por apenas:
-                </p>
-                <div className="relative inline-block">
-                  <div className="absolute -inset-4 bg-yellow-soft/30 rounded-full blur-xl"></div>
-                  <p className="relative font-fredoka text-4xl md:text-6xl lg:text-7xl font-bold text-primary">
-                    R$ 27,90
-                  </p>
-                </div>
-                <p className="font-inter text-xs md:text-sm lg:text-base text-muted-foreground leading-relaxed">
-                  Pagamento único • Sem mensalidades • Acesso para sempre
-                </p>
-              </div>
-
-              {/* Price Justification */}
-              <div className="bg-mint/10 border-2 border-mint/30 rounded-2xl p-6 text-center">
-                <p className="font-inter text-base md:text-lg text-foreground/90 leading-relaxed">
-                  <span className="font-bold text-navy">Menos que uma pizza em família</span> para dar ao seu filho
-                  <span className="font-bold text-primary"> leitura, escrita, coordenação e concentração</span> —
-                  as habilidades essenciais para a vida toda!
-                </p>
-                <p className="font-nunito text-sm text-coral mt-3 font-bold">
-                  95% de desconto! Economize R$ 517,10 hoje!
-                </p>
-              </div>
-
-              {/* CTA Button */}
-              <div className="text-center pt-4 px-4">
-                <Button
-                  onClick={handleCheckout}
-                  size="lg"
-                  className="w-full md:w-auto font-nunito font-bold text-base md:text-lg lg:text-xl px-8 md:px-12 py-6 md:py-8 shadow-2xl hover:shadow-3xl hover:scale-[1.02] transition-all duration-300 bg-gradient-to-r from-coral to-primary hover:from-coral/95 hover:to-primary/95 animate-pulse-subtle"
-                >
-                  Quero o Kit por R$ 27,90!
-                </Button>
-
-                <div className="mt-6 space-y-2">
-                  <div className="flex items-center justify-center gap-2 text-xs md:text-sm text-muted-foreground">
-                    <Lock className="w-3 h-3 md:w-4 md:h-4" />
+                  <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
+                    <Lock className="w-3 h-3" />
                     <span>Pagamento 100% Seguro</span>
                   </div>
-                  <p className="font-inter text-xs md:text-sm text-muted-foreground">
-                    Acesso imediato após confirmação do pagamento
-                  </p>
                 </div>
               </div>
 
-              {/* Payment Methods */}
-              <div className="text-center pt-4 space-y-3">
-                <p className="font-nunito text-sm text-muted-foreground">
-                  Formas de pagamento:
+              {/* PLANO COMPLETO - R$ 19,90 */}
+              <div className="bg-card border-4 border-coral rounded-3xl p-6 md:p-8 shadow-2xl relative">
+                {/* Most Popular Badge */}
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <div className="bg-coral text-white px-6 py-2 rounded-full shadow-lg">
+                    <p className="font-fredoka text-sm font-bold">
+                      ⭐ MAIS ESCOLHIDO
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-6 mt-4">
+
+                  {/* Badge */}
+                  <div className="bg-gradient-to-r from-coral to-primary text-white px-4 py-2 rounded-xl text-center">
+                    <p className="font-fredoka text-lg font-bold">
+                      Kit Completo
+                    </p>
+                  </div>
+
+                  {/* Price */}
+                  <div className="text-center space-y-2">
+                    <p className="text-sm text-gray-500 line-through">R$ 289,00</p>
+                    <p className="text-5xl font-bold text-coral">R$ 19<span className="text-3xl">,90</span></p>
+                    <p className="text-sm text-navy font-semibold">ou 3x de R$ 6,63 sem juros</p>
+                    <div className="inline-block bg-mint/20 text-mint px-3 py-1 rounded-full">
+                      <p className="text-xs font-bold">💰 ECONOMIZE R$ 269</p>
+                    </div>
+                  </div>
+
+                  {/* What's Included */}
+                  <div className="space-y-3">
+                    <p className="font-nunito font-bold text-navy text-center">
+                      Você recebe TUDO:
+                    </p>
+
+                    <div className="bg-coral/5 rounded-xl p-4 space-y-2">
+                      <p className="font-fredoka text-sm text-coral font-bold mb-2">
+                        📦 KIT PRINCIPAL:
+                      </p>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-coral mt-1 flex-shrink-0" />
+                        <span className="font-inter text-sm text-foreground/90">
+                          400+ Atividades de Grafismo Fonético
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-coral mt-1 flex-shrink-0" />
+                        <span className="font-inter text-sm text-foreground/90">
+                          3 Níveis Progressivos (2, 3 e 4 sílabas)
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-coral mt-1 flex-shrink-0" />
+                        <span className="font-inter text-sm text-foreground/90">
+                          Grafismo Cursiva + Bastão
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-coral mt-1 flex-shrink-0" />
+                        <span className="font-inter text-sm text-foreground/90">
+                          Guia Completo para Pais
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-coral mt-1 flex-shrink-0" />
+                        <span className="font-inter text-sm text-foreground/90">
+                          Método Visual Japonês Adaptado
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="bg-mint/5 rounded-xl p-4 space-y-2">
+                      <p className="font-fredoka text-sm text-mint font-bold mb-2">
+                        🎁 6 SUPER BÔNUS (R$ 256):
+                      </p>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-mint mt-1 flex-shrink-0" />
+                        <span className="font-inter text-sm text-foreground/90">
+                          Caderno Alfabeto com Imagem
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-mint mt-1 flex-shrink-0" />
+                        <span className="font-inter text-sm text-foreground/90">
+                          Caderno Quebra Cabeça + 4 bônus extras
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="bg-navy/5 rounded-xl p-3">
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-navy mt-1 flex-shrink-0" />
+                        <span className="font-inter text-sm font-semibold text-navy">
+                          Acesso Vitalício + Atualizações Grátis
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <Button
+                    onClick={handleCheckoutComplete}
+                    size="lg"
+                    className="w-full font-nunito font-bold text-base md:text-lg py-7 shadow-2xl hover:shadow-3xl hover:scale-[1.02] transition-all duration-300 bg-gradient-to-r from-coral to-primary hover:from-coral/95 hover:to-primary/95"
+                  >
+                    Quero o Kit Completo por R$ 19,90!
+                  </Button>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                      <Lock className="w-3 h-3" />
+                      <span>Pagamento 100% Seguro</span>
+                    </div>
+                    <p className="text-xs text-center text-muted-foreground">
+                      Acesso imediato após confirmação
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Payment Methods */}
+            <div className="text-center pt-4 space-y-3 mb-8">
+              <p className="font-nunito text-sm text-muted-foreground">
+                Formas de pagamento:
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 items-center">
+                <div className="flex items-center gap-2 px-4 py-2 bg-card border rounded-lg">
+                  <span className="text-2xl">💳</span>
+                  <span className="font-inter text-xs md:text-sm">Cartão de Crédito</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-card border rounded-lg">
+                  <span className="text-2xl">⚡</span>
+                  <span className="font-inter text-xs md:text-sm">PIX (Aprovação Imediata)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Trust Badges */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6">
+              {[
+                { icon: "⚡", text: "Acesso em 5 minutos" },
+                { icon: "🛡️", text: "Garantia de 7 dias" },
+                { icon: "👥", text: "+15.000 famílias" }
+              ].map((badge, index) => (
+                <div key={index} className="flex flex-col items-center gap-2 p-4 bg-soft-blue/10 rounded-xl">
+                  <span className="text-3xl">{badge.icon}</span>
+                  <span className="font-nunito text-sm text-center font-semibold">{badge.text}</span>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* UPSELL POPUP */}
+      {showUpsellPopup && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
+            {/* Close button */}
+            <button
+              onClick={handleDeclineUpsell}
+              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+            >
+              <X className="w-5 h-5 text-gray-600" />
+            </button>
+
+            {/* Popup Content */}
+            <div className="p-8 md:p-12 space-y-6">
+
+              {/* Icon */}
+              <div className="flex justify-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-coral to-primary rounded-full flex items-center justify-center shadow-lg">
+                  <Sparkles className="w-10 h-10 text-white" />
+                </div>
+              </div>
+
+              {/* Headline */}
+              <div className="text-center space-y-3">
+                <h3 className="font-fredoka text-3xl md:text-4xl font-bold text-navy">
+                  ⚠️ ESPERE!
+                </h3>
+                <p className="font-fredoka text-xl md:text-2xl text-coral font-bold">
+                  Oferta Especial Só Para Você
                 </p>
-                <div className="flex flex-wrap justify-center gap-4 items-center">
-                  <div className="flex items-center gap-2 px-4 py-2 bg-card border rounded-lg">
-                    <span className="text-2xl">💳</span>
-                    <span className="font-inter text-xs md:text-sm">Cartão de Crédito</span>
+              </div>
+
+              {/* Offer */}
+              <div className="bg-gradient-to-br from-coral/10 to-mint/10 rounded-2xl p-6 border-2 border-coral/30">
+                <p className="font-nunito text-lg text-center mb-4">
+                  Que tal levar o <span className="font-bold text-coral">Kit COMPLETO</span> com tudo que seu filho precisa?
+                </p>
+
+                <div className="text-center space-y-2 mb-4">
+                  <p className="text-sm text-gray-500 line-through">De R$ 19,90</p>
+                  <p className="text-5xl font-bold text-coral">
+                    R$ 14<span className="text-3xl">,90</span>
+                  </p>
+                  <div className="inline-block bg-mint text-white px-4 py-2 rounded-full">
+                    <p className="text-sm font-bold">ECONOMIZE R$ 5 AGORA</p>
                   </div>
-                  <div className="flex items-center gap-2 px-4 py-2 bg-card border rounded-lg">
-                    <span className="text-2xl">⚡</span>
-                    <span className="font-inter text-xs md:text-sm">PIX (Aprovação Imediata)</span>
+                </div>
+
+                <div className="bg-white rounded-xl p-4 space-y-2">
+                  <p className="font-fredoka text-sm text-navy font-bold mb-2">
+                    Por apenas R$ 4,90 a mais você ganha:
+                  </p>
+                  <div className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-coral mt-1 flex-shrink-0" />
+                    <span className="font-inter text-sm">
+                      <strong>Níveis 02 e 03</strong> (palavras com 3 e 4 sílabas)
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-coral mt-1 flex-shrink-0" />
+                    <span className="font-inter text-sm">
+                      <strong>6 Super Bônus</strong> no valor de R$ 256
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-coral mt-1 flex-shrink-0" />
+                    <span className="font-inter text-sm">
+                      <strong>Método Visual Japonês</strong> adaptado completo
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Check className="w-5 h-5 text-coral mt-1 flex-shrink-0" />
+                    <span className="font-inter text-sm">
+                      <strong>Grafismo Cursiva + Bastão</strong>
+                    </span>
                   </div>
                 </div>
               </div>
 
-              {/* Final Trust Elements */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6">
-                {[
-                  { icon: "⚡", text: "Acesso em 5 minutos" },
-                  { icon: "🛡️", text: "Garantia de 7 dias" },
-                  { icon: "👥", text: "+15.000 famílias" }
-                ].map((badge, index) => (
-                  <div key={index} className="flex flex-col items-center gap-2 p-4 bg-soft-blue/10 rounded-xl">
-                    <span className="text-3xl">{badge.icon}</span>
-                    <span className="font-nunito text-sm text-center font-semibold">{badge.text}</span>
-                  </div>
-                ))}
+              {/* Value comparison */}
+              <div className="bg-navy/5 rounded-xl p-4 text-center">
+                <p className="font-nunito text-sm text-navy">
+                  Você estava levando só 1 nível por <span className="font-bold">R$ 10</span>
+                </p>
+                <p className="font-fredoka text-lg text-coral font-bold mt-2">
+                  Agora leva TUDO por apenas R$ 14,90!
+                </p>
+                <p className="text-xs text-gray-600 mt-1">
+                  (Economia de R$ 274 vs. preço original de R$ 289)
+                </p>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="space-y-3">
+                <Button
+                  onClick={handleCheckoutUpsell}
+                  size="lg"
+                  className="w-full font-nunito font-bold text-lg py-7 shadow-2xl hover:shadow-3xl hover:scale-[1.02] transition-all duration-300 bg-gradient-to-r from-coral to-primary"
+                >
+                  🎉 SIM! Quero o Kit Completo por R$ 14,90
+                </Button>
+
+                <button
+                  onClick={handleDeclineUpsell}
+                  className="w-full text-sm text-gray-500 hover:text-gray-700 underline py-2"
+                >
+                  Não, quero continuar apenas com o plano básico de R$ 10
+                </button>
+              </div>
+
+              {/* Urgency */}
+              <div className="text-center pt-4 border-t">
+                <p className="text-xs text-gray-500">
+                  ⚠️ Esta oferta de R$ 14,90 só aparece uma vez
+                </p>
               </div>
 
             </div>
           </div>
-
-          {/* Post-Price Social Proof */}
-          <div className="text-center mt-12 space-y-4">
-            <p className="font-inter text-base md:text-lg text-foreground/80 italic">
-              "Vale cada centavo! Meu filho não só aprendeu a ler mais rápido, como a letra dele melhorou muito!
-              Ele adora fazer as atividades e pede para fazer. Evoluiu mais em 1 mês com o método japonês
-              do que em 6 meses com aulas particulares que custaram R$ 800."
-            </p>
-            <p className="font-nunito font-bold text-navy">
-              — Renata M., São Paulo/SP
-            </p>
-          </div>
-
-          {/* Urgency Element */}
-          <div className="text-center mt-8 p-6 bg-coral/10 border-2 border-coral/30 rounded-2xl">
-            <p className="font-nunito text-lg md:text-xl font-bold text-navy mb-2">
-              🔥 Black Friday de Novembro: Oferta Especial
-            </p>
-            <p className="font-inter text-sm md:text-base text-foreground/80">
-              Desconto de lançamento pode acabar a qualquer momento e o valor volta para R$ 289,00.
-              Não perca esta oportunidade de ver seu filho lendo, escrevendo e se desenvolvendo com alegria.
-            </p>
-          </div>
-
         </div>
-      </div>
-    </section>
+      )}
+    </>
   );
 };
