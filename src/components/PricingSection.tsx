@@ -53,7 +53,7 @@ export const PricingSection = () => {
             </p>
 
             {/* Two Pricing Cards */}
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-sm md:max-w-none mx-auto">
 
               {/* PLANO BÁSICO - R$ 10,00 */}
               <div className="bg-card border-2 border-gray-300 rounded-3xl p-6 md:p-8 shadow-lg relative">
@@ -256,7 +256,7 @@ export const PricingSection = () => {
                   <Button
                     onClick={handleCheckoutComplete}
                     size="lg"
-                    className="w-full font-fredoka font-bold text-xl py-8 shadow-2xl hover:shadow-3xl hover:scale-[1.05] transition-all duration-300 bg-gradient-to-r from-coral via-primary to-mint hover:from-coral/95 hover:via-primary/95 hover:to-mint/95"
+                    className="w-full font-fredoka font-bold text-base md:text-xl py-6 md:py-8 shadow-2xl hover:shadow-3xl hover:scale-[1.05] transition-all duration-300 bg-gradient-to-r from-coral via-primary to-mint hover:from-coral/95 hover:via-primary/95 hover:to-mint/95"
                   >
                     🎉 Sim! Quero a Aventura Completa
                   </Button>

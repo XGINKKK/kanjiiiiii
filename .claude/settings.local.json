@@ -37,7 +37,11 @@
       "Bash(findstr:*)",
       "Bash(timeout 5 bash:*)",
       "Bash(timeout 2 bash:*)",
-      "Bash(git remote set-url:*)"
+      "Bash(git remote set-url:*)",
+      "Bash(git rm:*)",
+      "Bash(git restore:*)",
+      "Bash(.gitattributes)",
+      "Bash(\"src/components/GuaranteeSection.tsx\")"
     ],
     "deny": [],
     "ask": []
