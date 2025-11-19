@@ -127,21 +127,14 @@ const IndexSimple = memo(() => {
       muteOverlay.addEventListener('touchend', unmuteHandler, { once: true });
     }
 
-    // Setup UTM tracking for CTA
-    function setupUTMTracking() {
-      if (!ctaLink) return;
-      const urlParams = new URLSearchParams(window.location.search);
-      const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
-      const baseUrl = 'https://www.ggcheckout.com/checkout/v2/50wDz3HYenjVvuvmY2Zv';
-      try {
-        const url = new URL(baseUrl);
-        utmKeys.forEach(key => {
-          if (urlParams.has(key)) { url.searchParams.set(key, urlParams.get(key)!); }
-        });
-        ctaLink.href = url.toString();
-      } catch(e) { ctaLink.href = baseUrl; }
+    // Setup CTA to scroll to pricing section
+    if (ctaLink) {
+      ctaLink.href = '#pricing';
+      ctaLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+      });
     }
-    setupUTMTracking();
 
     video.addEventListener('timeupdate', function() {
       if (!video.duration || !fakeProgressBar) return;
