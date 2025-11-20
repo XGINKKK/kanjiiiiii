@@ -415,9 +415,9 @@ export const PricingSection = () => {
                 <Button
                   onClick={handleCheckoutUpsell}
                   size="lg"
-                  className="w-full font-fredoka font-bold text-xl py-8 shadow-2xl hover:shadow-3xl hover:scale-[1.05] transition-all duration-300 bg-gradient-to-r from-coral via-primary to-mint"
+                  className="w-full font-fredoka font-bold text-base md:text-xl py-8 shadow-2xl hover:shadow-3xl hover:scale-[1.05] transition-all duration-300 bg-gradient-to-r from-coral via-primary to-mint"
                 >
-                  ✨ Sim! Quero a Experiência Completa
+                  ✨ Quero a Experiência Completa
                 </Button>
                 <p className="text-center text-xs text-coral font-semibold -mt-2">
                   💝 Presente especial: R$ 14,90 (ao invés de R$ 19,90)
