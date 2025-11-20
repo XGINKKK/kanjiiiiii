@@ -250,31 +250,38 @@ const IndexSimple = memo(() => {
             />
           </div>
 
-          {/* Logo/Badge */}
-          <div className="inline-block bg-white border border-coral/20 px-6 py-2 rounded-full shadow-sm">
-            <p className="font-nunito font-semibold text-coral text-sm md:text-base">Método Japonês Adaptado</p>
+          {/* Badge - Método Comprovado */}
+          <div className="inline-block bg-coral/10 border-2 border-coral/30 px-6 py-2 rounded-full shadow-sm">
+            <p className="font-nunito font-bold text-coral text-sm md:text-base uppercase tracking-wide">✨ MÉTODO COMPROVADO</p>
           </div>
 
-          {/* Headline Principal - COPY ÚNICA */}
+          {/* Pre-headline */}
+          <p className="font-nunito text-lg md:text-xl text-coral font-semibold max-w-3xl mx-auto">
+            Conheça a plataforma de atividades pedagógicas que está fazendo com que crianças aprendam até 3x mais rápido.
+          </p>
+
+          {/* Headline Principal */}
           <h1 className="font-fredoka text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-navy max-w-4xl mx-auto">
-            E se aprender a ler e escrever fosse a parte favorita do dia do seu filho?
+            Transforme o aprendizado do seu filho com{" "}
+            <span className="text-coral">400+ atividades educacionais</span>{" "}
+            Kanji Kids!
           </h1>
 
           {/* Subheadline */}
           <p className="font-nunito text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-            Descubra como crianças de 2 a 12 anos estão desenvolvendo amor pela leitura
-            em apenas 10 minutos diários - sem pressão, sem tédio, só descoberta.
+            O kit completo para o desenvolvimento infantil com atividades divertidas e educativas!
           </p>
 
-          {/* Benefícios rápidos - mais clean */}
-          <div className="flex flex-wrap justify-center gap-4 max-w-2xl mx-auto pt-4">
+          {/* Benefícios rápidos - 4 items */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-3xl mx-auto pt-4">
             {[
-              "Resultados em semanas",
-              "Funciona até com TDAH",
-              "Seu para sempre",
+              "✅ Mais de 400 atividades educacionais para todas as idades",
+              "✅ Coordenação motora, vogais, quebra-cabeça e muito mais",
+              "✅ Material completo para imprimir e usar em casa",
+              "✅ Ideal para crianças de 2 a 12 anos",
             ].map((benefit, index) => (
-              <div key={index} className="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
-                <p className="font-nunito text-sm text-navy font-medium">{benefit}</p>
+              <div key={index} className="bg-white px-4 py-3 rounded-lg shadow-sm border border-coral/20">
+                <p className="font-nunito text-sm md:text-base text-navy font-medium text-left">{benefit}</p>
               </div>
             ))}
           </div>
