@@ -17,14 +17,14 @@ export const QuemSouEuSection = () => {
           {/* Conteúdo */}
           <div className="order-2 md:order-2 space-y-6">
             <div>
-              <h2 className="font-fredoka font-bold text-4xl md:text-5xl text-mint mb-4">
+              <h2 className="font-fredoka font-bold text-4xl md:text-5xl text-coral mb-4">
                 Quem Sou Eu?
               </h2>
               <div className="h-1 w-20 bg-coral rounded-full mb-6"></div>
             </div>
 
             <div className="space-y-4 font-nunito text-lg text-gray-700 leading-relaxed">
-              <p className="text-xl font-bold text-mint">
+              <p className="text-xl font-bold text-coral">
                 Olá! Eu sou a Larissa Roepke 👋
               </p>
 
@@ -33,7 +33,7 @@ export const QuemSouEuSection = () => {
               </p>
 
               <p>
-                Sempre fui <span className="font-bold">muito focada no meu trabalho</span>, mas foi ao me tornar mãe que descobri minha verdadeira paixão: <span className="font-bold text-mint">pedagogia e educação infantil</span>.
+                Sempre fui <span className="font-bold">muito focada no meu trabalho</span>, mas foi ao me tornar mãe que descobri minha verdadeira paixão: <span className="font-bold text-coral">pedagogia e educação infantil</span>.
               </p>
 
               <p>
