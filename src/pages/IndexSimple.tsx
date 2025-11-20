@@ -5,6 +5,7 @@ import { VideoTestimonialsSection } from "@/components/VideoTestimonialsSection"
 import { BonusSection } from "@/components/BonusSection";
 import { WhatIsIncludedSection } from "@/components/WhatIsIncludedSection";
 import { PricingSection } from "@/components/PricingSection";
+import { QuemSouEuSection } from "@/components/QuemSouEuSection";
 import { WhatsAppCTASection } from "@/components/WhatsAppCTASection";
 import { GuaranteeSection } from "@/components/GuaranteeSection";
 import { FAQSection } from "@/components/FAQSection";
@@ -497,6 +498,9 @@ const IndexSimple = memo(() => {
 
       {/* PRICING SECTION - Componente original importado */}
       <PricingSection />
+
+      {/* QUEM SOU EU - Apresentação da Larissa Roepke */}
+      <QuemSouEuSection />
 
       {/* WHATSAPP CTA - Componente de dúvidas */}
       <WhatsAppCTASection />
