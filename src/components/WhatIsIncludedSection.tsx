@@ -27,15 +27,16 @@ export const WhatIsIncludedSection = () => {
     if (!scrollContainer) return;
 
     let scrollAmount = 0;
-    const scrollSpeed = 1.5; // pixels per frame - velocidade rápida
+    const scrollSpeed = 0.8; // pixels per frame - velocidade mais lenta
     let animationFrameId: number;
 
     const scroll = () => {
       scrollAmount += scrollSpeed;
 
-      // Reset scroll when reaching the end of first set
+      // Reset scroll when reaching the end of first set - sem pausa
       if (scrollAmount >= scrollContainer.scrollWidth / 2) {
         scrollAmount = 0;
+        scrollContainer.scrollLeft = 0;
       }
 
       scrollContainer.scrollLeft = scrollAmount;
@@ -97,6 +98,56 @@ export const WhatIsIncludedSection = () => {
           {/* Gradient Overlays para efeito de fade nas bordas */}
           <div className="absolute left-0 top-0 w-20 md:w-32 h-full bg-gradient-to-r from-background via-background/80 to-transparent pointer-events-none"></div>
           <div className="absolute right-0 top-0 w-20 md:w-32 h-full bg-gradient-to-l from-background via-background/80 to-transparent pointer-events-none"></div>
+        </div>
+
+        {/* Lista de conteúdos do Kit */}
+        <div className="max-w-3xl mx-auto mb-16">
+          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border-2 border-coral/20">
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-coral mt-0.5 flex-shrink-0" />
+                <p className="font-nunito text-base md:text-lg text-navy">
+                  <span className="font-bold">+ de 400 Atividades de Grafismo Fonético</span>
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-coral mt-0.5 flex-shrink-0" />
+                <p className="font-nunito text-base md:text-lg text-navy">
+                  <span className="font-bold">Atividades Nível 01:</span> Palavras com 02 Sílabas
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-coral mt-0.5 flex-shrink-0" />
+                <p className="font-nunito text-base md:text-lg text-navy">
+                  <span className="font-bold">Atividades Nível 02:</span> Palavras com 03 Sílabas
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-coral mt-0.5 flex-shrink-0" />
+                <p className="font-nunito text-base md:text-lg text-navy">
+                  <span className="font-bold">Atividades Nível 03:</span> Palavras com 04 Sílabas
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-coral mt-0.5 flex-shrink-0" />
+                <p className="font-nunito text-base md:text-lg text-navy">
+                  <span className="font-bold">Atividades Grafismo</span> na letra Cursiva e Bastão
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-coral mt-0.5 flex-shrink-0" />
+                <p className="font-nunito text-base md:text-lg text-navy">
+                  <span className="font-bold">Método Kanji Kids</span>
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-coral mt-0.5 flex-shrink-0" />
+                <p className="font-nunito text-base md:text-lg text-navy">
+                  <span className="font-bold">Guia pros Pais</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Destacados - Você Imprime & Os Pequenos Amam */}
