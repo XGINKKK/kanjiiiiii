@@ -285,10 +285,10 @@ const IndexSimple = memo(() => {
       <section className="py-16 px-4 bg-gradient-to-b from-white to-soft-blue/10">
         <div className="max-w-2xl mx-auto text-center space-y-6">
           <h2 className="font-fredoka text-3xl md:text-4xl font-bold text-navy leading-tight">
-            Veja uma mãe mostrando como funciona (e por que as crianças pedem para fazer)
+            Veja como funciona na prática e ganhe um <span className="text-coral">presente incrível!</span>
           </h2>
           <p className="font-nunito text-lg md:text-xl text-foreground/60 max-w-xl mx-auto">
-            Em 3 minutos você vai entender por que mais de 15 mil famílias escolheram este caminho
+            Descubra o segredo que está transformando a alfabetização de milhares de crianças
           </p>
 
           {/* Paradise Player 9:16 */}
